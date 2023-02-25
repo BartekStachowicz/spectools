@@ -1,0 +1,17 @@
+mat-sidenav-container,
+mat-sidenav-content,
+mat-sidenav {
+  height: 100vh;
+  background-color: white;
+}
+
+mat-sidenav {
+  width: 250px;
+}
+
+.layout-wrapper {
+  height: 100%;
+}
+.flex-wrapper {
+  height: 100%;
+}

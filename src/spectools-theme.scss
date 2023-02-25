@@ -1,0 +1,58 @@
+@use "@angular/material" as mat;
+@include mat.core();
+
+$blue-gray-palette: (
+  50: #eceff1,
+  100: #cfd8dc,
+  200: #b0bec5,
+  300: #90a4ae,
+  400: #78909c,
+  500: #607d8b,
+  600: #546e7a,
+  700: #455a64,
+  800: #37474f,
+  900: #263238,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: white,
+  ),
+);
+
+$amber-palette: (
+  50: #fff8e1,
+  100: #ffecb3,
+  200: #ffe082,
+  300: #ffd54f,
+  400: #ffca28,
+  500: #ffc107,
+  600: #ffb300,
+  700: #ffa000,
+  800: #ff8f00,
+  900: #ff6f00,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: white,
+  ),
+);
+
+$spectools-primary: mat.define-palette(mat.$blue-gray-palette, 800);
+$spectools-accent: mat.define-palette(mat.$amber-palette, 500);
+
+$spectools-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $spectools-primary,
+      accent: $spectools-accent,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+  )
+);
+
+// @include mat.core-theme($spectools-theme);
+// @include mat.button-theme($spectools-theme);
+@include mat.all-component-themes($spectools-theme);

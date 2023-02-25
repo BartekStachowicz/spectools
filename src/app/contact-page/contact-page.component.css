@@ -1,0 +1,61 @@
+.mat-grid-list {
+  background: whitesmoke;
+}
+.example-card {
+  width: 95%;
+  height: 95%;
+}
+
+.example-card-contact {
+  width: 95%;
+  height: 98%;
+}
+
+.contact-address {
+  color: #37474f;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.contact-form-field {
+  width: 90%;
+  margin-bottom: 1rem;
+}
+
+.contact-form-button {
+  margin-top: 20px;
+}
+
+.contact-form-field-label {
+  width: 90%;
+  margin-bottom: 0.5rem;
+  color: #37474f;
+  font-weight: 600;
+}
+
+.example-card-map {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
+  height: 95%;
+}
+.map-container {
+  width: 95%;
+  height: 95%;
+}
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+.map-container #map {
+  transform: translateZ(0);
+}

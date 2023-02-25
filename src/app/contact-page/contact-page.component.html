@@ -1,0 +1,123 @@
+<div
+  class="desktop-container"
+  [ngClass]="{ 'mobile-width': (isHandset$ | async) }"
+>
+  <mat-grid-list [cols]="(isHandset$ | async)! ? '1' : '2'" rowHeight="350px">
+    <mat-grid-tile [colspan]="1" [rowspan]="1"
+      ><mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title>SpecTools Dawid Rzemieniarz</mat-card-title>
+            <mat-card-subtitle style="margin-bottom: 1.5rem">
+              Wypożyczalnia urządzeń
+            </mat-card-subtitle>
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="contact-address">
+            <mat-icon>map</mat-icon> <span> ul. Borowa</span>
+          </p>
+          <p class="contact-address">
+            <mat-icon> map</mat-icon> <span> 39-305 Borowa</span>
+          </p>
+          <p class="contact-address">
+            <mat-icon> contact_phone</mat-icon> <span> +48 512 719 619</span>
+          </p>
+          <p class="contact-address">
+            <mat-icon> contact_mail</mat-icon> <span> email@email.pl</span>
+          </p>
+        </mat-card-content>
+      </mat-card></mat-grid-tile
+    >
+    <mat-grid-tile [colspan]="1" [rowspan]="2"
+      ><mat-card class="example-card-contact">
+        <mat-card-header
+          ><mat-card-title
+            >Formularz kontaktowy</mat-card-title
+          ></mat-card-header
+        >
+        <form
+          class="contact-form"
+          [formGroup]="contactForm"
+          (ngSubmit)="onSubmit()"
+        >
+          <span class="contact-form-field-label">Imię</span>
+          <mat-form-field
+            appearance="fill"
+            color="accent"
+            class="contact-form-field"
+          >
+            <mat-label>Imię</mat-label>
+            <input
+              matInput
+              placeholder="Wpisz swoje imię"
+              formControlName="name"
+            />
+            <mat-hint align="end"
+              >{{ contactForm.controls.name.value.length }} / 30
+            </mat-hint>
+            <mat-error *ngIf="contactForm.controls.name.invalid"
+              >Wprowadź poprawne imię</mat-error
+            >
+          </mat-form-field>
+          <span class="contact-form-field-label">E-mail</span>
+          <mat-form-field
+            appearance="fill"
+            color="accent"
+            class="contact-form-field"
+          >
+            <mat-label>Adres e-mail</mat-label>
+            <input
+              matInput
+              placeholder="Wpisz swój adres e-mail"
+              formControlName="email"
+            />
+            <mat-error *ngIf="contactForm.controls.email.invalid"
+              >Wprowadź poprawny email</mat-error
+            >
+          </mat-form-field>
+          <span class="contact-form-field-label">Wiadomość</span>
+          <mat-form-field
+            appearance="fill"
+            color="accent"
+            class="contact-form-field"
+          >
+            <mat-label>Wiadomość</mat-label>
+            <textarea
+              matInput
+              placeholder="Wpisz swoją wiadomość"
+              formControlName="message"
+              rows="8"
+            ></textarea>
+            <mat-hint align="end"
+              >{{ contactForm.controls.message.value.length }} / 100
+            </mat-hint>
+            <mat-error *ngIf="contactForm.controls.message.invalid"
+              >Wpisz swoją wiadomość</mat-error
+            >
+          </mat-form-field>
+
+          <button
+            mat-raised-button
+            color="accent"
+            type="submit"
+            [disabled]="!contactForm.valid"
+            class="contact-form-button"
+          >
+            Wyślij
+          </button>
+        </form>
+      </mat-card></mat-grid-tile
+    >
+    <mat-grid-tile [colspan]="1" rowspan="1"
+      ><mat-card class="example-card-map">
+        <div
+          class="map-container"
+          leaflet
+          [leafletOptions]="options"
+          (leafletMapReady)="onMapReady($event)"
+          (leafletClick)="mapClicked($event)"
+        ></div></mat-card
+    ></mat-grid-tile>
+  </mat-grid-list>
+</div>

@@ -1,0 +1,87 @@
+<div
+  class="desktop-container"
+  [ngClass]="{ 'mobile-width': (isHandset$ | async) }"
+>
+  <mat-grid-list
+    [cols]="(isHandset$ | async)! ? '1' : '2'"
+    rowHeight="370px"
+    gutterSize="1px"
+  >
+    <mat-grid-tile>
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title style="margin-bottom: 1rem"
+            >Cena wypożyczenia</mat-card-title
+          >
+        </mat-card-header>
+        <mat-card-content
+          ><p class="custom-card-content">
+            <mat-icon color="primary">account_balance_wallet</mat-icon>
+            <span class="bold-custom-price">{{ offerItem.priceRent }}</span
+            >/dzień
+          </p>
+          <p class="custom-card-content">
+            <mat-icon color="primary"> monetization_on</mat-icon>
+            <span class="bold-custom-caution"> Kaucja:</span>
+            {{ offerItem.priceCaution }}
+          </p>
+          <p class="custom-card-content custom-card-paragraph">
+            <mat-icon color="primary"> local_shipping</mat-icon> Darmowa dostawa
+            na terenie Borowej!
+          </p>
+          <p class="custom-card-content custom-card-paragraph">
+            <mat-icon color="primary">calendar_today</mat-icon> Minimalny czas
+            wynajmu: {{ offerItem.minRentalPeriod }}
+            {{ offerItem.minRentalPeriod === "1" ? "dzień" : "dni" }}
+          </p>
+
+          <mat-card-footer>
+            <a [href]="offerItem.rentOnlineURL" style="text-decoration: none">
+              <button
+                mat-flat-button
+                color="accent"
+                style="margin-right: 5px; margin-bottom: 5px"
+              >
+                Wypożycz online!
+              </button></a
+            >
+            <a routerLink="/kontakt" style="text-decoration: none">
+              <button mat-flat-button color="accent" style="margin-bottom: 5px">
+                Skontaktuj się z nami!
+              </button>
+            </a>
+          </mat-card-footer>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile rowspan="2">
+      <mat-card class="example-card-desc">
+        <mat-card-header>
+          <mat-card-title>{{ offerItem.name }}</mat-card-title>
+        </mat-card-header>
+        <div class="card-image-container">
+          <img
+            class="card-image"
+            [src]="offerItem.imagePath"
+            alt="Loading..."
+          />
+        </div>
+
+        <mat-card-content>
+          <mat-card-title>Opis</mat-card-title>
+          <p [innerHTML]="offerItem.description"></p>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile rowspan="1"
+      ><mat-card class="example-card-map">
+        <!-- <div class="card-image-map">
+          <img
+            class="map-image"
+            src="assets/maps-spectools.png"
+            alt="Loading..."
+          /></div> -->
+      </mat-card></mat-grid-tile
+    >
+  </mat-grid-list>
+</div>

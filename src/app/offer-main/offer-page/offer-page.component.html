@@ -1,0 +1,98 @@
+<div class="btn-mode-change">
+  <button
+    [ngClass]="{ 'btn-mode-active': gridCols === 1 }"
+    mat-icon-button
+    *ngIf="!(isHandset$ | async)!"
+    (click)="onViewChange('list')"
+  >
+    <mat-icon>view_list</mat-icon>
+  </button>
+  <button
+    [ngClass]="{ 'btn-mode-active': gridCols === 2 }"
+    mat-icon-button
+    *ngIf="!(isHandset$ | async)!"
+    (click)="onViewChange('grid')"
+  >
+    <mat-icon>view_module</mat-icon>
+  </button>
+</div>
+
+<div
+  class="desktop-container"
+  [ngClass]="{ 'mobile-width': (isHandset$ | async) }"
+>
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div
+      [fxFlex]="100 / gridCols + '%'"
+      fxFlex.xs="100%"
+      fxFlex.sm="100%"
+      *ngFor="let offerItem of offerItems; let index = index"
+    >
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title style="margin-bottom: 1rem">{{
+              offerItem.name
+            }}</mat-card-title>
+            <mat-card-subtitle>{{
+              offerItem.shortDescription
+            }}</mat-card-subtitle>
+          </mat-card-title-group>
+          <img
+            *ngIf="!(isHandset$ | async)!"
+            mat-card-xl-image
+            src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+          />
+          <img
+            *ngIf="(isHandset$ | async)!"
+            mat-card-md-image
+            src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+          />
+        </mat-card-header>
+
+        <mat-card-content
+          ><p class="custom-card-content">
+            <mat-icon color="primary">account_balance_wallet</mat-icon>
+            <span class="bold-custom-price">
+              Koszt wynaju: {{ offerItem.priceRent }}</span
+            >/dzień
+          </p>
+          <p class="custom-card-content">
+            <mat-icon color="primary"> monetization_on</mat-icon>
+            <span class="bold-custom-price"> Kaucja:</span>
+            {{ offerItem.priceCaution }}
+          </p>
+          <p class="custom-card-content custom-card-paragraph">
+            <mat-icon color="primary"> local_shipping</mat-icon> Darmowa dostawa
+            na terenie Borowej!
+          </p>
+          <p class="custom-card-content custom-card-paragraph">
+            <mat-icon color="primary">calendar_today</mat-icon> Minimalny czas
+            wynajmu: {{ offerItem.minRentalPeriod }}
+            {{ offerItem.minRentalPeriod === "1" ? "dzień" : "dni" }}
+          </p>
+
+          <mat-card-footer>
+            <button
+              mat-flat-button
+              color="accent"
+              style="margin-right: 10px; margin-left: 10px; margin-bottom: 10px"
+              [routerLink]="[offerItem.itemId, index]"
+            >
+              Więcej
+            </button>
+            <a [href]="offerItem.rentOnlineURL" style="text-decoration: none">
+              <button
+                mat-flat-button
+                color="accent"
+                style="margin-bottom: 10px"
+              >
+                Wypożycz online!
+              </button></a
+            >
+          </mat-card-footer>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

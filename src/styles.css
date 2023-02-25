@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* "@angular/material/prebuilt-themes/pink-bluegrey.css" */
+
+/* @import "~leaflet/dist/leaflet.css";
+@import "ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
+@import "ngx-owl-carousel-o/lib/styles/scss/owl.theme.default"; */
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.desktop-container {
+  width: 80%;
+  margin: auto;
+  padding: 0.5rem;
+  background-color: whitesmoke;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.mobile-width {
+  width: 100% !important;
+}

@@ -1,0 +1,64 @@
+.custom-card-content {
+  color: #546e7a;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.custom-card-paragraph {
+  color: #37474f;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.bold-custom-price {
+  color: #37474f;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.bold-custom-caution {
+  color: #37474f;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.example-card {
+  width: 95%;
+  height: 95%;
+}
+
+.example-card-desc {
+  width: 95%;
+  height: 98%;
+}
+
+.card-image-container {
+  display: flex;
+  justify-content: center;
+}
+
+.card-image-map {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.map-image {
+  width: 75%;
+  border-radius: 5px;
+}
+
+.card-image {
+  width: 85%;
+  border-radius: 5px;
+}
+
+.example-card-map {
+  background-image: url("src/assets/maps-spectools.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 95%;
+  height: 95%;
+}
