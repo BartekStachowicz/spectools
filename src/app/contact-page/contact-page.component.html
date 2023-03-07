@@ -1,8 +1,12 @@
 <div
-  class="desktop-container"
+  class="desktop-container margin-custom"
   [ngClass]="{ 'mobile-width': (isHandset$ | async) }"
 >
-  <mat-grid-list [cols]="(isHandset$ | async)! ? '1' : '2'" rowHeight="350px">
+  <mat-grid-list
+    [cols]="(isHandset$ | async)! ? '1' : '2'"
+    rowHeight="350px"
+    gutterSize="1rem"
+  >
     <mat-grid-tile [colspan]="1" [rowspan]="1"
       ><mat-card class="example-card">
         <mat-card-header>
@@ -30,7 +34,7 @@
       </mat-card></mat-grid-tile
     >
     <mat-grid-tile [colspan]="1" [rowspan]="2"
-      ><mat-card class="example-card-contact">
+      ><mat-card class="example-card">
         <mat-card-header
           ><mat-card-title
             >Formularz kontaktowy</mat-card-title
@@ -109,15 +113,6 @@
         </form>
       </mat-card></mat-grid-tile
     >
-    <mat-grid-tile [colspan]="1" rowspan="1"
-      ><mat-card class="example-card-map">
-        <div
-          class="map-container"
-          leaflet
-          [leafletOptions]="options"
-          (leafletMapReady)="onMapReady($event)"
-          (leafletClick)="mapClicked($event)"
-        ></div></mat-card
-    ></mat-grid-tile>
+    <mat-grid-tile id="map2"><div></div> </mat-grid-tile>
   </mat-grid-list>
 </div>

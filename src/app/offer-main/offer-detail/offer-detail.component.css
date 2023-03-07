@@ -23,13 +23,8 @@
 }
 
 .example-card {
-  width: 95%;
-  height: 95%;
-}
-
-.example-card-desc {
-  width: 95%;
-  height: 98%;
+  width: 100%;
+  height: 100%;
 }
 
 .card-image-container {
@@ -37,28 +32,21 @@
   justify-content: center;
 }
 
-.card-image-map {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.map-image {
-  width: 75%;
-  border-radius: 5px;
-}
-
 .card-image {
   width: 85%;
   border-radius: 5px;
 }
 
-.example-card-map {
-  background-image: url("src/assets/maps-spectools.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 95%;
-  height: 95%;
+@media only screen and (min-width: 600px) {
+  #map3 {
+    height: 350px;
+    min-width: 50%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #map3 {
+    height: 350px;
+    width: 400px;
+  }
 }

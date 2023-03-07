@@ -2,29 +2,16 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { map, Observable, shareReplay } from 'rxjs';
-import * as Leaflet from 'leaflet';
-
-Leaflet.Icon.Default.imagePath = 'assets/';
+import { LeafletMapService } from '../leaflet-map.service';
 
 @Component({
   selector: 'app-contact-page',
   templateUrl: './contact-page.component.html',
   styleUrls: ['./contact-page.component.css'],
+  providers: [LeafletMapService],
 })
 export class ContactPageComponent implements OnInit {
   contactForm: FormGroup;
-
-  map!: Leaflet.Map;
-  markers: Leaflet.Marker[] = [];
-  options = {
-    layers: [
-      Leaflet.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '',
-      }),
-    ],
-    zoom: 15,
-    center: { lat: 50.386667, lng: 21.356111 },
-  };
 
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
@@ -33,10 +20,14 @@ export class ContactPageComponent implements OnInit {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private leafletMapService: LeafletMapService
+  ) {}
 
   ngOnInit(): void {
     this.initContactForm();
+    this.leafletMapService.initMap('map2');
   }
 
   onSubmit() {}
@@ -54,36 +45,4 @@ export class ContactPageComponent implements OnInit {
       ]),
     });
   }
-
-  initMarkers() {
-    const initialMarkers = {
-      position: { lat: 50.386667, lng: 21.356111 },
-      draggable: true,
-    };
-
-    const marker = this.generateMarker(initialMarkers, 0);
-    marker
-      .addTo(this.map)
-      .bindPopup(`<b>SpecTools Dawid Rzemieniarz</b>`)
-      .openPopup();
-    this.map.panTo(initialMarkers.position);
-    this.markers.push(marker);
-  }
-
-  generateMarker(data: any, index: number) {
-    return Leaflet.marker(data.position, { draggable: data.draggable })
-      .on('click', (event) => this.markerClicked(event, index))
-      .on('dragend', (event) => this.markerDragEnd(event, index));
-  }
-
-  onMapReady($event: Leaflet.Map) {
-    this.map = $event;
-    this.initMarkers();
-  }
-
-  mapClicked($event: any) {}
-
-  markerClicked($event: any, index: number) {}
-
-  markerDragEnd($event: any, index: number) {}
 }

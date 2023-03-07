@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "spectools-mielec": {
+    "spectools": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/spectools-mielec",
+            "allowedCommonJsDependencies": ["lodash", "leaflet"],
+            "outputPath": "dist/spectools",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -23,7 +24,7 @@
               "src/assets",
               {
                 "glob": "**/*",
-                "input": "./node_modules/leaflet/dist/images",
+                "input": "node_modules/leaflet/dist/images/",
                 "output": "assets/"
               }
             ],
@@ -33,12 +34,19 @@
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
-              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css"
+              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css",
+              "node_modules/leaflet/dist/leaflet.css"
             ],
             "scripts": []
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
               "budgets": [
                 {
                   "type": "initial",
@@ -68,10 +76,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "spectools-mielec:build:production"
+              "browserTarget": "spectools:build:production"
             },
             "development": {
-              "browserTarget": "spectools-mielec:build:development"
+              "browserTarget": "spectools:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +87,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "spectools-mielec:build"
+            "browserTarget": "spectools:build"
           }
         },
         "test": {

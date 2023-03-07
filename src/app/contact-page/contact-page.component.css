@@ -2,19 +2,14 @@
   background: whitesmoke;
 }
 .example-card {
-  width: 95%;
-  height: 95%;
-}
-
-.example-card-contact {
-  width: 95%;
-  height: 98%;
+  width: 100%;
+  height: 100%;
 }
 
 .contact-address {
   color: #37474f;
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
 .contact-form {
@@ -40,22 +35,21 @@
   font-weight: 600;
 }
 
-.example-card-map {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 95%;
-  height: 95%;
-}
-.map-container {
-  width: 95%;
-  height: 95%;
-}
-#map {
-  width: 100%;
-  height: 100%;
+.margin-custom {
+  margin-top: 6rem;
+  margin-bottom: 6rem;
 }
 
-.map-container #map {
-  transform: translateZ(0);
+@media only screen and (min-width: 600px) {
+  #map2 {
+    height: 350px;
+    min-width: 50%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #map2 {
+    height: 350px;
+    width: 400px;
+  }
 }

@@ -5,7 +5,7 @@
   <mat-grid-list
     [cols]="(isHandset$ | async)! ? '1' : '2'"
     rowHeight="370px"
-    gutterSize="1px"
+    gutterSize="1rem"
   >
     <mat-grid-tile>
       <mat-card class="example-card">
@@ -55,7 +55,7 @@
       </mat-card>
     </mat-grid-tile>
     <mat-grid-tile rowspan="2">
-      <mat-card class="example-card-desc">
+      <mat-card class="example-card">
         <mat-card-header>
           <mat-card-title>{{ offerItem.name }}</mat-card-title>
         </mat-card-header>
@@ -73,15 +73,6 @@
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
-    <mat-grid-tile rowspan="1"
-      ><mat-card class="example-card-map">
-        <!-- <div class="card-image-map">
-          <img
-            class="map-image"
-            src="assets/maps-spectools.png"
-            alt="Loading..."
-          /></div> -->
-      </mat-card></mat-grid-tile
-    >
+    <mat-grid-tile id="map3"><div></div> </mat-grid-tile>
   </mat-grid-list>
 </div>

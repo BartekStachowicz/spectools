@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -20,7 +20,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 
 import 'hammerjs';
-import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 
 import { AppComponent } from './app.component';
@@ -75,7 +74,6 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     EffectsModule.forRoot([OfferMainEffects]),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),
-    LeafletModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,

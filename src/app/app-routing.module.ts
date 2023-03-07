@@ -26,7 +26,7 @@ const appRoutes: Routes = [
 
   { path: 'regulamin', component: RegulaminPageComponent },
   { path: 'kontakt', component: ContactPageComponent },
-  { path: 'admin-settings', component: AdminDashboardComponent },
+  { path: 'admin', component: AdminDashboardComponent },
 ];
 
 @NgModule({
