@@ -9,6 +9,7 @@ export class OfferItem {
   public imagePath: string;
   public minRentalPeriod: string;
   public rentOnlineURL: string;
+  public rentOnlineFlag: boolean;
 
   constructor(
     name: string,
@@ -20,7 +21,8 @@ export class OfferItem {
     technicalCondition: string,
     imagePath: string,
     minRentalPeriod: string,
-    rentOnlineURL: string
+    rentOnlineURL: string,
+    rentOnlineFlag: boolean
   ) {
     this.name = name;
     this.itemId = itemId;
@@ -32,5 +34,6 @@ export class OfferItem {
     this.imagePath = imagePath;
     this.minRentalPeriod = minRentalPeriod;
     this.rentOnlineURL = rentOnlineURL;
+    this.rentOnlineFlag = rentOnlineFlag;
   }
 }

@@ -1,7 +1,4 @@
-<div
-  class="desktop-container"
-  [ngClass]="{ 'mobile-width': (isHandset$ | async) }"
->
+<div class="desktop-container margin-custom">
   <mat-grid-list
     [cols]="(isHandset$ | async)! ? '1' : '2'"
     rowHeight="370px"
@@ -23,7 +20,7 @@
           <p class="custom-card-content">
             <mat-icon color="primary"> monetization_on</mat-icon>
             <span class="bold-custom-caution"> Kaucja:</span>
-            {{ offerItem.priceCaution }}
+            {{ offerItem.priceCaution }}*
           </p>
           <p class="custom-card-content custom-card-paragraph">
             <mat-icon color="primary"> local_shipping</mat-icon> Darmowa dostawa
@@ -41,6 +38,7 @@
                 mat-flat-button
                 color="accent"
                 style="margin-right: 5px; margin-bottom: 5px"
+                *ngIf="offerItem.rentOnlineFlag"
               >
                 Wypożycz online!
               </button></a
@@ -71,6 +69,20 @@
           <mat-card-title>Opis</mat-card-title>
           <p [innerHTML]="offerItem.description"></p>
         </mat-card-content>
+        <hr />
+        <mat-card-actions
+          ><mat-card-content
+            >Oferta ważna od 01.03.2022r. do odwołania. <br />*Kaucja zwrotna,
+            zwracana w momencie zwrotu nie uszkodzonych urządzeń. Kwota kaucji
+            stała za urządzenie bez względu na długość wynajmu. <br />Kwoty
+            wynajmu są kwotami BRUTTO i dotyczą wynajmu na 24h, powyżej 72h cena
+            ustalana indywidualnie. <br /><i
+              >Wynajmowane narzędzia mogą się różnić od tych przedstawionych na
+              stronie. <br />Treści w ulotce mają charakter informacyjny i nie
+              stanowią oferty handlowej w rozumieniu kodeksu cywilnego.</i
+            ></mat-card-content
+          ></mat-card-actions
+        >
       </mat-card>
     </mat-grid-tile>
     <mat-grid-tile id="map3"><div></div> </mat-grid-tile>

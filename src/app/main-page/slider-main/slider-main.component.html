@@ -1,0 +1,28 @@
+<p-carousel
+  [value]="offerItems"
+  [autoplayInterval]="5000"
+  [numVisible]="4"
+  [numScroll]="1"
+  [responsiveOptions]="responsiveOptions"
+  [circular]="true"
+>
+  <ng-template let-offerItem pTemplate="offerItem">
+    <div class="card" style="margin: 1px">
+      <img
+        class="card-img-top image-size"
+        [src]="offerItem.imagePath"
+        alt="Loading..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ offerItem.name }}</h5>
+        <button
+          mat-flat-button
+          color="accent"
+          (click)="onNavigate(offerItem.itemId)"
+        >
+          Więcej
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</p-carousel>

@@ -17,10 +17,7 @@
   </button>
 </div>
 
-<div
-  class="desktop-container"
-  [ngClass]="{ 'mobile-width': (isHandset$ | async) }"
->
+<div class="desktop-container">
   <div fxLayout="row wrap" fxLayoutGap="16px grid">
     <div
       [fxFlex]="100 / gridCols + '%'"
@@ -42,12 +39,12 @@
             class="offer-image"
             *ngIf="!(isHandset$ | async)!"
             mat-card-xl-image
-            src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+            [src]="offerItem.imagePath"
           />
           <img
             *ngIf="(isHandset$ | async)!"
             mat-card-md-image
-            src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+            [src]="offerItem.imagePath"
           />
         </mat-card-header>
 
@@ -61,7 +58,7 @@
           <p class="custom-card-content">
             <mat-icon color="primary"> monetization_on</mat-icon>
             <span class="bold-custom-price"> Kaucja:</span>
-            {{ offerItem.priceCaution }}
+            {{ offerItem.priceCaution }}*
           </p>
           <p class="custom-card-content custom-card-paragraph">
             <mat-icon color="primary"> local_shipping</mat-icon> Darmowa dostawa
@@ -87,6 +84,7 @@
                 mat-flat-button
                 color="accent"
                 style="margin-bottom: 10px"
+                *ngIf="offerItem.rentOnlineFlag"
               >
                 Wypożycz online!
               </button></a

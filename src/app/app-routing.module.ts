@@ -10,7 +10,12 @@ import { OfferResolverService } from './offer-main/offer-resolver.service';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 const appRoutes: Routes = [
-  { path: '', component: MainPageComponent, pathMatch: 'full' },
+  {
+    path: '',
+    component: MainPageComponent,
+    pathMatch: 'full',
+    resolve: [OfferResolverService],
+  },
   {
     path: 'oferta',
     component: OfferMainComponent,

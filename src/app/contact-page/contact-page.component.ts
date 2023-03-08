@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { map, Observable, shareReplay } from 'rxjs';
 import { LeafletMapService } from '../leaflet-map.service';
+import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
 
 @Component({
   selector: 'app-contact-page',
@@ -12,6 +13,7 @@ import { LeafletMapService } from '../leaflet-map.service';
 })
 export class ContactPageComponent implements OnInit {
   contactForm: FormGroup;
+  isSuccessfull: number = 0;
 
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
@@ -30,7 +32,28 @@ export class ContactPageComponent implements OnInit {
     this.leafletMapService.initMap('map2');
   }
 
-  onSubmit() {}
+  onSubmit() {
+    // emailjs
+    //   .send(
+    //     'service_xpare7v',
+    //     'template_qjsq17l',
+    //     {
+    //       email: this.contactForm.value.email,
+    //       name: this.contactForm.value.name,
+    //       message: this.contactForm.value.message,
+    //     },
+    //     'Rp99PKF2akfrzqJ8Q'
+    //   )
+    //   .then(
+    //     (result: EmailJSResponseStatus) => {
+    //       this.isSuccessfull = 200;
+    //     },
+    //     (error) => {
+    //       this.isSuccessfull = 500;
+    //     }
+    //   );
+    this.contactForm.reset();
+  }
 
   private initContactForm() {
     this.contactForm = new FormGroup({

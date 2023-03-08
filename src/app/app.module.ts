@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -6,21 +6,10 @@ import { environment } from 'src/environments/environment';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatButtonModule } from '@angular/material/button';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatMenuModule } from '@angular/material/menu';
+import { CarouselModule } from 'primeng/carousel';
 
 import 'hammerjs';
-import { CarouselModule } from 'ngx-owl-carousel-o';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
@@ -40,6 +29,8 @@ import { OfferMainEffects } from './offer-main/store/offer-main.effects';
 import * as fromApp from './store/app.reducer';
 import { ResponsiveGridDirective } from './directives/responsive-grid.directive';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { MaterialModule } from './material.module';
+import { SliderMainComponent } from './main-page/slider-main/slider-main.component';
 
 @NgModule({
   declarations: [
@@ -54,30 +45,21 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     OfferMainComponent,
     ResponsiveGridDirective,
     AdminDashboardComponent,
+    SliderMainComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatTabsModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatIconModule,
     FlexLayoutModule,
-    MatSidenavModule,
-    MatListModule,
     LayoutModule,
-    MatGridListModule,
-    MatCardModule,
     HttpClientModule,
     StoreModule.forRoot(fromApp.appReducer),
     EffectsModule.forRoot([OfferMainEffects]),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),
     ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatMenuModule,
+    MaterialModule,
     CarouselModule,
   ],
   providers: [],

@@ -1,7 +1,4 @@
-<div
-  class="desktop-container margin-custom"
-  [ngClass]="{ 'mobile-width': (isHandset$ | async) }"
->
+<div class="desktop-container margin-custom">
   <mat-grid-list
     [cols]="(isHandset$ | async)! ? '1' : '2'"
     rowHeight="350px"
@@ -28,7 +25,8 @@
             <mat-icon> contact_phone</mat-icon> <span> +48 512 719 619</span>
           </p>
           <p class="contact-address">
-            <mat-icon> contact_mail</mat-icon> <span> email@email.pl</span>
+            <mat-icon> contact_mail</mat-icon>
+            <span> spectools.mielec@outlook.com</span>
           </p>
         </mat-card-content>
       </mat-card></mat-grid-tile
@@ -58,9 +56,13 @@
               formControlName="name"
             />
             <mat-hint align="end"
-              >{{ contactForm.controls.name.value.length }} / 30
+              >{{ contactForm.controls.name?.value?.length || 0 }} / 30
             </mat-hint>
-            <mat-error *ngIf="contactForm.controls.name.invalid"
+            <mat-error
+              *ngIf="
+                contactForm.controls.name.invalid &&
+                contactForm.controls.email.touched
+              "
               >Wprowadź poprawne imię</mat-error
             >
           </mat-form-field>
@@ -76,7 +78,11 @@
               placeholder="Wpisz swój adres e-mail"
               formControlName="email"
             />
-            <mat-error *ngIf="contactForm.controls.email.invalid"
+            <mat-error
+              *ngIf="
+                contactForm.controls.email.invalid &&
+                contactForm.controls.email.touched
+              "
               >Wprowadź poprawny email</mat-error
             >
           </mat-form-field>
@@ -94,9 +100,13 @@
               rows="8"
             ></textarea>
             <mat-hint align="end"
-              >{{ contactForm.controls.message.value.length }} / 100
+              >{{ contactForm.controls.message?.value?.length || 0 }} / 100
             </mat-hint>
-            <mat-error *ngIf="contactForm.controls.message.invalid"
+            <mat-error
+              *ngIf="
+                contactForm.controls.message.invalid &&
+                contactForm.controls.email.touched
+              "
               >Wpisz swoją wiadomość</mat-error
             >
           </mat-form-field>
