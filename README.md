@@ -15,7 +15,7 @@
 ## About The Project
 
 <p>
-Strona dla wypożyczalni sprzętu ogrodniczego i budowlanego
+Strona dla wypożyczalni sprzętu ogrodniczego i budowlanego.
 </p>
 
 ![SPECTOOLS_PREVIEW][preview-app]
