@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { OfferItem } from '../offer-page/offer-item.model';
+import { OfferItem } from '../../offer-main/offer-page/offer-item.model';
 
 export const FETCH_ITEMS = '[OFFER] FETCH_ITEMS';
 export const STORE_ITEMS = '[OFFER] STORE_ITEMS';
@@ -36,7 +36,7 @@ export class DeleteItem implements Action {
   constructor(public payload: number) {}
 }
 
-export type OfferMainActions =
+export type PageMainActions =
   | FetchItems
   | StoreItems
   | SetItems

@@ -2,7 +2,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { map, Observable, shareReplay } from 'rxjs';
-import { LeafletMapService } from '../leaflet-map.service';
+import { LeafletMapService } from '../services/leaflet-map.service';
 import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
 
 @Component({

@@ -1,5 +1,5 @@
-import { OfferItem } from '../offer-page/offer-item.model';
-import * as OfferMainActions from './offer-main.actions';
+import { OfferItem } from '../../offer-main/offer-page/offer-item.model';
+import * as PageMainActions from './page-main.actions';
 
 export interface State {
   items: OfferItem[];
@@ -9,24 +9,24 @@ const initState: State = {
   items: [],
 };
 
-export function offerMainReducer(
+export function pageMainReducer(
   state = initState,
-  action: OfferMainActions.OfferMainActions
+  action: PageMainActions.PageMainActions
 ) {
   switch (action.type) {
-    case OfferMainActions.SET_ITEMS:
+    case PageMainActions.SET_ITEMS:
       return {
         ...state,
         items: [...action.payload],
       };
 
-    case OfferMainActions.ADD_ITEM:
+    case PageMainActions.ADD_ITEM:
       return {
         ...state,
         items: [...state.items, action.payload],
       };
 
-    case OfferMainActions.UPDATE_ITEM:
+    case PageMainActions.UPDATE_ITEM:
       const item = state.items[action.payload.index];
       const updatedItem = {
         ...item,
@@ -39,7 +39,7 @@ export function offerMainReducer(
         items: updatedItems,
       };
 
-    case OfferMainActions.DELETE_ITEM:
+    case PageMainActions.DELETE_ITEM:
       return {
         ...state,
         items: state.items.filter((_, index) => index !== action.payload),

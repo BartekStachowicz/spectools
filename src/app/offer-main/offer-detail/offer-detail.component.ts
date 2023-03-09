@@ -6,7 +6,7 @@ import * as fromApp from '../../store/app.reducer';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { LeafletMapService } from 'src/app/leaflet-map.service';
+import { LeafletMapService } from 'src/app/services/leaflet-map.service';
 
 @Component({
   selector: 'app-offer-detail',

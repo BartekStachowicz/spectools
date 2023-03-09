@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Store } from '@ngrx/store';
-
-import * as fromApp from './store/app.reducer';
-import * as OfferMainActions from './offer-main/store/offer-main.actions';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,9 +8,7 @@ import * as OfferMainActions from './offer-main/store/offer-main.actions';
 export class AppComponent implements OnInit {
   title = 'spectools';
 
-  constructor(private store: Store<fromApp.AppState>) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.store.dispatch(new OfferMainActions.FetchItems());
-  }
+  ngOnInit(): void {}
 }

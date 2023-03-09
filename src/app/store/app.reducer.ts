@@ -1,11 +1,11 @@
 import { ActionReducerMap } from '@ngrx/store';
 
-import * as fromOfferMain from 'src/app/offer-main/store/offer-main.reducer';
+import * as fromPageMain from 'src/app/main-page/store/page-main.reducer';
 
 export interface AppState {
-  offer: fromOfferMain.State;
+  offer: fromPageMain.State;
 }
 
 export const appReducer: ActionReducerMap<AppState> = {
-  offer: fromOfferMain.offerMainReducer,
+  offer: fromPageMain.pageMainReducer,
 };
