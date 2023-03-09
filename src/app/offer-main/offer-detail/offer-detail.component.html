@@ -67,12 +67,17 @@
             alt="Loading..."
           />
         </div>
-
-        <mat-card-content>
-          <mat-card-title>Opis</mat-card-title>
-          <p [innerHTML]="offerItem.description"></p>
-        </mat-card-content>
-        <hr />
+        <div style="margin-top: 3rem">
+          <mat-card-content>
+            <mat-card-title>Opis</mat-card-title>
+            <p [innerHTML]="offerItem.description"></p>
+          </mat-card-content>
+        </div>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile id="map3"><div></div> </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card class="example-card">
         <mat-card-actions
           ><mat-card-content
             >Oferta ważna od 01.03.2022r. do odwołania. <br />*Kaucja zwrotna,
@@ -86,8 +91,7 @@
             ></mat-card-content
           ></mat-card-actions
         >
-      </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile id="map3"><div></div> </mat-grid-tile>
+      </mat-card></mat-grid-tile
+    >
   </mat-grid-list>
 </div>

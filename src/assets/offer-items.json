@@ -92,7 +92,7 @@
   },
   {
     "name": "KARCHER HD 5/15",
-    "itemId": "karcher-hd-5/15",
+    "itemId": "karcher-hd-5-15",
     "priceRent": "80 zł",
     "priceCaution": "400 zł",
     "description": "Profesjonalna, zimnowodna myjka ciśnieniowa, o mocy 200bar dzięki której komfortowo i bez użycia siły wyczyścisz wszelkiego rodzaju pojazdy, maszyny, narzędzia, podłogi, ściany i elewację, oraz wiele innych. Doskonale sprawdza się w branży motoryzacyjnej, rolniczej, budowlanej oraz w codziennej pracy.",
@@ -225,7 +225,7 @@
     "itemId": "walec-do-trawy",
     "priceRent": "30 zł",
     "priceCaution": "50 zł",
-    "description": "Ręczny walec ogrodowy do wałowania ziemi , podłoża , trawnika. Możliwość napełnienia piaskiem lub wodą. Wałowanie trawnika wzmacnia system korzeniowy oraz poprawia stabilizację gruntu. Walec jest idealnym rozwiązaniem do przygotowania podłoża pod nowy trawnik.",
+    "description": "Ręczny walec ogrodowy do wałowania ziemi, podłoża, trawnika. Możliwość napełnienia piaskiem lub wodą. Wałowanie trawnika wzmacnia system korzeniowy oraz poprawia stabilizację gruntu. Walec jest idealnym rozwiązaniem do przygotowania podłoża pod nowy trawnik.",
     "shortDescription": "Ręczny walec ogrodowy",
     "technicalCondition": "Bardzo dobry",
     "imagePath": "assets/offer/walec-ogrodowy-do-trawy.jpg",
