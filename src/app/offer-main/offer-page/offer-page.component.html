@@ -17,7 +17,10 @@
   </button>
 </div>
 
-<div class="desktop-container">
+<div
+  class="desktop-container"
+  [ngClass]="{ 'margin-custom': !(isHandset$ | async) }"
+>
   <div fxLayout="row wrap" fxLayoutGap="16px grid">
     <div
       [fxFlex]="100 / gridCols + '%'"
@@ -87,6 +90,16 @@
                 *ngIf="offerItem.rentOnlineFlag"
               >
                 Wypożycz online!
+              </button></a
+            >
+            <a routerLink="/kontakt" style="text-decoration: none">
+              <button
+                mat-flat-button
+                color="accent"
+                style="margin-bottom: 10px"
+                *ngIf="!offerItem.rentOnlineFlag"
+              >
+                Skontaktuj się z nami!
               </button></a
             >
           </mat-card-footer>

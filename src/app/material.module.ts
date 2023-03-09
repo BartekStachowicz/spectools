@@ -11,6 +11,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { CarouselModule } from 'primeng/carousel';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [],
@@ -29,6 +33,10 @@ import { MatMenuModule } from '@angular/material/menu';
     MatFormFieldModule,
     MatInputModule,
     MatMenuModule,
+    DragDropModule,
+    FlexLayoutModule,
+    LayoutModule,
+    CarouselModule,
   ],
 })
 export class MaterialModule {}

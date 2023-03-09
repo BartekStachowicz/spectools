@@ -6,11 +6,6 @@ import { environment } from 'src/environments/environment';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { CarouselModule } from 'primeng/carousel';
-
-import 'hammerjs';
-
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { MainPageComponent } from './main-page/main-page.component';
@@ -20,7 +15,7 @@ import { ContactPageComponent } from './contact-page/contact-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
-import { LayoutModule } from '@angular/cdk/layout';
+
 import { OfferDetailComponent } from './offer-main/offer-detail/offer-detail.component';
 import { OfferMainComponent } from './offer-main/offer-main.component';
 import { StoreModule } from '@ngrx/store';
@@ -51,8 +46,7 @@ import { SliderMainComponent } from './main-page/slider-main/slider-main.compone
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FlexLayoutModule,
-    LayoutModule,
+
     HttpClientModule,
     StoreModule.forRoot(fromApp.appReducer),
     EffectsModule.forRoot([OfferMainEffects]),
@@ -60,7 +54,6 @@ import { SliderMainComponent } from './main-page/slider-main/slider-main.compone
     StoreRouterConnectingModule.forRoot(),
     ReactiveFormsModule,
     MaterialModule,
-    CarouselModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

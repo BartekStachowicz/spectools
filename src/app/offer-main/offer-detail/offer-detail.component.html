@@ -1,4 +1,7 @@
-<div class="desktop-container margin-custom">
+<div
+  class="desktop-container"
+  [ngClass]="{ 'margin-custom': !(isHandset$ | async) }"
+>
   <mat-grid-list
     [cols]="(isHandset$ | async)! ? '1' : '2'"
     rowHeight="370px"

@@ -10,18 +10,22 @@
   height: 300px;
 }
 
+.logo-spectools {
+  width: 500px;
+}
+
+@media only screen and (max-width: 500px) {
+  .logo-spectools {
+    width: 350px;
+  }
+}
+
 .main-item {
   color: white;
   font-size: 2rem;
   font-weight: bold;
   text-align: center;
   text-shadow: 0 4px 14px rgb(0 0 0 / 35%);
-}
-
-.promo-container {
-  width: 100%;
-  height: 800px;
-  padding: 1rem;
 }
 
 .header-text {
@@ -144,4 +148,118 @@
 .slider-container {
   width: 80%;
   margin: auto;
+}
+/* /////////////////////////////////////////////////////////////////////// */
+
+.promo-container {
+  width: 100%;
+  min-height: 700px;
+  padding: 1rem;
+}
+
+.promo-card {
+  height: 100%;
+}
+
+.promo-background {
+  background-color: #455a64;
+}
+
+.image-promo {
+  width: 100%;
+  align-self: center;
+}
+
+.content-1,
+.content-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.3rem;
+}
+
+.content-1 {
+  position: relative;
+  height: 50%;
+  row-gap: 0.2rem;
+  padding: 0.2rem 0;
+}
+.content-2 {
+  height: 50%;
+}
+
+.overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #ffc107;
+  border-radius: 0 0 0 1.5rem;
+}
+
+.overlay::before,
+.overlay::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -3rem;
+  height: 3rem;
+  width: 3rem;
+  background-color: #ffc107;
+}
+
+.overlay::after {
+  border-radius: 0 1.5rem 0 0;
+  background-color: #455a64;
+}
+
+.promo,
+.promo-2 {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 3rem;
+  font-weight: 600;
+  text-shadow: 0 4px 14px rgb(0 0 0 / 35%);
+}
+
+.promo {
+  border: solid 1.5rem #455a64;
+}
+
+.promo-2 {
+  border: solid 1.5rem #ffc107;
+}
+
+.text-promo,
+.text-promo-date {
+  position: relative;
+  color: white;
+  font-size: 2rem;
+  font-weight: 600;
+  text-shadow: 0 4px 14px rgb(0 0 0 / 35%);
+  text-align: center;
+}
+
+@media only screen and (max-width: 1024px) {
+  .text-promo,
+  .text-promo-date {
+    position: relative;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    text-shadow: 0 4px 14px rgb(0 0 0 / 35%);
+    text-align: center;
+  }
+}
+
+.text-promo-date {
+  font-size: 1rem;
 }
