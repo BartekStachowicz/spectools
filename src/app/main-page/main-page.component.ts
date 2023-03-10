@@ -17,7 +17,7 @@ import * as fromApp from '../store/app.reducer';
 })
 export class MainPageComponent implements OnInit, OnDestroy {
   isHandset$: Observable<boolean> = this.breakpointObserver
-    .observe(Breakpoints.Handset)
+    .observe([Breakpoints.Handset, Breakpoints.Small])
     .pipe(
       map((result) => result.matches),
       shareReplay()

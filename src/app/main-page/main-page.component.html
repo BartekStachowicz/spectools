@@ -1,4 +1,13 @@
 <div class="main-page-top">
+  <button
+    mat-flat-button
+    color="primary"
+    style="margin-bottom: 1rem"
+    routerLink="/oferta"
+    *ngIf="isHandset$ | async"
+  >
+    Sprawdź naszą ofertę
+  </button>
   <div class="main-item">
     <img class="logo-spectools" src="assets/spectools/logo.png" />
   </div>
@@ -48,7 +57,10 @@
 <div class="rent-online-container">
   <h2 class="header-text">NOWOŚĆ!</h2>
   <p class="subtitle-text">Zarezerwuj i wypożycz online!</p>
-  <div class="desktop-step-container">
+  <div
+    class="desktop-step-container"
+    [ngClass]="{ 'desktop-container': !(isHandset$ | async) }"
+  >
     <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="1rem">
       <div fxFlex>
         <div class="step-item">
@@ -89,14 +101,25 @@
 
 <div class="delivery-container">
   <h2 class="header-text">
-    <img class="delivery-image" src="assets/main-page/delivery_truck.png" />
+    <img
+      class="delivery-image"
+      src="assets/main-page/delivery_truck.png"
+      *ngIf="!(isHandset$ | async)"
+    />
     DOSTARCZYMY PROSTO DO CIEBIE
-    <img class="delivery-image" src="assets/main-page/house.png" />
+    <img
+      class="delivery-image"
+      src="assets/main-page/house.png"
+      *ngIf="!(isHandset$ | async)"
+    />
   </h2>
   <p class="subtitle-text">Sprawdź zakresy dostaw</p>
 
   <div id="map"></div>
-  <div class="desktop-step-container">
+  <div
+    class="desktop-delivery-container"
+    [ngClass]="{ 'desktop-container': !(isHandset$ | async) }"
+  >
     <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="1rem">
       <div fxFlex>
         <div class="step-item">
@@ -130,7 +153,7 @@
 
 <div class="most-popular-container">
   <h2 style="margin-bottom: 1rem; padding: 2rem 0" class="header-text">
-    NAJPOPULARNIEJSZE URZĄDZENIA W NASZEJ OFERCIE
+    POPULARNE URZĄDZENIA W NASZEJ OFERCIE
   </h2>
   <div [ngClass]="{ 'slider-container': !(isHandset$ | async) }">
     <app-slider-main></app-slider-main>
@@ -138,7 +161,10 @@
 </div>
 
 <div class="partners-container">
-  <div class="desktop-partners-container">
+  <div
+    class="desktop-partners-container"
+    [ngClass]="{ 'desktop-container': !(isHandset$ | async) }"
+  >
     <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="1rem">
       <div fxFlex>
         <div class="partners-item">
