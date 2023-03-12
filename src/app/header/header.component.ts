@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+  OnDestroy,
+  AfterViewInit,
+  HostListener,
+} from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { filter, map, shareReplay } from 'rxjs/operators';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy, AfterViewInit {
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe([Breakpoints.XSmall, Breakpoints.Small])
     .pipe(
@@ -17,36 +25,37 @@ export class HeaderComponent implements OnInit {
       shareReplay()
     );
 
+  @ViewChild('sidenavScroll', { read: ElementRef })
+  matSidenavScroll: ElementRef;
   navLinks: any[];
   activeLinkId = -1;
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private router: Router,
-    private route: ActivatedRoute
+    private router: Router
   ) {
     this.navLinks = [
       {
         label: 'Strona główna',
-        link: '/',
+        link: './',
         index: 0,
         exact: true,
       },
       {
         label: 'Oferta',
-        link: '/oferta',
+        link: './oferta',
         index: 1,
         exact: false,
       },
       {
         label: 'Regulamin',
-        link: '/regulamin',
+        link: './regulamin',
         index: 2,
         exact: true,
       },
       {
         label: 'Kontakt',
-        link: '/kontakt',
+        link: './kontakt',
         index: 3,
         exact: true,
       },
@@ -54,25 +63,18 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.router.events
-    //   .pipe(filter((event) => event instanceof NavigationEnd))
-    //   .subscribe(() => {
-    //     document.querySelector('.mat-sidenav-content').scrollTop = 0;
-    //   });
-
-    // this.router.events.subscribe((res) => {
-    //   this.activeLinkId = this.navLinks.indexOf(
-    //     this.navLinks.find((tab) => tab.link === '.' + this.router.url)
-    //   );
-    // });
-
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((routePath) => {
+        // this.matSidenavScroll.nativeElement.scrollTop = 0;
         document.querySelector('.mat-sidenav-content').scrollTop = 0;
         this.activeLinkId = this.navLinks.findIndex(
           (tab) => tab.link === '.' + routePath
         );
       });
   }
+
+  ngAfterViewInit(): void {}
+
+  ngOnDestroy(): void {}
 }

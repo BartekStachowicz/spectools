@@ -43,7 +43,7 @@
       >
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content style="background-color: whitesmoke">
+  <mat-sidenav-content style="background-color: whitesmoke" #sidenavScroll>
     <mat-toolbar color="primary">
       <button
         type="button"
@@ -85,7 +85,6 @@
       </nav>
       <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
     </mat-toolbar>
-    <!-- Add Content Here -->
     <ng-content></ng-content>
   </mat-sidenav-content>
 </mat-sidenav-container>

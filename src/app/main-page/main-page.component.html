@@ -1,4 +1,7 @@
-<div class="main-page-top">
+<div
+  class="main-page-top"
+  [ngClass]="{ 'main-background-handset': (isHandset$ | async) }"
+>
   <button
     mat-flat-button
     color="primary"
@@ -17,8 +20,25 @@
   <div class="main-item">Nie kupuj, wypożycz!</div>
 </div>
 
-<div class="promo-container">
-  <h2 class="header-text add-margin-bottom">PROMOCJA</h2>
+<div class="most-popular-container">
+  <h2 style="margin-bottom: 1rem; padding: 1rem 0" class="header-text">
+    POPULARNE URZĄDZENIA W NASZEJ OFERCIE
+  </h2>
+  <div [ngClass]="{ 'slider-container': !(isHandset$ | async) }">
+    <app-slider-main></app-slider-main>
+  </div>
+</div>
+
+<div
+  class="promo-container"
+  [ngClass]="{ 'promo-height-expand': !(isHandset$ | async) }"
+>
+  <h2
+    class="header-text"
+    [ngClass]="{ 'add-margin-bottom': !(isHandset$ | async) }"
+  >
+    PROMOCJA
+  </h2>
   <div class="desktop-container">
     <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5rem">
       <div fxFlex>
@@ -120,7 +140,7 @@
     class="desktop-delivery-container"
     [ngClass]="{ 'desktop-container': !(isHandset$ | async) }"
   >
-    <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="1rem">
+    <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5rem">
       <div fxFlex>
         <div class="step-item">
           <img class="image-size" src="assets/main-page/dostawa-5km.png" />
@@ -148,15 +168,6 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-<div class="most-popular-container">
-  <h2 style="margin-bottom: 1rem; padding: 2rem 0" class="header-text">
-    POPULARNE URZĄDZENIA W NASZEJ OFERCIE
-  </h2>
-  <div [ngClass]="{ 'slider-container': !(isHandset$ | async) }">
-    <app-slider-main></app-slider-main>
   </div>
 </div>
 

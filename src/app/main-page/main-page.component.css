@@ -1,5 +1,5 @@
 .main-page-top {
-  background-image: url("src/assets/main-page/back-main-blur.png");
+  background-image: url("src/assets/main-page/back-blur-500px.png");
   background-position: bottom;
   background-size: auto;
   display: flex;
@@ -7,14 +7,18 @@
   align-items: center;
   padding: 1rem;
   width: 100%;
-  height: 300px;
+  height: 350px;
+}
+
+.main-background-handset {
+  height: 250px !important;
 }
 
 .logo-spectools {
   width: 500px;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
   .logo-spectools {
     width: 350px;
   }
@@ -35,8 +39,18 @@
   text-align: center;
 }
 
+@media only screen and (max-width: 600px) {
+  .header-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #455a64;
+    text-align: center;
+  }
+}
+
 .add-margin-bottom {
-  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .subtitle-text {
@@ -44,6 +58,15 @@
   font-weight: 600;
   color: #455a64;
   text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .subtitle-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #455a64;
+    text-align: center;
+  }
 }
 
 .rent-online-container {
@@ -66,7 +89,7 @@
 
 .step-item {
   padding: 0.2rem;
-  min-height: 300px;
+  min-height: 150px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -77,6 +100,14 @@
   width: 150px;
   height: 150px;
   margin-bottom: 1.5rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .image-size {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 0.5rem;
+  }
 }
 
 .text-style {
@@ -125,11 +156,13 @@
 .partners-container {
   width: 100%;
   min-height: 80px;
+  background-color: white;
 }
 
 .desktop-partners-container {
-  margin: 1rem auto;
+  margin: auto;
   padding: 0.2rem;
+  background-color: white;
 }
 
 .partners-item {
@@ -162,7 +195,6 @@
 @media only screen and (max-width: 1400px) {
   .slider-container {
     width: 100%;
-    margin: auto;
   }
 }
 
@@ -170,8 +202,12 @@
 
 .promo-container {
   width: 100%;
-  min-height: 700px;
+  min-height: 600px;
   padding: 1rem;
+}
+
+.promo-height-expand {
+  min-height: 1000px !important;
 }
 
 .promo-card {
