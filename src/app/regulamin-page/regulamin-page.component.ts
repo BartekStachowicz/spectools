@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-regulamin-page',
   templateUrl: './regulamin-page.component.html',
-  styleUrls: ['./regulamin-page.component.css']
+  styleUrls: ['./regulamin-page.component.css'],
 })
-export class RegulaminPageComponent {
-
+export class RegulaminPageComponent implements OnInit {
+  ngOnInit(): void {}
 }

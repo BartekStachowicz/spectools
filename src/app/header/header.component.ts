@@ -5,7 +5,6 @@ import {
   ViewChild,
   OnDestroy,
   AfterViewInit,
-  HostListener,
 } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
@@ -29,7 +28,7 @@ export class HeaderComponent implements OnInit, OnDestroy, AfterViewInit {
   matSidenavScroll: ElementRef;
   navLinks: any[];
   activeLinkId = -1;
-
+  timerScroll: any;
   constructor(
     private breakpointObserver: BreakpointObserver,
     private router: Router
@@ -66,15 +65,20 @@ export class HeaderComponent implements OnInit, OnDestroy, AfterViewInit {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((routePath) => {
-        // this.matSidenavScroll.nativeElement.scrollTop = 0;
-        document.querySelector('.mat-sidenav-content').scrollTop = 0;
         this.activeLinkId = this.navLinks.findIndex(
           (tab) => tab.link === '.' + routePath
         );
+
+        this.timerScroll = setTimeout(() => {
+          this.matSidenavScroll.nativeElement.scrollTop = 0;
+          // document.querySelector('mat-sidenav-content').scrollTop = 0;
+        }, 0);
       });
   }
 
   ngAfterViewInit(): void {}
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    clearTimeout(this.timerScroll);
+  }
 }
