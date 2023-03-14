@@ -202,13 +202,13 @@
 
 .promo-container {
   width: 100%;
-  min-height: 600px;
+  min-height: 300px;
   padding: 1rem;
 }
 
-.promo-height-expand {
-  min-height: 1000px !important;
-}
+/* .promo-height-expand {
+  min-height: 700px !important;
+} */
 
 .promo-card {
   width: 100%;
