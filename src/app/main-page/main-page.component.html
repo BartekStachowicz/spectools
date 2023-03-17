@@ -37,8 +37,47 @@
     PROMOCJA
   </h2>
   <div class="desktop-container">
-    <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5rem">
-      <div fxFlex>
+    <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5rem grid">
+      <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="100%">
+        <div class="promo-item bluegray-background">
+          <span class="promo-text promo-color-white"
+            >Wypożycz wertykulator STIHL RL540</span
+          >
+        </div>
+      </div>
+      <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="100%">
+        <a routerLink="/oferta/stihl-rl-540/19">
+          <div class="promo-item">
+            <img
+              class="image-promo"
+              src="assets/offer/wertykulator-rl-540.jpg"
+              alt="Loading..."
+            />
+          </div>
+        </a>
+      </div>
+      <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="100%">
+        <a routerLink="/oferta/karcher-puzzi-10-1/11">
+          <div class="promo-item">
+            <img
+              class="image-promo"
+              src="assets/offer/odkurzacz-pioracy-karcher-puzzi 10-1.jpg"
+              alt="Loading..."
+            />
+          </div>
+        </a>
+      </div>
+      <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="100%">
+        <div class="promo-item amber-background">
+          <span class="promo-text promo-color-dark"
+            >Otrzymasz -50% na wypożyczenie odkurzacza oraz -20% dla Twoich
+            bliskich!</span
+          >
+        </div>
+      </div>
+
+      <!-- STARE -->
+      <!-- <div fxFlex>
         <mat-card class="promo-card promo-background">
           <div class="content-1">
             <span class="overlay"></span>
@@ -53,8 +92,8 @@
             <div class="text-promo-date">Oferta ważna do: 31.10.2023</div>
           </div>
         </mat-card>
-      </div>
-      <div fxFlex>
+      </div> -->
+      <!-- <div fxFlex>
         <mat-card class="promo-card">
           <mat-card-header
             ><mat-card-title class="header-text"
@@ -66,7 +105,8 @@
             src="assets/offer/odkurzacz-pioracy-karcher-puzzi 10-1.jpg"
             alt="Loading..."
         /></mat-card>
-      </div>
+      </div> -->
+      <!-- KONIEC -->
     </div>
   </div>
 </div>
