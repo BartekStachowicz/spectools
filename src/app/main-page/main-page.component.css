@@ -219,6 +219,7 @@
 .image-promo {
   height: 250px;
   align-self: center;
+  border-radius: 30%;
 }
 
 .promo-text {
