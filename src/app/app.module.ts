@@ -22,6 +22,11 @@ import { SliderMainComponent } from './main-page/slider-main/slider-main.compone
 import { MaterialModule } from './material.module';
 import { PageMainEffects } from './main-page/store/page-main.effects';
 import * as fromApp from './store/app.reducer';
+import {
+  HashLocationStrategy,
+  LocationStrategy,
+  PathLocationStrategy,
+} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -45,7 +50,9 @@ import * as fromApp from './store/app.reducer';
     ReactiveFormsModule,
     MaterialModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HashLocationStrategy, useClass: PathLocationStrategy },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,18 +1,5 @@
 [
   {
-    "name": "GRAPHITE 59G371 ",
-    "itemId": "graphite-59g371",
-    "priceRent": "60 zł",
-    "priceCaution": "300 zł",
-    "description": "Bruzdownica Graphite to profesjonalne urządzenie przeznaczonedo wykonywania bruzd w betonie podczas różnego rodzaju prac instalatorskich.",
-    "shortDescription": "Bruzdownica",
-    "technicalCondition": "Bardzo dobry",
-    "imagePath": "assets/offer/bruzdownica-graphite-59G371.jpg",
-    "minRentalPeriod": "1",
-    "rentOnlineURL": "",
-    "rentOnlineFlag": false
-  },
-  {
     "name": "KARCHER PGG 3/1",
     "itemId": "karcher-pgg-3-1",
     "priceRent": "80 zł",
@@ -37,19 +24,6 @@
     "minRentalPeriod": "1",
     "rentOnlineURL": "https://rentools.pl/o/591-cedrus-gl-03-pro-1",
     "rentOnlineFlag": true
-  },
-  {
-    "name": "BOSCH GWS 22-230 ",
-    "itemId": "bosh-gws-22-230",
-    "priceRent": "40 zł",
-    "priceCaution": "300 zł",
-    "description": "Wydajna szlifierka kątowa do wymagających prac.",
-    "shortDescription": "Szlifierka kątowa",
-    "technicalCondition": "Bardzo dobry",
-    "imagePath": "assets/offer/katowa-bosh-gws-22-230.png",
-    "minRentalPeriod": "1",
-    "rentOnlineURL": "",
-    "rentOnlineFlag": false
   },
   {
     "name": "STIHL FS 260",
@@ -102,19 +76,6 @@
     "minRentalPeriod": "1",
     "rentOnlineURL": "https://rentools.pl/o/305-karcher-hd-5-15",
     "rentOnlineFlag": true
-  },
-  {
-    "name": "Szczotka do mycia kostki brukowej",
-    "itemId": "szczotka-do-mycia-kostki-brukowej",
-    "priceRent": "40 zł",
-    "priceCaution": "100 zł",
-    "description": "Urządzenia te na spodniej części mają wirnik z dyszami, przez które płynie woda podana pod wysokim ciśnieniem z myjki ciśnieniowej, dysze ustawione są pod kątem w stosunku do podłogi, dzięki temu ciśnienie wody nadaje im ruch wirowy. Za jednym przejściem myta jest powierzchnia o szerokości takiej, jaką średnicę ma przystawka, a woda nie pryska na boki tak jak w przypadku mycia zwykłą lancą.",
-    "shortDescription": "Szczotka",
-    "technicalCondition": "Bardzo dobry",
-    "imagePath": "assets/offer/talerz-do-mycia-td410.png",
-    "minRentalPeriod": "1",
-    "rentOnlineURL": "",
-    "rentOnlineFlag": false
   },
   {
     "name": "STIHL HS 45",
@@ -182,19 +143,6 @@
     "rentOnlineFlag": true
   },
   {
-    "name": "MAKITA PC 5010c",
-    "itemId": "makita-pc-5010c",
-    "priceRent": "80 zł",
-    "priceCaution": "300 zł",
-    "description": "Szlifierka do betonu z tarczą o średnicy 125 mm, dzięki kompaktowym rozmiarom i niewielkiej wadze doskonale sprawdzi się przy pracach w poziomie oraz nad głową.",
-    "shortDescription": "Szlifierka do betonu",
-    "technicalCondition": "Bardzo dobry",
-    "imagePath": "assets/offer/szlifierka-beton-makita-pc5010c.jpg",
-    "minRentalPeriod": "1",
-    "rentOnlineURL": "",
-    "rentOnlineFlag": false
-  },
-  {
     "name": "BOSCH GTR 550",
     "itemId": "bosch-gtr-550",
     "priceRent": "80 zł",
@@ -206,19 +154,6 @@
     "minRentalPeriod": "1",
     "rentOnlineURL": "https://rentools.pl/o/589-bosch-gtr-550",
     "rentOnlineFlag": true
-  },
-  {
-    "name": "SCHEPPACH HM140L",
-    "itemId": "scheppach-hm140l",
-    "priceRent": "70 zł",
-    "priceCaution": "300 zł",
-    "description": "Bardzo uniwersalna maszyna dzięki dużemu zasięgowi obrotu i pochylenia tarczy tnącej w obie strony. Możliwość przecinania elementów o szerokości 330 mm i wysokości 105 mm. Świetnie sprawdzi się podczas prac stolarskich i remontowych.",
-    "shortDescription": "Ukośnica",
-    "technicalCondition": "Bardzo dobry",
-    "imagePath": "assets/offer/ukosnica-scheppach-hm216.jpg",
-    "minRentalPeriod": "1",
-    "rentOnlineURL": "",
-    "rentOnlineFlag": false
   },
   {
     "name": "Walec do trawy",
