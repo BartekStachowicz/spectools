@@ -6,7 +6,7 @@
 
   <p align="center">
     <br />
-    <a href="http://spectools.s3-website.eu-central-1.amazonaws.com">View page</a>
+    <a href="https://www.spectools-rent.pl/">View page</a>
   </p>
 </div>
 
