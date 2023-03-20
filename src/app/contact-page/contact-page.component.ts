@@ -33,26 +33,30 @@ export class ContactPageComponent implements OnInit {
   }
 
   onSubmit() {
-    // emailjs
-    //   .send(
-    //     'service_xpare7v',
-    //     'template_qjsq17l',
-    //     {
-    //       email: this.contactForm.value.email,
-    //       name: this.contactForm.value.name,
-    //       message: this.contactForm.value.message,
-    //     },
-    //     'Rp99PKF2akfrzqJ8Q'
-    //   )
-    //   .then(
-    //     (result: EmailJSResponseStatus) => {
-    //       this.isSuccessfull = 200;
-    //     },
-    //     (error) => {
-    //       this.isSuccessfull = 500;
-    //     }
-    //   );
+    emailjs
+      .send(
+        'service_616sbw8',
+        'template_gj1pl3n',
+        {
+          from_email: this.contactForm.value.email,
+          from_name: this.contactForm.value.name,
+          from_message: this.contactForm.value.message,
+        },
+        'Rp99PKF2akfrzqJ8Q'
+      )
+      .then(
+        (result: EmailJSResponseStatus) => {
+          this.isSuccessfull = 200;
+          setTimeout(() => (this.isSuccessfull = 0), 1000);
+        },
+        (error) => {
+          this.isSuccessfull = 500;
+        }
+      );
     this.contactForm.reset();
+    Object.keys(this.contactForm.controls).forEach((key) => {
+      this.contactForm.controls[key].setErrors(null);
+    });
   }
 
   private initContactForm() {

@@ -120,9 +120,16 @@
             type="submit"
             [disabled]="!contactForm.valid"
             class="contact-form-button"
+            *ngIf="isSuccessfull === 0"
           >
             Wyślij
           </button>
+          <p class="contact-address" *ngIf="isSuccessfull === 200">
+            Wiadomość została wysłana.
+          </p>
+          <p class="contact-address" *ngIf="isSuccessfull === 500">
+            Ups. Coś poszło nie taK!
+          </p>
         </form>
       </mat-card></mat-grid-tile
     >
