@@ -55,13 +55,13 @@
           ><p class="custom-card-content">
             <mat-icon color="primary">account_balance_wallet</mat-icon>
             <span class="bold-custom-price">
-              Koszt wynajmu: {{ offerItem.priceRent }}</span
+              Koszt wynajmu: {{ offerItem.priceRent }} zł</span
             >/dzień
           </p>
           <p class="custom-card-content">
             <mat-icon color="primary"> monetization_on</mat-icon>
             <span class="bold-custom-price"> Kaucja:</span>
-            {{ offerItem.priceCaution }}*
+            {{ offerItem.priceCaution }} zł*
           </p>
           <p class="custom-card-content custom-card-paragraph">
             <mat-icon color="primary"> local_shipping</mat-icon> Darmowa dostawa
@@ -70,7 +70,6 @@
           <p class="custom-card-content custom-card-paragraph">
             <mat-icon color="primary">calendar_today</mat-icon> Minimalny czas
             wynajmu: {{ offerItem.minRentalPeriod }}
-            {{ offerItem.minRentalPeriod === "1" ? "dzień" : "dni" }}
           </p>
 
           <mat-card-footer>
@@ -78,7 +77,7 @@
               mat-flat-button
               color="accent"
               style="margin-right: 10px; margin-left: 10px; margin-bottom: 10px"
-              [routerLink]="[offerItem.itemId, index]"
+              [routerLink]="[offerItem.itemPathId]"
             >
               Więcej
             </button>
@@ -87,19 +86,8 @@
                 mat-flat-button
                 color="accent"
                 style="margin-bottom: 10px"
-                *ngIf="offerItem.rentOnlineFlag"
               >
                 Wypożycz online!
-              </button></a
-            >
-            <a routerLink="/kontakt" style="text-decoration: none">
-              <button
-                mat-flat-button
-                color="accent"
-                style="margin-bottom: 10px"
-                *ngIf="!offerItem.rentOnlineFlag"
-              >
-                Skontaktuj się z nami!
               </button></a
             >
           </mat-card-footer>

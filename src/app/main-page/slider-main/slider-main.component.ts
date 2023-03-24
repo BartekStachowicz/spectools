@@ -46,11 +46,11 @@ export class SliderMainComponent {
     ];
   }
 
-  onNavigate(itemId: string) {
+  onNavigate(itemPathId: string) {
     let index = this.offerItems.findIndex((item) => {
-      return item.itemId === itemId;
+      return item.itemPathId === itemPathId;
     });
-    this.router.navigate(['/oferta', itemId, index]);
+    this.router.navigate(['/oferta', itemPathId]);
   }
 
   ngOnInit(): void {

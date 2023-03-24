@@ -17,13 +17,13 @@
         <mat-card-content
           ><p class="custom-card-content">
             <mat-icon color="primary">account_balance_wallet</mat-icon>
-            <span class="bold-custom-price">{{ offerItem.priceRent }}</span
+            <span class="bold-custom-price">{{ offerItem.priceRent }} zł</span
             >/dzień
           </p>
           <p class="custom-card-content">
             <mat-icon color="primary"> monetization_on</mat-icon>
             <span class="bold-custom-caution"> Kaucja:</span>
-            {{ offerItem.priceCaution }}*
+            {{ offerItem.priceCaution }} zł*
           </p>
           <p class="custom-card-content custom-card-paragraph">
             <mat-icon color="primary"> local_shipping</mat-icon> Darmowa dostawa
@@ -32,7 +32,6 @@
           <p class="custom-card-content custom-card-paragraph">
             <mat-icon color="primary">calendar_today</mat-icon> Minimalny czas
             wynajmu: {{ offerItem.minRentalPeriod }}
-            {{ offerItem.minRentalPeriod === "1" ? "dzień" : "dni" }}
           </p>
 
           <mat-card-footer>
@@ -41,7 +40,6 @@
                 mat-flat-button
                 color="accent"
                 style="margin-right: 5px; margin-bottom: 5px"
-                *ngIf="offerItem.rentOnlineFlag"
               >
                 Wypożycz online!
               </button></a

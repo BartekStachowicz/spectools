@@ -16,7 +16,7 @@ import { LeafletMapService } from 'src/app/services/leaflet-map.service';
 })
 export class OfferDetailComponent implements OnInit, OnDestroy {
   offerItem: OfferItem;
-  itemId: string;
+  itemPathId: string;
   id: number;
   offerSubscription: Subscription;
 
@@ -39,15 +39,15 @@ export class OfferDetailComponent implements OnInit, OnDestroy {
     this.offerSubscription = this.route.params
       .pipe(
         map((params: Params) => {
-          return +params['id'];
+          return params['itemPathId'];
         }),
-        switchMap((id) => {
-          this.id = id;
+        switchMap((itemPathId) => {
+          this.itemPathId = itemPathId;
           return this.store.select('offer');
         }),
         map((state) => {
-          return state.items.find((_, index) => {
-            return index === this.id;
+          return state.items.find((item) => {
+            return item.itemPathId === this.itemPathId;
           });
         })
       )

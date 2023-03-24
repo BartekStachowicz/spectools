@@ -22,7 +22,9 @@ const appRoutes: Routes = [
   {
     path: 'admin',
     loadChildren: () =>
-      import('./admin-dashboard/admin.module').then((x) => x.AdminModule),
+      import('./admin-panel/admin-panel.module').then(
+        (x) => x.AdminPanelModule
+      ),
   },
 ];
 

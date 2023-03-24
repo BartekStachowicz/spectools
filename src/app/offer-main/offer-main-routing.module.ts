@@ -16,7 +16,7 @@ const routes: Routes = [
         resolve: [OfferResolverService],
       },
       {
-        path: ':itemId/:id',
+        path: ':itemPathId',
         component: OfferDetailComponent,
         resolve: [OfferResolverService],
       },
