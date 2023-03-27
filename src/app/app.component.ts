@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { CounterServices } from './services/counter.services';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,7 +10,10 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'spectools';
 
-  constructor() {}
+  constructor(private counterService: CounterServices) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.counterService.countUniqueVisits();
+    this.counterService.countAllVisits();
+  }
 }

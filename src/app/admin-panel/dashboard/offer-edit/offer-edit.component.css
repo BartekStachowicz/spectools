@@ -1,0 +1,141 @@
+.example-viewport {
+  height: 400px;
+  width: 800px;
+}
+
+.example-item {
+  height: 100px;
+}
+
+.offer-edit-card {
+  width: 900px;
+  min-height: 800px;
+  margin-top: 2rem;
+}
+
+mat-form-field {
+  width: 800px;
+  margin: auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.example-boundary {
+  width: 400px;
+  height: 400px;
+  border: dotted #37474f 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.img-preview {
+  width: 300px;
+}
+
+input[type="file"] {
+  visibility: hidden;
+}
+
+.header {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #455a64;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+@media only screen and (max-width: 500px) {
+  mat-nav-list {
+    width: 300px;
+  }
+
+  .example-viewport {
+    height: 400px;
+    width: 300px;
+  }
+
+  .example-boundary {
+    width: 200px;
+    height: 200px;
+    border: dotted #37474f 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .img-preview {
+    width: 150px;
+  }
+
+  .header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #455a64;
+    text-align: center;
+    margin: 1rem 0;
+  }
+
+  .offer-edit-card {
+    width: 300px;
+    min-height: 800px;
+    margin: auto;
+    margin-top: 2rem;
+  }
+
+  mat-form-field {
+    width: 250px;
+    margin: auto;
+  }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 1000px) {
+  mat-nav-list {
+    width: 500px;
+  }
+
+  .example-viewport {
+    height: 400px;
+    width: 500px;
+  }
+
+  .example-boundary {
+    width: 400px;
+    height: 400px;
+    border: dotted #37474f 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .img-preview {
+    width: 250px;
+  }
+
+  .header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #455a64;
+    text-align: center;
+    margin: 1rem 0;
+  }
+
+  .offer-edit-card {
+    width: 500px;
+    min-height: 800px;
+    margin: auto;
+    margin-top: 2rem;
+  }
+
+  mat-form-field {
+    width: 400px;
+    margin: auto;
+  }
+}

@@ -13,12 +13,10 @@ const routes: Routes = [
       {
         path: '',
         component: OfferPageComponent,
-        resolve: [OfferResolverService],
       },
       {
         path: ':itemPathId',
         component: OfferDetailComponent,
-        resolve: [OfferResolverService],
       },
     ],
   },

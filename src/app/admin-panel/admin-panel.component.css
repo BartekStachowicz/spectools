@@ -1,0 +1,25 @@
+.dashboard-container {
+  min-height: 100%;
+}
+
+.left {
+  background-color: white;
+  display: block !important;
+  min-height: 400px;
+}
+
+.right {
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.header {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #455a64;
+  text-align: center;
+  margin: 1rem 0;
+}

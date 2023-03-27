@@ -1,4 +1,5 @@
 export class OfferItem {
+  public id: string;
   public name: string;
   public itemPathId: string;
   public priceRent: number;
@@ -11,6 +12,7 @@ export class OfferItem {
   public rentOnlineURL: string;
 
   constructor(
+    id: string,
     name: string,
     itemPathId: string,
     priceRent: number,
@@ -22,6 +24,7 @@ export class OfferItem {
     minRentalPeriod: string,
     rentOnlineURL: string
   ) {
+    this.id = id;
     this.name = name;
     this.itemPathId = itemPathId;
     this.priceRent = priceRent;

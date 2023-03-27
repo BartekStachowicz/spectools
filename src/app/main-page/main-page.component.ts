@@ -8,6 +8,7 @@ import { LeafletMapService } from '../services/leaflet-map.service';
 import { OfferItem } from '../offer-main/offer-page/offer-item.model';
 import * as PageMainActions from './store/page-main.actions';
 import * as fromApp from '../store/app.reducer';
+import { PromoItem } from './promo.model';
 
 @Component({
   selector: 'app-main-page',
@@ -23,9 +24,8 @@ export class MainPageComponent implements OnInit, OnDestroy {
       shareReplay()
     );
 
-  offerSubscription: Subscription;
-  offerItems: OfferItem[] = [];
-
+  promoSub: Subscription;
+  promo: PromoItem;
   constructor(
     private breakpointObserver: BreakpointObserver,
     private leafletMapService: LeafletMapService,
@@ -35,7 +35,16 @@ export class MainPageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.leafletMapService.initMap('map');
     this.store.dispatch(new PageMainActions.FetchItems());
+    this.store.dispatch(new PageMainActions.FetchPromo());
+    this.promoSub = this.store
+      .select('offer')
+      .pipe(map((state) => state.promo))
+      .subscribe((item: PromoItem) => {
+        this.promo = item;
+      });
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    this.promoSub.unsubscribe();
+  }
 }

@@ -1,12 +1,15 @@
 import { OfferItem } from '../../offer-main/offer-page/offer-item.model';
+import { PromoItem } from '../promo.model';
 import * as PageMainActions from './page-main.actions';
 
 export interface State {
   items: OfferItem[];
+  promo: PromoItem;
 }
 
 const initState: State = {
   items: [],
+  promo: null,
 };
 
 export function pageMainReducer(
@@ -43,6 +46,23 @@ export function pageMainReducer(
       return {
         ...state,
         items: state.items.filter((_, index) => index !== action.payload),
+      };
+
+    case PageMainActions.UPDATE_PROMO:
+      const promo = state.promo;
+      const updatedPromo = {
+        ...promo,
+        ...action.payload,
+      };
+      return {
+        ...state,
+        promo: updatedPromo,
+      };
+
+    case PageMainActions.SET_PROMO:
+      return {
+        ...state,
+        promo: action.payload,
       };
 
     default:

@@ -15,6 +15,9 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CarouselModule } from 'primeng/carousel';
 import { LayoutModule } from '@angular/cdk/layout';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [],
@@ -37,6 +40,9 @@ import { LayoutModule } from '@angular/cdk/layout';
     FlexLayoutModule,
     LayoutModule,
     CarouselModule,
+    MatExpansionModule,
+    ScrollingModule,
+    MatSelectModule,
   ],
 })
 export class MaterialModule {}

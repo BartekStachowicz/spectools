@@ -1,0 +1,51 @@
+.login-card {
+  width: 500px;
+}
+
+@media only screen and (max-width: 600px) {
+  .login-card {
+    width: 300px;
+    margin: 2rem auto;
+  }
+}
+
+.image-login {
+  height: 150px;
+  align-self: center;
+  margin: 2rem 0;
+}
+
+.header-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-text {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #455a64;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.login-form-field {
+  width: 90%;
+  margin-bottom: 1rem;
+}
+
+.login-form-button {
+  margin-top: 20px;
+}
+
+.login-form-field-label {
+  width: 90%;
+  margin-bottom: 0.5rem;
+  color: #37474f;
+  font-weight: 600;
+}

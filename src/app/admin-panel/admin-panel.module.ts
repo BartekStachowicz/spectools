@@ -3,19 +3,28 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
 import { MaterialModule } from '../material.module';
-import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { MainPanelComponent } from './dashboard/main-panel.component';
+import { AdminPanelComponent } from './admin-panel.component';
 import { AdminPanelRoutingModule } from './admin-panel-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { OfferEditComponent } from './dashboard/offer-edit/offer-edit.component';
+import { PromoEditComponent } from './dashboard/promo-edit/promo-edit.component';
 
 @NgModule({
-  declarations: [LoginComponent, DashboardComponent],
+  declarations: [
+    LoginComponent,
+    MainPanelComponent,
+    AdminPanelComponent,
+    OfferEditComponent,
+    PromoEditComponent,
+  ],
   imports: [
     MaterialModule,
     HttpClientModule,
     CommonModule,
-    ReactiveFormsModule,
     AdminPanelRoutingModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   exports: [],

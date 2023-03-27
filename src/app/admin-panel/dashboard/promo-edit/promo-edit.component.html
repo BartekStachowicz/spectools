@@ -1,0 +1,57 @@
+<div class="header">EDYCJA PROMOCJI</div>
+
+<mat-card class="offer-edit-card">
+  <mat-card-content>
+    <form class="edit-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <!-- <button
+        mat-raised-button
+        color="accent"
+        type="button"
+        style="margin-bottom: 1rem"
+      >
+        POBIERZ DANE
+      </button> -->
+      <mat-form-field appearance="fill" color="accent">
+        <mat-label>TEXT 1</mat-label>
+        <textarea matInput formControlName="text1" rows="2"></textarea>
+      </mat-form-field>
+      <mat-form-field appearance="fill" color="accent">
+        <mat-label>TEXT 2</mat-label>
+        <textarea matInput formControlName="text2" rows="2"></textarea>
+      </mat-form-field>
+      <button
+        color="accent"
+        mat-raised-button
+        type="button"
+        (click)="pickFile.click()"
+      >
+        Pick image
+      </button>
+      <input type="file" multiple #pickFile (change)="onImagePicked($event)" />
+
+      <span *ngIf="imgPreview !== '' && imgPreview && form.get('images').valid"
+        >Podgląd zdjęcia:</span
+      >
+      <div
+        class="example-boundary"
+        *ngIf="imgPreview !== '' && imgPreview && form.get('images').valid"
+      >
+        <img class="img-preview" [src]="imgPreview" alt="PREVIEW" />
+      </div>
+      <div
+        class="example-boundary"
+        *ngIf="imgPreview !== '' && imgPreview && form.get('images').valid"
+      >
+        <img class="img-preview" [src]="imgPreview2" alt="PREVIEW" />
+      </div>
+      <button
+        mat-raised-button
+        color="accent"
+        type="submit"
+        [disabled]="!form.valid"
+      >
+        ZAPISZ
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

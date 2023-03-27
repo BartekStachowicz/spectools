@@ -4,20 +4,26 @@
 >
   <button
     mat-flat-button
-    color="primary"
-    style="margin-bottom: 1rem"
+    color="accent"
+    style="width: 200px; height: 100px; font-size: 1.5rem; margin: auto"
     routerLink="/oferta"
     *ngIf="isHandset$ | async"
   >
     Sprawdź naszą ofertę
   </button>
   <div class="main-item">
-    <img class="logo-spectools" src="assets/spectools/logo.png" />
+    <img
+      class="logo-spectools"
+      src="assets/spectools/logo.png"
+      *ngIf="!(isHandset$ | async)"
+    />
   </div>
   <div class="main-item" *ngIf="!(isHandset$ | async)">
     Mobilna wypożyczalnia urządzeń
   </div>
-  <div class="main-item">Nie kupuj, wypożycz!</div>
+  <div class="main-item" *ngIf="!(isHandset$ | async)">
+    Nie kupuj, wypożycz!
+  </div>
 </div>
 
 <div class="most-popular-container">
@@ -40,9 +46,7 @@
     <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5rem grid">
       <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="100%">
         <div class="promo-item bluegray-background">
-          <span class="promo-text promo-color-white"
-            >Wypożycz wertykulator STIHL RL540</span
-          >
+          <span class="promo-text promo-color-white">{{ promo.text1 }}</span>
         </div>
       </div>
       <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="100%">
@@ -50,7 +54,7 @@
           <div class="promo-item bluegray-background">
             <img
               class="image-promo"
-              src="assets/offer/wertykulator-rl-540.jpg"
+              [src]="promo.imagePath1"
               alt="Loading..."
             />
           </div>
@@ -61,7 +65,7 @@
           <div class="promo-item amber-background">
             <img
               class="image-promo"
-              src="assets/offer/odkurzacz-pioracy-karcher-puzzi 10-1.jpg"
+              [src]="promo.imagePath2"
               alt="Loading..."
             />
           </div>
@@ -69,10 +73,7 @@
       </div>
       <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="100%">
         <div class="promo-item amber-background">
-          <span class="promo-text promo-color-dark"
-            >Otrzymasz -50% na wypożyczenie odkurzacza oraz -20% dla Twoich
-            bliskich!</span
-          >
+          <span class="promo-text promo-color-dark">{{ promo.text2 }}</span>
         </div>
       </div>
 
@@ -216,10 +217,7 @@
     <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="1rem">
       <div fxFlex>
         <div class="partners-item">
-          <img
-            class="partners-image-size"
-            src="assets/logo/graphite-logo.png"
-          />
+          <img class="partners-image-size" src="assets/logo/bosh.jpg" />
         </div>
       </div>
       <div fxFlex>
@@ -229,10 +227,7 @@
       </div>
       <div fxFlex>
         <div class="partners-item">
-          <img
-            class="partners-image-size"
-            src="assets/logo/hortmasz-logo.jpg"
-          />
+          <img class="partners-image-size" src="assets/logo/husqvarna.png" />
         </div>
       </div>
       <div fxFlex>

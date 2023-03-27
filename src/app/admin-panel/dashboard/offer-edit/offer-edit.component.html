@@ -1,0 +1,96 @@
+<div *ngIf="mode === 'edit'">
+  <div class="header">EDYCJA OFERTY</div>
+  <mat-expansion-panel
+    (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title> Oferta </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+      <mat-nav-list *ngFor="let item of offerItems; let index = index">
+        <a mat-list-item (click)="onItemPicked(item.id)"
+          ><span>{{ item.name }}</span></a
+        >
+      </mat-nav-list>
+    </cdk-virtual-scroll-viewport>
+  </mat-expansion-panel>
+</div>
+
+<div *ngIf="mode === 'new'">
+  <div class="header">DODAWANIE OFERTY</div>
+</div>
+
+<mat-card class="offer-edit-card">
+  <mat-card-content>
+    <form class="edit-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill" color="accent">
+        <mat-label>Nazwa</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
+      <mat-form-field appearance="fill" color="accent">
+        <mat-label>Cena</mat-label>
+        <input matInput formControlName="priceRent" />
+      </mat-form-field>
+      <mat-form-field appearance="fill" color="accent">
+        <mat-label>Kaucja</mat-label>
+        <input matInput formControlName="priceCaution" />
+      </mat-form-field>
+      <mat-form-field appearance="fill" color="accent">
+        <mat-label>Rodzaj urządzenia lub podtytuł lub krótki opis</mat-label>
+        <input matInput formControlName="shortDescription" />
+      </mat-form-field>
+      <mat-form-field appearance="fill" color="accent">
+        <mat-label>Opis</mat-label>
+        <textarea matInput rows="10" formControlName="description"></textarea>
+      </mat-form-field>
+      <mat-form-field appearance="fill" color="accent">
+        <mat-label>Stan techniczny</mat-label>
+        <mat-select formControlName="technicalCondition">
+          <mat-option value="Bardzo dobry">Bardzo dobry</mat-option>
+          <mat-option value="Dobry">Dobry</mat-option>
+          <mat-option value="Dostateczny">Dostateczny</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill" color="accent">
+        <mat-label
+          >Minimalny czas wypożyczenia(np. 1 dzień, 12 godzin)</mat-label
+        >
+        <input matInput formControlName="minRentalPeriod" />
+      </mat-form-field>
+      <mat-form-field appearance="fill" color="accent">
+        <mat-label>Link do rentools</mat-label>
+        <input matInput formControlName="rentOnlineURL" />
+      </mat-form-field>
+
+      <button
+        color="accent"
+        mat-raised-button
+        type="button"
+        (click)="pickFile.click()"
+      >
+        Pick image
+      </button>
+      <input type="file" #pickFile (change)="onImagePicked($event)" />
+
+      <span *ngIf="imgPreview !== '' && imgPreview && form.get('image').valid"
+        >Podgląd zdjęcia:</span
+      >
+      <div
+        class="example-boundary"
+        *ngIf="imgPreview !== '' && imgPreview && form.get('image').valid"
+      >
+        <img class="img-preview" [src]="imgPreview" alt="PREVIEW" />
+      </div>
+      <button
+        mat-raised-button
+        color="accent"
+        type="submit"
+        [disabled]="!form.valid"
+      >
+        ZAPISZ
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>
