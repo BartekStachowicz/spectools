@@ -6,4 +6,5 @@ export const environment = {
   apiCounterUniqueKey: 'counter/unique',
   apiCounterAllKey: 'counter/all',
   apiAuthLoginKey: 'auht/login',
+  test: '',
 };
