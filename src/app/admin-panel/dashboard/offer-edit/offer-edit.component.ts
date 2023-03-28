@@ -7,6 +7,7 @@ import { OfferItem } from 'src/app/offer-main/offer-page/offer-item.model';
 import { AdminPanelServices } from '../../services/admin-panel.services';
 import { mimeType } from '../mime-type.validator';
 import * as fromApp from '../../../store/app.reducer';
+import * as MainPageActions from '../../../main-page/store/page-main.actions';
 
 @Component({
   selector: 'app-offer-edit',
@@ -57,11 +58,15 @@ export class OfferEditComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     if (this.mode === 'edit') {
-      console.log('edit');
+      const offerItem: OfferItem = this.form.value;
+      this.store.dispatch(new MainPageActions.UpdateItem(offerItem));
+      this.store.dispatch(new MainPageActions.SaveUpdatedItem());
     } else if (this.mode === 'new') {
-      console.log('new');
+      const offerItem: OfferItem = this.form.value;
+      this.store.dispatch(new MainPageActions.AddItem(offerItem));
+      this.store.dispatch(new MainPageActions.SaveNewItem());
     }
-
+    this.store.dispatch(new MainPageActions.FetchItems());
     this.form.reset();
     Object.keys(this.form.controls).forEach((key) => {
       this.form.controls[key].setErrors(null);

@@ -19,7 +19,7 @@ import { Store } from '@ngrx/store';
 import * as fromApp from '../../../store/app.reducer';
 import { OfferItem } from 'src/app/offer-main/offer-page/offer-item.model';
 import { CalendarModel } from './calendar.model';
-import { CalendarService } from './calendar.service';
+import * as AdminPanelActions from '../../store/admin-panel.actions';
 
 const colors: Record<string, EventColor> = {
   red: {
@@ -79,79 +79,37 @@ export class CalendarComponent implements OnInit, OnDestroy {
 
   events: CalendarEvent[] = [];
 
-  test: CalendarModel = {
-    idItem: 'asd',
-    events: [
-      {
-        title: 'test1',
-        start: new Date(
-          'Tue Mar 28 2023 23:59:59 GMT+0200 (czas środkowoeuropejski letni)'
-        ),
-        end: new Date(
-          'Tue Mar 28 2023 23:59:59 GMT+0200 (czas środkowoeuropejski letni)'
-        ),
-        color: colors.red,
-        draggable: true,
-        resizable: {
-          beforeStart: true,
-          afterEnd: true,
-        },
-      },
-      {
-        title: 'test2',
-        start: new Date(
-          'Tue Mar 29 2023 23:59:59 GMT+0200 (czas środkowoeuropejski letni)'
-        ),
-        end: new Date(
-          'Tue Mar 30 2023 23:59:59 GMT+0200 (czas środkowoeuropejski letni)'
-        ),
-        color: colors.red,
-        draggable: true,
-        resizable: {
-          beforeStart: true,
-          afterEnd: true,
-        },
-      },
-      {
-        title: 'test3',
-        start: new Date(
-          'Tue Apr 10 2023 23:59:59 GMT+0200 (czas środkowoeuropejski letni)'
-        ),
-        end: new Date(
-          'Tue Apr 15 2023 23:59:59 GMT+0200 (czas środkowoeuropejski letni)'
-        ),
-        color: colors.red,
-        draggable: true,
-        resizable: {
-          beforeStart: true,
-          afterEnd: true,
-        },
-      },
-    ],
-  };
-
   activeDayIsOpen: boolean = true;
   offerSubscription: Subscription;
+  calendarSub: Subscription;
   offerItems: OfferItem[] = [];
   panelOpenState: boolean = false;
   offerItem: OfferItem = null;
+  calendarEvents: CalendarModel[] = null;
+  singleCalendarEvent: CalendarModel = null;
 
-  constructor(
-    private store: Store<fromApp.AppState>,
-    private calendarService: CalendarService
-  ) {}
+  constructor(private store: Store<fromApp.AppState>) {}
 
   ngOnInit(): void {
+    this.store.dispatch(new AdminPanelActions.FetchEvents());
     this.offerSubscription = this.store
       .select('offer')
       .pipe(map((state) => state.items))
       .subscribe((items: OfferItem[]) => (this.offerItems = items));
+    this.calendarSub = this.store
+      .select('admin')
+      .pipe(map((state) => state.events))
+      .subscribe((events: CalendarModel[]) => (this.calendarEvents = events));
   }
 
   onItemPicked(id: string) {
     const item = this.offerItems.find((item) => item.id === id);
-    //pobranie z bazy danych informacji po wybranym ID
     this.offerItem = item;
+    this.singleCalendarEvent = this.getSingleCalendarEvent(
+      this.calendarEvents,
+      item.id
+    );
+    this.events = this.singleCalendarEvent.events;
   }
 
   onSave() {
@@ -159,9 +117,9 @@ export class CalendarComponent implements OnInit, OnDestroy {
       idItem: this.offerItem.id,
       events: this.events,
     };
-
-    const testArray = this.calendarService.getDisableDates(this.test);
-    console.log(testArray);
+    this.store.dispatch(new AdminPanelActions.UpdateSingleEvents(calendarItem));
+    this.store.dispatch(new AdminPanelActions.SaveSingleEvents());
+    this.store.dispatch(new AdminPanelActions.FetchEvents());
   }
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
@@ -226,5 +184,13 @@ export class CalendarComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.offerSubscription.unsubscribe();
+    this.calendarSub.unsubscribe();
+  }
+
+  private getSingleCalendarEvent(
+    calendarEvents: CalendarModel[],
+    offerItemId: string
+  ): CalendarModel {
+    return calendarEvents.find((el) => el.idItem === offerItemId);
   }
 }
