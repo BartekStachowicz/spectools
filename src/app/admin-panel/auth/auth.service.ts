@@ -1,16 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
+
 import { AuthData } from './auth-data.model';
 import { environment } from 'src/environments/environment';
 
-const LOGINURL = '';
+const API_LOGINURL = environment.apiURL + environment.apiAuthLoginKey;
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  private isLogged: Subject<boolean> = new BehaviorSubject(false);
   private isAuthenticated = false;
   private userId: string;
   private token: string;
@@ -18,6 +20,10 @@ export class AuthService {
   private tokenTimer: NodeJS.Timer;
 
   constructor(private http: HttpClient, private router: Router) {}
+
+  getIsLogged() {
+    return this.isLogged.asObservable();
+  }
 
   getToken() {
     return this.token;
@@ -39,7 +45,7 @@ export class AuthService {
     const authData: AuthData = { username: username, password: password };
     this.http
       .post<{ token: string; expiresIn: number; userId: string }>(
-        LOGINURL,
+        API_LOGINURL,
         authData
       )
       .subscribe(
@@ -57,7 +63,8 @@ export class AuthService {
               now.getTime() + expiresInDuration * 1000
             );
             this.saveAuthData(token, expirationDate, this.userId);
-            this.router.navigate(['/']);
+            this.isLogged.next(true);
+            this.router.navigate(['admin', 'dashboard']);
           }
         },
         (error) => {
@@ -69,6 +76,7 @@ export class AuthService {
   autoLogin() {
     const authInfo = this.getAuthData();
     if (!authInfo) {
+      this.isLogged.next(false);
       return;
     }
     const now = new Date();
@@ -79,10 +87,12 @@ export class AuthService {
       this.userId = authInfo.userId;
       this.setAuthTimer(duration / 1000);
       this.authStatusListener.next(true);
+      this.isLogged.next(true);
     }
   }
 
   logout() {
+    this.isLogged.next(false);
     this.token = null;
     this.isAuthenticated = false;
     this.authStatusListener.next(false);

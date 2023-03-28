@@ -18,6 +18,9 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
   declarations: [],
@@ -43,6 +46,9 @@ import { MatSelectModule } from '@angular/material/select';
     MatExpansionModule,
     ScrollingModule,
     MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    CalendarModule,
   ],
 })
 export class MaterialModule {}

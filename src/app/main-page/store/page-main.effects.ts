@@ -1,21 +1,28 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, Observable, switchMap } from 'rxjs';
+import { map, Observable, switchMap, withLatestFrom } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 import { OfferItem } from '../../offer-main/offer-page/offer-item.model';
 import * as PageMainActions from './page-main.actions';
 import { PromoItem } from '../promo.model';
+import * as fromApp from '../../store/app.reducer';
+import { environment } from 'src/environments/environment';
+
+const API_URL_OFFER = environment.apiURL + environment.apiOfferKey;
+const API_URL_PROMO = environment.apiURL + environment.apiPromoKey;
 
 @Injectable()
 export class PageMainEffects {
-  itemsFileAddress = 'assets/offer-items.json';
+  // OFFER
 
+  //get offer items
   fetchItems = createEffect((): Observable<any> => {
     return this.actions$.pipe(
       ofType(PageMainActions.FETCH_ITEMS),
       switchMap(() => {
-        return this.http.get<OfferItem[]>(this.itemsFileAddress);
+        return this.http.get<OfferItem[]>(API_URL_OFFER);
       }),
       map((items) => {
         return new PageMainActions.SetItems(items);
@@ -23,11 +30,59 @@ export class PageMainEffects {
     );
   });
 
+  //post new offer item
+  addNewItem = createEffect(
+    (): Observable<any> => {
+      return this.actions$.pipe(
+        ofType(PageMainActions.SAVE_NEW_ITEM),
+        withLatestFrom(this.store.select('offer')),
+        switchMap(([action, state]) => {
+          return this.http.post(API_URL_OFFER, state.newItem);
+        })
+      );
+    },
+    { dispatch: false }
+  );
+
+  //patch updated offer item
+  updateItem = createEffect(
+    (): Observable<any> => {
+      return this.actions$.pipe(
+        ofType(PageMainActions.SAVE_UPDATED_ITEM),
+        withLatestFrom(this.store.select('offer')),
+        switchMap(([action, state]) => {
+          return this.http.patch(
+            API_URL_OFFER + state.newItem.id,
+            state.newItem
+          );
+        })
+      );
+    },
+    { dispatch: false }
+  );
+
+  //delete offer item
+  deleteItem = createEffect(
+    (): Observable<any> => {
+      return this.actions$.pipe(
+        ofType(PageMainActions.SAVE_DELETED_ITEM),
+        withLatestFrom(this.store.select('offer')),
+        switchMap(([action, state]) => {
+          return this.http.delete(API_URL_OFFER + state.deletedItemId);
+        })
+      );
+    },
+    { dispatch: false }
+  );
+
+  // PROMO
+
+  //get promo
   fetchPromo = createEffect((): Observable<any> => {
     return this.actions$.pipe(
       ofType(PageMainActions.FETCH_ITEMS),
       switchMap(() => {
-        return this.http.get<PromoItem>('assets/promo.json');
+        return this.http.get<PromoItem>(API_URL_PROMO);
       }),
       map((promo) => {
         return new PageMainActions.SetPromo(promo[0]);
@@ -35,5 +90,23 @@ export class PageMainEffects {
     );
   });
 
-  constructor(private actions$: Actions, private http: HttpClient) {}
+  //patch changed promo
+  savePromo = createEffect(
+    (): Observable<any> => {
+      return this.actions$.pipe(
+        ofType(PageMainActions.SAVE_PROMO),
+        withLatestFrom(this.store.select('offer')),
+        switchMap(([action, state]) => {
+          return this.http.patch(API_URL_PROMO, state.promo);
+        })
+      );
+    },
+    { dispatch: false }
+  );
+
+  constructor(
+    private actions$: Actions,
+    private http: HttpClient,
+    private store: Store<fromApp.AppState>
+  ) {}
 }

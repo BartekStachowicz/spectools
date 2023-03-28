@@ -9,34 +9,32 @@ import { Actions, ofType } from '@ngrx/effects';
 import { map, switchMap, take } from 'rxjs/operators';
 import { of } from 'rxjs';
 
-import * as fromApp from '../store/app.reducer';
-import * as OfferMainActions from '../main-page/store/page-main.actions';
-import { PromoItem } from '../main-page/promo.model';
+import { CalendarModel } from '../dashboard/calendar/calendar.model';
+import * as fromApp from '../../store/app.reducer';
+import * as AdminPanelActions from '../store/admin-panel.actions';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PromoResolverService implements Resolve<PromoItem> {
+export class CalendarEventsResolverService implements Resolve<CalendarModel[]> {
   constructor(
     private store: Store<fromApp.AppState>,
     private actions$: Actions
   ) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    return this.store.select('offer').pipe(
+    return this.store.select('admin').pipe(
       take(1),
-      map((state) => {
-        return state.promo;
-      }),
-      switchMap((promo) => {
-        if (promo === null) {
-          this.store.dispatch(new OfferMainActions.FetchPromo());
+      map((state) => state.events),
+      switchMap((items) => {
+        if (items.length === 0) {
+          this.store.dispatch(new AdminPanelActions.FetchEvents());
           return this.actions$.pipe(
-            ofType(OfferMainActions.SET_PROMO),
+            ofType(AdminPanelActions.SET_EVENTS),
             take(1)
           );
         } else {
-          return of(promo);
+          return of(items);
         }
       })
     );

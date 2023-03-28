@@ -4,8 +4,6 @@ import { map, Observable, shareReplay, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import { LeafletMapService } from '../services/leaflet-map.service';
-
-import { OfferItem } from '../offer-main/offer-page/offer-item.model';
 import * as PageMainActions from './store/page-main.actions';
 import * as fromApp from '../store/app.reducer';
 import { PromoItem } from './promo.model';

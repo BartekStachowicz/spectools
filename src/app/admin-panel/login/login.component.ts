@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,17 +9,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private authService: AuthService) {}
 
   loginForm: FormGroup;
+  isLoading: boolean = false;
 
   ngOnInit(): void {
+    this.isLoading = false;
     this.initContactForm();
   }
 
   onSubmit() {
-    console.log(this.loginForm.value);
-    this.router.navigate(['admin', 'dashboard']);
+    this.authService.login(
+      this.loginForm.value.username,
+      this.loginForm.value.password
+    );
+    this.isLoading = true;
   }
 
   private initContactForm() {

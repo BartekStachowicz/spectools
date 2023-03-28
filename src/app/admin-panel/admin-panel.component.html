@@ -11,6 +11,15 @@
         }"
         ><span>Panel główny</span></a
       >
+      <a
+        mat-list-item
+        routerLink="dashboard/calendar"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{
+          exact: true
+        }"
+        ><span>Kalendarz</span></a
+      >
 
       <a
         mat-list-item
@@ -44,7 +53,7 @@
         ><span>Edycja promocji</span></a
       >
 
-      <a mat-list-item><span>Wyloguj</span></a>
+      <a mat-list-item (click)="onLogout()"><span>Wyloguj</span></a>
     </mat-nav-list>
   </div>
   <div

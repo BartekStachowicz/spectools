@@ -37,8 +37,8 @@ const area15 = L.icon({
 // L.Marker.prototype.options.icon = spectools;
 
 export class LeafletMapService {
-  private lat = 50.37871;
-  private lng = 21.33698;
+  private lat = 50.376045250000004;
+  private lng = 21.32276775;
   public map: any;
   public circle15: any;
   public circle10: any;

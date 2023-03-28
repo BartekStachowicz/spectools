@@ -6,6 +6,8 @@
 @import "ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
 @import "ngx-owl-carousel-o/lib/styles/scss/owl.theme.default"; */
 
+/* @import "../node_modules/angular-calendar/css/angular-calendar.css"; */
+
 html,
 body {
   height: 100%;
@@ -52,4 +54,14 @@ body {
 .margin-custom {
   margin-top: 6rem;
   margin-bottom: 6rem;
+}
+
+p-calendar span.p-disabled {
+  color: white !important;
+  background-color: red !important;
+}
+
+p-calendar .p-datepicker-weeknumber span.p-disabled {
+  color: #263238 !important;
+  background-color: #ffc107 !important;
 }

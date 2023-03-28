@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 import { CounterServices } from 'src/app/services/counter.services';
 
 @Component({
@@ -6,9 +7,11 @@ import { CounterServices } from 'src/app/services/counter.services';
   templateUrl: './main-panel.component.html',
   styleUrls: ['./main-panel.component.css'],
 })
-export class MainPanelComponent {
+export class MainPanelComponent implements OnInit {
   constructor(private counterService: CounterServices) {}
 
-  uniqueCnt = this.counterService.getUniqueCnt();
-  allCnt = this.counterService.getAllCnt();
+  uniqueCnt = this.counterService.getCounterUnique();
+  allCnt = this.counterService.getCounterAll();
+
+  ngOnInit() {}
 }

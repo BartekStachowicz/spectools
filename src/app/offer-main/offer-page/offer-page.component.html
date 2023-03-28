@@ -17,9 +17,12 @@
   </button>
 </div>
 
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+
 <div
   class="desktop-container"
   [ngClass]="{ 'margin-custom': !(isHandset$ | async) }"
+  *ngIf="!isLoading"
 >
   <div fxLayout="row wrap" fxLayoutGap="16px grid">
     <div
@@ -79,7 +82,7 @@
               style="margin-right: 10px; margin-left: 10px; margin-bottom: 10px"
               [routerLink]="[offerItem.itemPathId]"
             >
-              Więcej
+              {{ offerItem.calendarFlag ? "Więcej / Dostępność" : "Więcej" }}
             </button>
             <a [href]="offerItem.rentOnlineURL" style="text-decoration: none">
               <button

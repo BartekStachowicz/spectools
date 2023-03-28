@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { ContactPageComponent } from './contact-page/contact-page.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { RegulaminPageComponent } from './regulamin-page/regulamin-page.component';
@@ -17,7 +18,6 @@ const appRoutes: Routes = [
     path: 'oferta',
     loadChildren: () =>
       import('./offer-main/offer-main.module').then((x) => x.OfferMainModule),
-    resolve: [OfferResolverService],
   },
   { path: 'regulamin', component: RegulaminPageComponent },
   { path: 'kontakt', component: ContactPageComponent },
@@ -27,7 +27,6 @@ const appRoutes: Routes = [
       import('./admin-panel/admin-panel.module').then(
         (x) => x.AdminPanelModule
       ),
-    resolve: [OfferResolverService, PromoResolverService],
   },
 ];
 

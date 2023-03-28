@@ -4,11 +4,17 @@ import * as PageMainActions from './page-main.actions';
 
 export interface State {
   items: OfferItem[];
+  newItem: OfferItem;
+  updatedItem: OfferItem;
+  deletedItemId: string;
   promo: PromoItem;
 }
 
 const initState: State = {
   items: [],
+  newItem: null,
+  updatedItem: null,
+  deletedItemId: null,
   promo: null,
 };
 
@@ -26,37 +32,25 @@ export function pageMainReducer(
     case PageMainActions.ADD_ITEM:
       return {
         ...state,
-        items: [...state.items, action.payload],
+        newItem: action.payload,
       };
 
     case PageMainActions.UPDATE_ITEM:
-      const item = state.items[action.payload.index];
-      const updatedItem = {
-        ...item,
-        ...action.payload.item,
-      };
-      const updatedItems = [...state.items];
-      updatedItems[action.payload.index] = updatedItem;
       return {
         ...state,
-        items: updatedItems,
+        updatedItem: action.payload,
       };
 
     case PageMainActions.DELETE_ITEM:
       return {
         ...state,
-        items: state.items.filter((_, index) => index !== action.payload),
+        deletedItemId: action.payload,
       };
 
     case PageMainActions.UPDATE_PROMO:
-      const promo = state.promo;
-      const updatedPromo = {
-        ...promo,
-        ...action.payload,
-      };
       return {
         ...state,
-        promo: updatedPromo,
+        promo: action.payload,
       };
 
     case PageMainActions.SET_PROMO:

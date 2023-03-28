@@ -4,13 +4,14 @@ import {
   Resolve,
   RouterStateSnapshot,
 } from '@angular/router';
-import { OfferItem } from '../offer-main/offer-page/offer-item.model';
-import * as fromApp from '../store/app.reducer';
-import * as OfferMainActions from '../main-page/store/page-main.actions';
 import { Store } from '@ngrx/store';
 import { Actions, ofType } from '@ngrx/effects';
 import { map, switchMap, take } from 'rxjs/operators';
 import { of } from 'rxjs';
+
+import { OfferItem } from '../offer-main/offer-page/offer-item.model';
+import * as fromApp from '../store/app.reducer';
+import * as OfferMainActions from '../main-page/store/page-main.actions';
 
 @Injectable({
   providedIn: 'root',

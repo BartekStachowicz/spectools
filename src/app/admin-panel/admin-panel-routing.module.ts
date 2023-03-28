@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { OfferResolverService } from '../services/offer-resolver.service';
 import { PromoResolverService } from '../services/promo-resolver.service';
 import { AdminPanelComponent } from './admin-panel.component';
+import { CalendarComponent } from './dashboard/calendar/calendar.component';
 import { MainPanelComponent } from './dashboard/main-panel.component';
 import { OfferEditComponent } from './dashboard/offer-edit/offer-edit.component';
 import { PromoEditComponent } from './dashboard/promo-edit/promo-edit.component';
 import { LoginComponent } from './login/login.component';
+import { CalendarEventsResolverService } from './services/calendar-events-resolver.service';
 
 const routes: Routes = [
   {
@@ -25,10 +28,17 @@ const routes: Routes = [
       {
         path: 'dashboard/offer/:mode',
         component: OfferEditComponent,
+        resolve: [OfferResolverService],
       },
       {
         path: 'dashboard/promo-edit',
         component: PromoEditComponent,
+        resolve: [PromoResolverService],
+      },
+      {
+        path: 'dashboard/calendar',
+        component: CalendarComponent,
+        resolve: [OfferResolverService, CalendarEventsResolverService],
       },
     ],
   },

@@ -10,7 +10,8 @@
     "technicalCondition": "Bardzo dobry",
     "imagePath": "assets/offer/generator-karcher-pgg-3-1.jpg",
     "minRentalPeriod": "1 dzień",
-    "rentOnlineURL": "https://rentools.pl/o/306-karcher-pgg-3-1"
+    "rentOnlineURL": "https://rentools.pl/o/306-karcher-pgg-3-1",
+    "calendarFlag": false
   },
   {
     "id": "vg",
@@ -23,7 +24,8 @@
     "technicalCondition": "Bardzo dobry",
     "imagePath": "assets/offer/glebogryzarka-cedrus-gl03pro.jpg",
     "minRentalPeriod": "1 dzień",
-    "rentOnlineURL": "https://rentools.pl/o/591-cedrus-gl-03-pro-1"
+    "rentOnlineURL": "https://rentools.pl/o/591-cedrus-gl-03-pro-1",
+    "calendarFlag": true
   },
   {
     "id": "bh",
@@ -36,7 +38,8 @@
     "technicalCondition": "Bardzo dobry",
     "imagePath": "assets/offer/kosa-stihl-fs-260.png",
     "minRentalPeriod": "1 dzień",
-    "rentOnlineURL": "https://rentools.pl/o/304-stihl-fs260"
+    "rentOnlineURL": "https://rentools.pl/o/304-stihl-fs260",
+    "calendarFlag": false
   },
   {
     "id": "nj",
@@ -49,7 +52,8 @@
     "technicalCondition": "Bardzo dobry",
     "imagePath": "assets/offer/mlot-bosh-GSH-16.jpg",
     "minRentalPeriod": "1 dzień",
-    "rentOnlineURL": "https://rentools.pl/o/330-bosch-gsh-16"
+    "rentOnlineURL": "https://rentools.pl/o/330-bosch-gsh-16",
+    "calendarFlag": false
   },
   {
     "id": "mk",
@@ -62,7 +66,8 @@
     "technicalCondition": "Bardzo dobry",
     "imagePath": "assets/offer/mlot-graphite-hex-1700.jpg",
     "minRentalPeriod": "1 dzień",
-    "rentOnlineURL": "https://rentools.pl/o/310-graphite-hex-1700"
+    "rentOnlineURL": "https://rentools.pl/o/310-graphite-hex-1700",
+    "calendarFlag": false
   },
   {
     "id": "nm",
@@ -75,7 +80,8 @@
     "technicalCondition": "Bardzo dobry",
     "imagePath": "assets/offer/myjka-karcher-HD5-15.jpg",
     "minRentalPeriod": "1 dzień",
-    "rentOnlineURL": "https://rentools.pl/o/305-karcher-hd-5-15"
+    "rentOnlineURL": "https://rentools.pl/o/305-karcher-hd-5-15",
+    "calendarFlag": false
   },
   {
     "id": "vb",
@@ -88,7 +94,8 @@
     "technicalCondition": "Bardzo dobry",
     "imagePath": "assets/offer/nozyce-stihl-hs45.jpg",
     "minRentalPeriod": "1 dzień",
-    "rentOnlineURL": "https://rentools.pl/o/311-stihl-hs45"
+    "rentOnlineURL": "https://rentools.pl/o/311-stihl-hs45",
+    "calendarFlag": false
   },
   {
     "id": "xc",
@@ -101,7 +108,8 @@
     "technicalCondition": "Bardzo dobry",
     "imagePath": "assets/offer/odkurzacz-karcher-NT30-1.jpg",
     "minRentalPeriod": "1 dzień",
-    "rentOnlineURL": "https://rentools.pl/o/308-karcher-nt-30-1"
+    "rentOnlineURL": "https://rentools.pl/o/308-karcher-nt-30-1",
+    "calendarFlag": false
   },
   {
     "id": "lz",
@@ -114,7 +122,8 @@
     "technicalCondition": "Bardzo dobry",
     "imagePath": "assets/offer/odkurzacz-pioracy-karcher-puzzi 10-1.jpg",
     "minRentalPeriod": "1 dzień",
-    "rentOnlineURL": "https://rentools.pl/o/307-karcher-puzzi-10-1"
+    "rentOnlineURL": "https://rentools.pl/o/307-karcher-puzzi-10-1",
+    "calendarFlag": false
   },
   {
     "id": "jk",
@@ -127,7 +136,8 @@
     "technicalCondition": "Bardzo dobry",
     "imagePath": "assets/offer/opryskiwacz-sthil-sr200.jpg",
     "minRentalPeriod": "1 dzień",
-    "rentOnlineURL": "https://rentools.pl/o/342-stihl-sr200"
+    "rentOnlineURL": "https://rentools.pl/o/342-stihl-sr200",
+    "calendarFlag": false
   },
   {
     "id": "gh",
@@ -140,7 +150,8 @@
     "technicalCondition": "Bardzo dobry",
     "imagePath": "assets/offer/przecinarka-husqvarna-k770.jpg",
     "minRentalPeriod": "1 dzień",
-    "rentOnlineURL": "https://rentools.pl/o/329-husqvarna-k770"
+    "rentOnlineURL": "https://rentools.pl/o/329-husqvarna-k770",
+    "calendarFlag": false
   },
   {
     "id": "df",
@@ -153,7 +164,8 @@
     "technicalCondition": "Bardzo dobry",
     "imagePath": "assets/offer/szlifierka-gips-bosh-gtr-550.jpg",
     "minRentalPeriod": "1 dzień",
-    "rentOnlineURL": "https://rentools.pl/o/589-bosch-gtr-550"
+    "rentOnlineURL": "https://rentools.pl/o/589-bosch-gtr-550",
+    "calendarFlag": false
   },
   {
     "id": "as",
@@ -166,7 +178,8 @@
     "technicalCondition": "Bardzo dobry",
     "imagePath": "assets/offer/walec-ogrodowy-do-trawy.jpg",
     "minRentalPeriod": "1 dzień",
-    "rentOnlineURL": "https://rentools.pl/o/747-walec-"
+    "rentOnlineURL": "https://rentools.pl/o/747-walec-",
+    "calendarFlag": false
   },
   {
     "id": "op",
@@ -179,7 +192,8 @@
     "technicalCondition": "Bardzo dobry",
     "imagePath": "assets/offer/zageszczarka-cedrus-zg-2.jpg",
     "minRentalPeriod": "1 dzień",
-    "rentOnlineURL": "https://rentools.pl/o/5909-cedrus-zg-02"
+    "rentOnlineURL": "https://rentools.pl/o/5909-cedrus-zg-02",
+    "calendarFlag": false
   },
   {
     "id": "ui",
@@ -192,7 +206,8 @@
     "technicalCondition": "Bardzo dobry",
     "imagePath": "assets/offer/wertykulator-rl-540.jpg",
     "minRentalPeriod": "1 dzień",
-    "rentOnlineURL": "https://rentools.pl/o/586-stihl-rl-540-1"
+    "rentOnlineURL": "https://rentools.pl/o/586-stihl-rl-540-1",
+    "calendarFlag": true
   },
   {
     "id": "ty",
@@ -205,7 +220,8 @@
     "technicalCondition": "Bardzo dobry",
     "imagePath": "assets/offer/wiertnica-kaaz-ag-500.jpg",
     "minRentalPeriod": "1 dzień",
-    "rentOnlineURL": "https://rentools.pl/o/341-kaaz-ag500"
+    "rentOnlineURL": "https://rentools.pl/o/341-kaaz-ag500",
+    "calendarFlag": false
   },
   {
     "id": "er",
@@ -218,7 +234,8 @@
     "technicalCondition": "Bardzo dobry",
     "imagePath": "assets/offer/zageszczarka-cedrus-zg-06.jpg",
     "minRentalPeriod": "1 dzień",
-    "rentOnlineURL": "https://rentools.pl/o/309-cedrus-zg-03-pro"
+    "rentOnlineURL": "https://rentools.pl/o/309-cedrus-zg-03-pro",
+    "calendarFlag": false
   },
   {
     "id": "qw",
@@ -231,6 +248,7 @@
     "technicalCondition": "Bardzo dobry",
     "imagePath": "assets/offer/zageszczarka-wacker-neuson-Bs50-2.jpg",
     "minRentalPeriod": "1 dzień",
-    "rentOnlineURL": "https://rentools.pl/o/328-wacker-neuson-bs50-2"
+    "rentOnlineURL": "https://rentools.pl/o/328-wacker-neuson-bs50-2",
+    "calendarFlag": false
   }
 ]

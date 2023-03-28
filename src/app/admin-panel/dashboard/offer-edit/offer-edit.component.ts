@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { map, Subscription } from 'rxjs';
+
 import { OfferItem } from 'src/app/offer-main/offer-page/offer-item.model';
 import { AdminPanelServices } from '../../services/admin-panel.services';
 import { mimeType } from '../mime-type.validator';

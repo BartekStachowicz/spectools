@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-
 import { Observable, Subscription } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
@@ -25,6 +24,7 @@ export class OfferPageComponent implements OnInit, OnDestroy {
   offerSubscription: Subscription;
   offerItems: OfferItem[] = [];
   gridCols: number = 2;
+  isLoading: boolean = false;
 
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -32,10 +32,14 @@ export class OfferPageComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.offerSubscription = this.store
       .select('offer')
       .pipe(map((state) => state.items))
-      .subscribe((items: OfferItem[]) => (this.offerItems = items));
+      .subscribe((items: OfferItem[]) => {
+        this.isLoading = false;
+        this.offerItems = items;
+      });
   }
 
   onViewChange(mode: string) {

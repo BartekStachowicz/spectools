@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { map, Subscription } from 'rxjs';
+
 import { PromoItem } from 'src/app/main-page/promo.model';
 import { mimeType } from '../mime-type.validator';
 import * as fromApp from '../../../store/app.reducer';

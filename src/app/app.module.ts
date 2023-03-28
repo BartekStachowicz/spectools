@@ -8,6 +8,8 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HashLocationStrategy, PathLocationStrategy } from '@angular/common';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // /////////////////////////////////////////////////////////////////////////////////////
 
@@ -22,7 +24,7 @@ import { SliderMainComponent } from './main-page/slider-main/slider-main.compone
 import { MaterialModule } from './material.module';
 import { PageMainEffects } from './main-page/store/page-main.effects';
 import * as fromApp from './store/app.reducer';
-import { HashLocationStrategy, PathLocationStrategy } from '@angular/common';
+import { AdminPanelEffects } from './admin-panel/store/admin-panel.effects';
 
 @NgModule({
   declarations: [
@@ -39,12 +41,13 @@ import { HashLocationStrategy, PathLocationStrategy } from '@angular/common';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    EffectsModule.forRoot([PageMainEffects]),
+    EffectsModule.forRoot([PageMainEffects, AdminPanelEffects]),
     StoreModule.forRoot(fromApp.appReducer),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),
     ReactiveFormsModule,
     MaterialModule,
+    NgbModule,
   ],
   providers: [
     { provide: HashLocationStrategy, useClass: PathLocationStrategy },

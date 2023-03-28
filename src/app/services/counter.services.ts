@@ -1,7 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Counter } from '../counter.model';
+import { environment } from 'src/environments/environment';
 import { v4 as uuidv4 } from 'uuid';
+
+const API_URL_COUNTER_UNIQUE =
+  environment.apiURL + environment.apiCounterUniqueKey;
+const API_URL_COUNTER_ALL = environment.apiURL + environment.apiCounterAllKey;
 
 @Injectable({ providedIn: 'root' })
 export class CounterServices {
@@ -26,14 +30,6 @@ export class CounterServices {
     this.setCounterAll(this.visitorAllCounter);
   }
 
-  getUniqueCnt() {
-    return parseInt(localStorage.getItem('uniqueCounter'));
-  }
-
-  getAllCnt() {
-    return parseInt(localStorage.getItem('allCounter'));
-  }
-
   private setCookie(name: string, uniqueId: string, days: number) {
     const date = new Date();
     date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
@@ -56,19 +52,23 @@ export class CounterServices {
     return uuidv4();
   }
 
-  private getCounterUnique() {
+  public getCounterUnique() {
     const counter = localStorage.getItem('uniqueCounter');
+    this.http.get(API_URL_COUNTER_UNIQUE).subscribe();
     return parseInt(counter);
   }
-  private getCounterAll() {
+  public getCounterAll() {
     const counter = localStorage.getItem('allCounter');
+    this.http.get(API_URL_COUNTER_ALL).subscribe();
     return parseInt(counter);
   }
 
   private setCounterUnique(counter: number) {
     localStorage.setItem('uniqueCounter', counter.toString());
+    this.http.post(API_URL_COUNTER_UNIQUE, counter).subscribe();
   }
   private setCounterAll(counter: number) {
     localStorage.setItem('allCounter', counter.toString());
+    this.http.post(API_URL_COUNTER_ALL, counter).subscribe();
   }
 }
