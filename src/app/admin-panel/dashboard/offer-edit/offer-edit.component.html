@@ -1,9 +1,6 @@
 <div *ngIf="mode === 'edit'">
   <div class="header">EDYCJA OFERTY</div>
-  <mat-expansion-panel
-    (opened)="panelOpenState = true"
-    (closed)="panelOpenState = false"
-  >
+  <mat-expansion-panel [(expanded)]="panelOpenState">
     <mat-expansion-panel-header>
       <mat-panel-title> Oferta </mat-panel-title>
     </mat-expansion-panel-header>
@@ -24,7 +21,7 @@
 
 <mat-card class="offer-edit-card">
   <mat-card-content>
-    <form class="edit-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <form class="edit-form" [formGroup]="form">
       <mat-form-field appearance="fill" color="accent">
         <mat-label>Nazwa</mat-label>
         <input matInput formControlName="name" />
@@ -64,6 +61,14 @@
         <input matInput formControlName="rentOnlineURL" />
       </mat-form-field>
 
+      <mat-form-field appearance="fill" color="accent">
+        <mat-label>Dodać kalendarz?</mat-label>
+        <mat-select formControlName="calendarFlag">
+          <mat-option [value]="true">TAK</mat-option>
+          <mat-option [value]="false">NIE</mat-option>
+        </mat-select>
+      </mat-form-field>
+
       <button
         color="accent"
         mat-raised-button
@@ -86,11 +91,30 @@
       <button
         mat-raised-button
         color="accent"
-        type="submit"
+        type="reset"
         [disabled]="!form.valid"
+        (click)="onSubmit()"
       >
         ZAPISZ
       </button>
     </form>
   </mat-card-content>
+  <br />
+  <div
+    style="text-align: center; color: red; font-size: 2rem; margin: 1rem"
+    *ngIf="mode === 'edit'"
+  >
+    <i class="bi bi-cone-striped"></i><i class="bi bi-cone-striped"></i
+    ><i class="bi bi-cone-striped"></i>
+  </div>
+  <button
+    mat-raised-button
+    color="warn"
+    type="button"
+    style="margin: 1rem"
+    (click)="onDelete()"
+    *ngIf="mode === 'edit'"
+  >
+    USUŃ PRZEDMIOT Z OFERTY
+  </button>
 </mat-card>

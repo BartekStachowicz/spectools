@@ -28,21 +28,27 @@ export class OfferEditComponent implements OnInit, OnDestroy {
   form: FormGroup;
   isLoading: boolean = false;
   offerItems: OfferItem[] = [];
+  editedId: string = null;
+  timer: ReturnType<typeof setTimeout>;
 
   ngOnInit(): void {
+    this.initForm();
+    this.store.dispatch(new MainPageActions.FetchItems());
     this.sub = this.adminPanelService.getMode().subscribe((mode) => {
       this.mode = mode;
     });
     this.offerSubscription = this.store
       .select('offer')
       .pipe(map((state) => state.items))
-      .subscribe((items: OfferItem[]) => (this.offerItems = items));
-    this.initForm();
+      .subscribe((items: OfferItem[]) => {
+        this.offerItems = items;
+      });
   }
 
   onItemPicked(id: string) {
+    this.ngOnInit();
     const item = this.offerItems.find((item) => item.id === id);
-    console.log(item);
+    this.editedId = item.id;
     this.form.setValue({
       image: item.imagePath,
       name: item.name,
@@ -53,24 +59,56 @@ export class OfferEditComponent implements OnInit, OnDestroy {
       technicalCondition: item.technicalCondition,
       minRentalPeriod: item.minRentalPeriod,
       rentOnlineURL: item.rentOnlineURL,
+      calendarFlag: item.calendarFlag,
     });
+    this.panelOpenState = false;
   }
 
   onSubmit() {
     if (this.mode === 'edit') {
-      const offerItem: OfferItem = this.form.value;
-      this.store.dispatch(new MainPageActions.UpdateItem(offerItem));
+      let data: OfferItem | FormData;
+      if (typeof this.form.value.image === 'object') {
+        data = new FormData();
+        data.append('name', this.form.value.name);
+        data.append('priceRent', this.form.value.priceRent);
+        data.append('priceCaution', this.form.value.priceCaution);
+        data.append('description', this.form.value.description);
+        data.append('shortDescription', this.form.value.shortDescription);
+        data.append('technicalCondition', this.form.value.technicalCondition);
+        data.append('minRentalPeriod', this.form.value.minRentalPeriod);
+        data.append('rentOnlineURL', this.form.value.rentOnlineURL);
+        data.append('calendarFlag', this.form.value.calendarFlag);
+        data.append('image', this.form.value.image);
+      } else {
+        data = this.form.value;
+      }
+
+      this.store.dispatch(
+        new MainPageActions.UpdateItem({ item: data, id: this.editedId })
+      );
       this.store.dispatch(new MainPageActions.SaveUpdatedItem());
     } else if (this.mode === 'new') {
-      const offerItem: OfferItem = this.form.value;
-      this.store.dispatch(new MainPageActions.AddItem(offerItem));
+      const data = new FormData();
+      data.append('name', this.form.value.name);
+      data.append('priceRent', this.form.value.priceRent);
+      data.append('priceCaution', this.form.value.priceCaution);
+      data.append('description', this.form.value.description);
+      data.append('shortDescription', this.form.value.shortDescription);
+      data.append('technicalCondition', this.form.value.technicalCondition);
+      data.append('minRentalPeriod', this.form.value.minRentalPeriod);
+      data.append('rentOnlineURL', this.form.value.rentOnlineURL);
+      data.append('calendarFlag', this.form.value.calendarFlag);
+      data.append('image', this.form.value.image);
+      this.store.dispatch(new MainPageActions.AddItem(data));
       this.store.dispatch(new MainPageActions.SaveNewItem());
     }
-    this.store.dispatch(new MainPageActions.FetchItems());
     this.form.reset();
     Object.keys(this.form.controls).forEach((key) => {
       this.form.controls[key].setErrors(null);
     });
+    this.timer = setTimeout(() => {
+      this.ngOnInit();
+    }, 1000);
   }
 
   onImagePicked(event: Event) {
@@ -86,9 +124,27 @@ export class OfferEditComponent implements OnInit, OnDestroy {
     reader.readAsDataURL(file);
   }
 
+  onDelete() {
+    this.store.dispatch(new MainPageActions.DeleteItem(this.editedId));
+    this.store.dispatch(new MainPageActions.SaveDeletedItem());
+    this.form.reset();
+    Object.keys(this.form.controls).forEach((key) => {
+      this.form.controls[key].setErrors(null);
+    });
+    this.timer = setTimeout(() => {
+      this.ngOnInit();
+    }, 1000);
+  }
+
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
-    this.offerSubscription.unsubscribe();
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
+    if (this.offerSubscription) {
+      this.offerSubscription.unsubscribe();
+    }
+
+    clearTimeout(this.timer);
   }
 
   private initForm() {
@@ -112,6 +168,9 @@ export class OfferEditComponent implements OnInit, OnDestroy {
         validators: [Validators.required],
       }),
       rentOnlineURL: new FormControl(null, {
+        validators: [Validators.required],
+      }),
+      calendarFlag: new FormControl(null, {
         validators: [Validators.required],
       }),
     });

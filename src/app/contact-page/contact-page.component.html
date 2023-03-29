@@ -41,11 +41,7 @@
             >Formularz kontaktowy</mat-card-title
           ></mat-card-header
         >
-        <form
-          class="contact-form"
-          [formGroup]="contactForm"
-          (ngSubmit)="onSubmit()"
-        >
+        <form class="contact-form" [formGroup]="contactForm">
           <span class="contact-form-field-label">Imię</span>
           <mat-form-field
             appearance="fill"
@@ -117,7 +113,8 @@
           <button
             mat-raised-button
             color="accent"
-            type="submit"
+            type="reset"
+            (click)="onSubmit()"
             [disabled]="!contactForm.valid"
             class="contact-form-button"
             *ngIf="isSuccessfull === 0"

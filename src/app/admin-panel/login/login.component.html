@@ -8,9 +8,15 @@
         src="assets/spectools/logo-small-c.png"
         alt="Loading..."
       />
+      <span class="header-text" *ngIf="isAuth">CZEŚĆ DAWID!</span>
     </div>
 
-    <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <form
+      class="login-form"
+      [formGroup]="loginForm"
+      (ngSubmit)="onSubmit()"
+      *ngIf="!isAuth"
+    >
       <span class="login-form-field-label">Użytkownik</span>
       <mat-form-field appearance="fill" color="accent" class="login-form-field">
         <mat-label>użytkownik</mat-label>

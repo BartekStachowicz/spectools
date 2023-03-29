@@ -4,10 +4,12 @@ import * as PageMainActions from './page-main.actions';
 
 export interface State {
   items: OfferItem[];
-  newItem: OfferItem;
-  updatedItem: OfferItem;
+  newItem: FormData;
+  updatedItem: OfferItem | FormData;
   deletedItemId: string;
+  editedId: string;
   promo: PromoItem;
+  updatedPromo: PromoItem | FormData;
 }
 
 const initState: State = {
@@ -15,7 +17,9 @@ const initState: State = {
   newItem: null,
   updatedItem: null,
   deletedItemId: null,
+  editedId: null,
   promo: null,
+  updatedPromo: null,
 };
 
 export function pageMainReducer(
@@ -38,7 +42,8 @@ export function pageMainReducer(
     case PageMainActions.UPDATE_ITEM:
       return {
         ...state,
-        updatedItem: action.payload,
+        updatedItem: action.payload.item,
+        editedId: action.payload.id,
       };
 
     case PageMainActions.DELETE_ITEM:
@@ -50,7 +55,7 @@ export function pageMainReducer(
     case PageMainActions.UPDATE_PROMO:
       return {
         ...state,
-        promo: action.payload,
+        updatedPromo: action.payload,
       };
 
     case PageMainActions.SET_PROMO:

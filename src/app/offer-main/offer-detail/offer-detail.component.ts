@@ -8,9 +8,9 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 import { OfferItem } from '../offer-page/offer-item.model';
 import { LeafletMapService } from 'src/app/services/leaflet-map.service';
-import { CalendarService } from 'src/app/admin-panel/dashboard/calendar/calendar.service';
-import * as AdminPanelActions from '../../admin-panel/store/admin-panel.actions';
 import { CalendarModel } from 'src/app/admin-panel/dashboard/calendar/calendar.model';
+import { DashboardService } from 'src/app/admin-panel/dashboard/dashboard.services';
+import { CalendarEvent } from 'angular-calendar';
 
 @Component({
   selector: 'app-offer-detail',
@@ -24,7 +24,8 @@ export class OfferDetailComponent implements OnInit, OnDestroy {
   id: number;
   offerSubscription: Subscription;
   calendarSub: Subscription;
-  calendarEvent: CalendarModel;
+  calendar: CalendarModel[];
+  calendarEvent: CalendarEvent[];
   disableDates = [];
 
   isHandset$: Observable<boolean> = this.breakpointObserver
@@ -39,11 +40,11 @@ export class OfferDetailComponent implements OnInit, OnDestroy {
     private store: Store<fromApp.AppState>,
     private breakpointObserver: BreakpointObserver,
     private leafletMapService: LeafletMapService,
-    private calendarService: CalendarService
+    private dashboardService: DashboardService
   ) {}
 
   ngOnInit(): void {
-    this.store.dispatch(new AdminPanelActions.FetchEvents());
+    this.dashboardService.getCalendarEvents();
     this.leafletMapService.initMap('map3');
     this.offerSubscription = this.route.params
       .pipe(
@@ -64,17 +65,28 @@ export class OfferDetailComponent implements OnInit, OnDestroy {
         this.offerItem = item;
       });
 
-    this.calendarSub = this.store.select('admin').subscribe((state) => {
-      this.calendarEvent = state.events.find(
-        (el) => el.idItem === this.offerItem.id
-      );
-      this.disableDates = this.calendarService.getDisableDates(
-        this.calendarEvent
-      );
-    });
+    if (this.offerItem.calendarFlag) {
+      this.calendarSub = this.dashboardService
+        .getChangedEvents()
+        .subscribe((events: CalendarModel[]) => {
+          this.calendar = events;
+          this.calendarEvent = this.dashboardService.getSingleCalendarEvents(
+            this.calendar,
+            this.offerItem.id
+          );
+          this.disableDates = this.dashboardService.generateDisableDatesArray(
+            this.calendarEvent
+          );
+        });
+    }
   }
 
   ngOnDestroy(): void {
-    this.offerSubscription.unsubscribe();
+    if (this.offerSubscription) {
+      this.offerSubscription.unsubscribe();
+    }
+    if (this.calendarSub) {
+      this.calendarSub.unsubscribe();
+    }
   }
 }

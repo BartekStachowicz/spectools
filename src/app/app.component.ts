@@ -17,8 +17,8 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.counterService.countUniqueVisits();
-    this.counterService.countAllVisits();
+    this.counterService.getCounterUnique();
+    this.counterService.getCounterAll();
     this.authService.autoLogin();
   }
 }

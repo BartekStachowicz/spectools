@@ -52,8 +52,8 @@ export class PageMainEffects {
         withLatestFrom(this.store.select('offer')),
         switchMap(([action, state]) => {
           return this.http.patch(
-            API_URL_OFFER + state.newItem.id,
-            state.newItem
+            API_URL_OFFER + '/' + state.editedId,
+            state.updatedItem
           );
         })
       );
@@ -68,7 +68,7 @@ export class PageMainEffects {
         ofType(PageMainActions.SAVE_DELETED_ITEM),
         withLatestFrom(this.store.select('offer')),
         switchMap(([action, state]) => {
-          return this.http.delete(API_URL_OFFER + state.deletedItemId);
+          return this.http.delete(API_URL_OFFER + '/' + state.deletedItemId);
         })
       );
     },
@@ -80,12 +80,12 @@ export class PageMainEffects {
   //get promo
   fetchPromo = createEffect((): Observable<any> => {
     return this.actions$.pipe(
-      ofType(PageMainActions.FETCH_ITEMS),
+      ofType(PageMainActions.FETCH_PROMO),
       switchMap(() => {
         return this.http.get<PromoItem>(API_URL_PROMO);
       }),
       map((promo) => {
-        return new PageMainActions.SetPromo(promo[0]);
+        return new PageMainActions.SetPromo(promo);
       })
     );
   });
@@ -97,7 +97,7 @@ export class PageMainEffects {
         ofType(PageMainActions.SAVE_PROMO),
         withLatestFrom(this.store.select('offer')),
         switchMap(([action, state]) => {
-          return this.http.patch(API_URL_PROMO, state.promo);
+          return this.http.patch(API_URL_PROMO, state.updatedPromo);
         })
       );
     },

@@ -1,20 +1,66 @@
 <div fxLayout="row wrap" fxLayoutGap="16px grid">
-  <div fxFlex="50%" fxFlex.md="100%" fxFlex.xs="100%" fxFlex.sm="100%">
-    <mat-card class="example-card"
-      ><mat-card-header class="header"
-        >Licznik odwiedzin (ogółem)</mat-card-header
-      >
-      <i class="bi bi-graph-up-arrow chart-icon"></i>
-      <mat-card-content class="counter">{{ allCnt }}</mat-card-content>
-    </mat-card>
+  <div fxFlex="50%" fxFlex.md="100%" fxFlex.xs="100%" fxFlex.sm="100%"></div>
+  <div fxFlex="50%" fxFlex.md="100%" fxFlex.xs="100%" fxFlex.sm="100%"></div>
+</div>
+
+<div fxLayout="column" fxLayoutGap="10px" class="container">
+  <div fxLayout="row" fxFlex="33%" class="block-1">
+    <div fxFlex fxLayoutAlign="center center" fxFlexFill class="grid-item">
+      <mat-card class="example-card-header counter">CZEŚĆ DAWID!</mat-card>
+    </div>
   </div>
-  <div fxFlex="50%" fxFlex.md="100%" fxFlex.xs="100%" fxFlex.sm="100%">
-    <mat-card class="example-card"
-      ><mat-card-header class="header"
-        >Licznik odwiedzin (unikalne)</mat-card-header
-      >
-      <i class="bi bi-graph-up-arrow chart-icon"></i>
-      <mat-card-content class="counter">{{ uniqueCnt }}</mat-card-content>
-    </mat-card>
+  <div
+    fxLayout.gt-sm="row"
+    fxLayout.lt-md="column"
+    fxLayoutGap="10px"
+    fxFlex="33%"
+    class="block-2"
+  >
+    <div
+      fxFlex.gt-sm="50%"
+      fxFlex.lt-md="50%"
+      fxLayoutAlign="center center"
+      fxFlexFill
+    >
+      <mat-card class="example-card"
+        ><mat-card-header class="header"
+          >Licznik odwiedzin (ogółem)</mat-card-header
+        >
+        <i class="bi bi-graph-up-arrow chart-icon"></i>
+        <mat-card-content class="counter">{{ allCnt }}</mat-card-content>
+      </mat-card>
+    </div>
+    <div
+      fxFlex.gt-sm="50%"
+      fxFlex.lt-md="50%"
+      fxLayoutAlign="center center"
+      fxFlexFill
+    >
+      <mat-card class="example-card"
+        ><mat-card-header class="header"
+          >Licznik odwiedzin (unikalne)</mat-card-header
+        >
+        <i class="bi bi-graph-up-arrow chart-icon"></i>
+        <mat-card-content class="counter">{{ uniqueCnt }}</mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutGap="10px" fxFlex="33%" class="block-3">
+    <div
+      fxFlex.gt-sm="50%"
+      fxFlex.lt-md="50%"
+      fxLayoutAlign="center center"
+      fxFlexFill
+    >
+      <mat-card class="example-card"></mat-card>
+    </div>
+    <div
+      fxFlex.gt-sm="50%"
+      fxFlex.lt-md="50%"
+      fxLayoutAlign="center center"
+      fxFlexFill
+    >
+      <mat-card class="example-card"></mat-card>
+    </div>
   </div>
 </div>

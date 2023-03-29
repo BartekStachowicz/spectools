@@ -99,10 +99,7 @@
   </div>
 
   <br /><br /><br />
-  <mat-expansion-panel
-    (opened)="panelOpenState = true"
-    (closed)="panelOpenState = false"
-  >
+  <mat-expansion-panel [(expanded)]="panelOpenState">
     <mat-expansion-panel-header>
       <mat-panel-title> Oferta </mat-panel-title>
     </mat-expansion-panel-header>
@@ -128,6 +125,7 @@
       >
         Add new
       </button>
+
       <div class="clearfix"></div>
     </h3>
 
@@ -214,12 +212,7 @@
       </table>
     </div>
   </div>
-  <button
-    mat-raised-button
-    color="accent"
-    (click)="onSave()"
-    [disabled]="events.length === 0"
-  >
+  <button mat-raised-button color="accent" (click)="onSave()">
     ZAPISZ W BAZIE DANYCH
   </button>
 </div>

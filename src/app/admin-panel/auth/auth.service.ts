@@ -12,7 +12,6 @@ const API_LOGINURL = environment.apiURL + environment.apiAuthLoginKey;
   providedIn: 'root',
 })
 export class AuthService {
-  private isLogged: Subject<boolean> = new BehaviorSubject(false);
   private isAuthenticated = false;
   private userId: string;
   private token: string;
@@ -20,10 +19,6 @@ export class AuthService {
   private tokenTimer: NodeJS.Timer;
 
   constructor(private http: HttpClient, private router: Router) {}
-
-  getIsLogged() {
-    return this.isLogged.asObservable();
-  }
 
   getToken() {
     return this.token;
@@ -63,7 +58,6 @@ export class AuthService {
               now.getTime() + expiresInDuration * 1000
             );
             this.saveAuthData(token, expirationDate, this.userId);
-            this.isLogged.next(true);
             this.router.navigate(['admin', 'dashboard']);
           }
         },
@@ -76,7 +70,6 @@ export class AuthService {
   autoLogin() {
     const authInfo = this.getAuthData();
     if (!authInfo) {
-      this.isLogged.next(false);
       return;
     }
     const now = new Date();
@@ -87,19 +80,17 @@ export class AuthService {
       this.userId = authInfo.userId;
       this.setAuthTimer(duration / 1000);
       this.authStatusListener.next(true);
-      this.isLogged.next(true);
     }
   }
 
   logout() {
-    this.isLogged.next(false);
     this.token = null;
     this.isAuthenticated = false;
     this.authStatusListener.next(false);
     clearTimeout(this.tokenTimer);
     this.userId = null;
     this.clearAuthData();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/admin']);
   }
 
   private saveAuthData(token: string, expirationDate: Date, userId: string) {

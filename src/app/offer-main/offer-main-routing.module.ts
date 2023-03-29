@@ -4,7 +4,6 @@ import { OfferDetailComponent } from './offer-detail/offer-detail.component';
 import { OfferMainComponent } from './offer-main.component';
 import { OfferPageComponent } from './offer-page/offer-page.component';
 import { OfferResolverService } from '../services/offer-resolver.service';
-import { CalendarEventsResolverService } from '../admin-panel/services/calendar-events-resolver.service';
 
 const routes: Routes = [
   {
@@ -19,7 +18,7 @@ const routes: Routes = [
       {
         path: ':itemPathId',
         component: OfferDetailComponent,
-        resolve: [OfferResolverService, CalendarEventsResolverService],
+        resolve: [OfferResolverService],
       },
     ],
   },

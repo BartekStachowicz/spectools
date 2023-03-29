@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { AuthService } from './auth/auth.service';
@@ -15,13 +16,14 @@ export class AdminPanelComponent implements OnInit, OnDestroy {
     private authService: AuthService
   ) {}
 
-  isLogged = false;
+  isAuth = false;
   mode: string;
   sub: Subscription;
 
   ngOnInit(): void {
-    this.sub = this.authService.getIsLogged().subscribe((isLogged) => {
-      this.isLogged = isLogged;
+    this.isAuth = this.authService.getIsAuth();
+    this.sub = this.authService.getAuthStatusListener().subscribe((isAuth) => {
+      this.isAuth = isAuth;
     });
   }
 
@@ -30,7 +32,7 @@ export class AdminPanelComponent implements OnInit, OnDestroy {
   }
 
   onLogout() {
-    this.isLogged = false;
+    this.isAuth = false;
     this.authService.logout();
   }
 

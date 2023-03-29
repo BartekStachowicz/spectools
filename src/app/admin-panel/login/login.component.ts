@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 
 @Component({
@@ -8,15 +9,22 @@ import { AuthService } from '../auth/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   constructor(private authService: AuthService) {}
 
   loginForm: FormGroup;
   isLoading: boolean = false;
+  isAuth: boolean = false;
+  sub: Subscription;
 
   ngOnInit(): void {
     this.isLoading = false;
-    this.initContactForm();
+    this.isAuth = this.authService.getIsAuth();
+    this.sub = this.authService.getAuthStatusListener().subscribe((isAuth) => {
+      this.isAuth = isAuth;
+      console.log(isAuth);
+    });
+    this.initLoginForm();
   }
 
   onSubmit() {
@@ -27,7 +35,13 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
   }
 
-  private initContactForm() {
+  ngOnDestroy(): void {
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
+  }
+
+  private initLoginForm() {
     this.loginForm = new FormGroup({
       username: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),

@@ -38,12 +38,12 @@ export class SetItems implements Action {
 
 export class AddItem implements Action {
   readonly type = ADD_ITEM;
-  constructor(public payload: OfferItem) {}
+  constructor(public payload: FormData) {}
 }
 
 export class UpdateItem implements Action {
   readonly type = UPDATE_ITEM;
-  constructor(public payload: OfferItem) {}
+  constructor(public payload: { item: OfferItem | FormData; id: string }) {}
 }
 
 export class DeleteItem implements Action {
@@ -57,7 +57,7 @@ export class SavePromo implements Action {
 
 export class UpdatePromo implements Action {
   readonly type = UPDATE_PROMO;
-  constructor(public payload: PromoItem) {}
+  constructor(public payload: PromoItem | FormData) {}
 }
 
 export class FetchPromo implements Action {

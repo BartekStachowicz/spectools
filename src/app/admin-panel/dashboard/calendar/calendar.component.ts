@@ -7,7 +7,7 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { startOfDay, endOfDay, isSameDay, isSameMonth } from 'date-fns';
-import { map, Subject, Subscription } from 'rxjs';
+import { map, Observable, Subject, Subscription } from 'rxjs';
 import {
   CalendarEvent,
   CalendarEventTimesChangedEvent,
@@ -18,8 +18,8 @@ import { Store } from '@ngrx/store';
 
 import * as fromApp from '../../../store/app.reducer';
 import { OfferItem } from 'src/app/offer-main/offer-page/offer-item.model';
+import { DashboardService } from '../dashboard.services';
 import { CalendarModel } from './calendar.model';
-import * as AdminPanelActions from '../../store/admin-panel.actions';
 
 const colors: Record<string, EventColor> = {
   red: {
@@ -85,41 +85,51 @@ export class CalendarComponent implements OnInit, OnDestroy {
   offerItems: OfferItem[] = [];
   panelOpenState: boolean = false;
   offerItem: OfferItem = null;
-  calendarEvents: CalendarModel[] = null;
-  singleCalendarEvent: CalendarModel = null;
+  calendarEvents: CalendarModel[] = [];
+  timer: ReturnType<typeof setTimeout>;
 
-  constructor(private store: Store<fromApp.AppState>) {}
+  constructor(
+    private store: Store<fromApp.AppState>,
+    private dashboardService: DashboardService
+  ) {}
 
   ngOnInit(): void {
-    this.store.dispatch(new AdminPanelActions.FetchEvents());
+    this.dashboardService.getCalendarEvents();
     this.offerSubscription = this.store
       .select('offer')
       .pipe(map((state) => state.items))
       .subscribe((items: OfferItem[]) => (this.offerItems = items));
-    this.calendarSub = this.store
-      .select('admin')
-      .pipe(map((state) => state.events))
-      .subscribe((events: CalendarModel[]) => (this.calendarEvents = events));
+    this.calendarSub = this.dashboardService
+      .getChangedEvents()
+      .subscribe((events: CalendarModel[]) => {
+        this.calendarEvents = events;
+      });
   }
 
   onItemPicked(id: string) {
-    const item = this.offerItems.find((item) => item.id === id);
-    this.offerItem = item;
-    this.singleCalendarEvent = this.getSingleCalendarEvent(
-      this.calendarEvents,
-      item.id
-    );
-    this.events = this.singleCalendarEvent.events;
+    this.ngOnInit();
+    this.offerItem = this.offerItems.find((item) => item.id === id);
+    if (this.calendarEvents.find((el) => el.idItem === this.offerItem.id)) {
+      this.events = this.dashboardService.getSingleCalendarEvents(
+        this.calendarEvents,
+        this.offerItem.id
+      );
+    } else {
+      this.events = [];
+    }
+    this.panelOpenState = false;
   }
 
   onSave() {
-    const calendarItem: CalendarModel = {
+    const updateEvents: CalendarModel = {
       idItem: this.offerItem.id,
       events: this.events,
     };
-    this.store.dispatch(new AdminPanelActions.UpdateSingleEvents(calendarItem));
-    this.store.dispatch(new AdminPanelActions.SaveSingleEvents());
-    this.store.dispatch(new AdminPanelActions.FetchEvents());
+    this.dashboardService.updatePost(updateEvents);
+
+    this.timer = setTimeout(() => {
+      this.ngOnInit();
+    }, 1000);
   }
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
@@ -183,14 +193,14 @@ export class CalendarComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.offerSubscription.unsubscribe();
-    this.calendarSub.unsubscribe();
-  }
+    if (this.offerSubscription) {
+      this.offerSubscription.unsubscribe();
+    }
 
-  private getSingleCalendarEvent(
-    calendarEvents: CalendarModel[],
-    offerItemId: string
-  ): CalendarModel {
-    return calendarEvents.find((el) => el.idItem === offerItemId);
+    if (this.calendarSub) {
+      this.calendarSub.unsubscribe();
+    }
+
+    clearTimeout(this.timer);
   }
 }

@@ -1,16 +1,11 @@
 <div class="header">EDYCJA PROMOCJI</div>
 
 <mat-card class="offer-edit-card">
+  <!-- <button mat-raised-button color="accent" style="margin: 2rem" type="button">
+    ZAŁADUJ DANE
+  </button> -->
   <mat-card-content>
-    <form class="edit-form" [formGroup]="form" (ngSubmit)="onSubmit()">
-      <!-- <button
-        mat-raised-button
-        color="accent"
-        type="button"
-        style="margin-bottom: 1rem"
-      >
-        POBIERZ DANE
-      </button> -->
+    <form class="edit-form" [formGroup]="form">
       <mat-form-field appearance="fill" color="accent">
         <mat-label>TEXT 1</mat-label>
         <textarea matInput formControlName="text1" rows="2"></textarea>
@@ -19,35 +14,46 @@
         <mat-label>TEXT 2</mat-label>
         <textarea matInput formControlName="text2" rows="2"></textarea>
       </mat-form-field>
+      <mat-form-field appearance="fill" color="accent">
+        <mat-label
+          >Ścieżka do zdjęcia 1 (opcjonalnie zamiast zdjęcia z dysku można
+          skopiować adres zdjęcia i wkleić)</mat-label
+        >
+        <textarea matInput formControlName="imagePath1" rows="2"></textarea>
+      </mat-form-field>
+      <mat-form-field appearance="fill" color="accent">
+        <mat-label
+          >Ścieżka do zdjęcia 2 (opcjonalnie zamiast zdjęcia z dysku można
+          skopiować adres zdjęcia i wkleić)</mat-label
+        >
+        <textarea matInput formControlName="imagePath2" rows="2"></textarea>
+      </mat-form-field>
       <button
         color="accent"
         mat-raised-button
         type="button"
         (click)="pickFile.click()"
       >
-        Pick image
+        Wybierz zdjęcia:
       </button>
-      <input type="file" multiple #pickFile (change)="onImagePicked($event)" />
-
-      <span *ngIf="imgPreview !== '' && imgPreview && form.get('images').valid"
-        >Podgląd zdjęcia:</span
+      <input type="file" multiple #pickFile (change)="selectFiles($event)" />
+      <button
+        color="accent"
+        mat-raised-button
+        type="button"
+        style="margin-bottom: 2rem"
+        (click)="onSwitchImage()"
       >
-      <div
-        class="example-boundary"
-        *ngIf="imgPreview !== '' && imgPreview && form.get('images').valid"
-      >
-        <img class="img-preview" [src]="imgPreview" alt="PREVIEW" />
-      </div>
-      <div
-        class="example-boundary"
-        *ngIf="imgPreview !== '' && imgPreview && form.get('images').valid"
-      >
-        <img class="img-preview" [src]="imgPreview2" alt="PREVIEW" />
+        Zamień miejscami <i class="bi bi-arrow-down-up"></i>
+      </button>
+      <div class="example-boundary" *ngFor="let preview of previews">
+        <img [src]="preview" class="img-preview" />
       </div>
       <button
         mat-raised-button
         color="accent"
-        type="submit"
+        type="reset"
+        (click)="onSubmit()"
         [disabled]="!form.valid"
       >
         ZAPISZ

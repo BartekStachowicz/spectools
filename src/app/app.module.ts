@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { EffectsModule } from '@ngrx/effects';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
@@ -24,7 +24,7 @@ import { SliderMainComponent } from './main-page/slider-main/slider-main.compone
 import { MaterialModule } from './material.module';
 import { PageMainEffects } from './main-page/store/page-main.effects';
 import * as fromApp from './store/app.reducer';
-import { AdminPanelEffects } from './admin-panel/store/admin-panel.effects';
+import { AuthInterceptor } from './admin-panel/auth/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -41,7 +41,7 @@ import { AdminPanelEffects } from './admin-panel/store/admin-panel.effects';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    EffectsModule.forRoot([PageMainEffects, AdminPanelEffects]),
+    EffectsModule.forRoot([PageMainEffects]),
     StoreModule.forRoot(fromApp.appReducer),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),
@@ -50,7 +50,12 @@ import { AdminPanelEffects } from './admin-panel/store/admin-panel.effects';
     NgbModule,
   ],
   providers: [
-    { provide: HashLocationStrategy, useClass: PathLocationStrategy },
+    {
+      provide: HashLocationStrategy,
+      useClass: PathLocationStrategy,
+      multi: true,
+    },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

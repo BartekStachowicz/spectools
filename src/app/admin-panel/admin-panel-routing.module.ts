@@ -9,7 +9,6 @@ import { MainPanelComponent } from './dashboard/main-panel.component';
 import { OfferEditComponent } from './dashboard/offer-edit/offer-edit.component';
 import { PromoEditComponent } from './dashboard/promo-edit/promo-edit.component';
 import { LoginComponent } from './login/login.component';
-import { CalendarEventsResolverService } from './services/calendar-events-resolver.service';
 
 const routes: Routes = [
   {
@@ -33,12 +32,11 @@ const routes: Routes = [
       {
         path: 'dashboard/promo-edit',
         component: PromoEditComponent,
-        resolve: [PromoResolverService],
       },
       {
         path: 'dashboard/calendar',
         component: CalendarComponent,
-        resolve: [OfferResolverService, CalendarEventsResolverService],
+        resolve: [OfferResolverService],
       },
     ],
   },
