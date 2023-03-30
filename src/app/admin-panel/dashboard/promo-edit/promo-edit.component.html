@@ -32,6 +32,7 @@
         color="accent"
         mat-raised-button
         type="button"
+        style="width: 300px"
         (click)="pickFile.click()"
       >
         Wybierz zdjęcia:
@@ -41,7 +42,7 @@
         color="accent"
         mat-raised-button
         type="button"
-        style="margin-bottom: 2rem"
+        style="margin-bottom: 2rem; width: 300px"
         (click)="onSwitchImage()"
       >
         Zamień miejscami <i class="bi bi-arrow-down-up"></i>
@@ -53,6 +54,7 @@
         mat-raised-button
         color="accent"
         type="reset"
+        style="width: 300px"
         (click)="onSubmit()"
         [disabled]="!form.valid"
       >

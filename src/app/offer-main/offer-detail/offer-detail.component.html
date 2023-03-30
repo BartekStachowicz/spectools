@@ -90,6 +90,16 @@
             [showWeek]="!(isHandset$ | async)"
           ></p-calendar
         ></mat-card-content>
+        <mat-card-actions style="display: flex; flex-wrap: wrap">
+          <div class="div-legend">
+            <i class="bi bi-9-circle-fill week"></i><span> Numery tygodni</span>
+          </div>
+
+          <div class="div-legend">
+            <i class="bi bi-9-circle-fill occupied"></i
+            ><span> Termin niedostępny</span>
+          </div>
+        </mat-card-actions>
       </mat-card>
     </mat-grid-tile>
     <mat-grid-tile id="map3"><div></div> </mat-grid-tile>

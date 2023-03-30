@@ -61,27 +61,25 @@ export class OfferEditComponent implements OnInit, OnDestroy {
       rentOnlineURL: item.rentOnlineURL,
       calendarFlag: item.calendarFlag,
     });
+    this.imgPreview = item.imagePath;
     this.panelOpenState = false;
   }
 
   onSubmit() {
     if (this.mode === 'edit') {
       let data: OfferItem | FormData;
-      if (typeof this.form.value.image === 'object') {
-        data = new FormData();
-        data.append('name', this.form.value.name);
-        data.append('priceRent', this.form.value.priceRent);
-        data.append('priceCaution', this.form.value.priceCaution);
-        data.append('description', this.form.value.description);
-        data.append('shortDescription', this.form.value.shortDescription);
-        data.append('technicalCondition', this.form.value.technicalCondition);
-        data.append('minRentalPeriod', this.form.value.minRentalPeriod);
-        data.append('rentOnlineURL', this.form.value.rentOnlineURL);
-        data.append('calendarFlag', this.form.value.calendarFlag);
-        data.append('image', this.form.value.image);
-      } else {
-        data = this.form.value;
-      }
+
+      data = new FormData();
+      data.append('name', this.form.value.name);
+      data.append('priceRent', this.form.value.priceRent);
+      data.append('priceCaution', this.form.value.priceCaution);
+      data.append('description', this.form.value.description);
+      data.append('shortDescription', this.form.value.shortDescription);
+      data.append('technicalCondition', this.form.value.technicalCondition);
+      data.append('minRentalPeriod', this.form.value.minRentalPeriod);
+      data.append('rentOnlineURL', this.form.value.rentOnlineURL);
+      data.append('calendarFlag', this.form.value.calendarFlag);
+      data.append('image', this.form.value.image);
 
       this.store.dispatch(
         new MainPageActions.UpdateItem({ item: data, id: this.editedId })
@@ -107,6 +105,7 @@ export class OfferEditComponent implements OnInit, OnDestroy {
       this.form.controls[key].setErrors(null);
     });
     this.timer = setTimeout(() => {
+      this.imgPreview = '';
       this.ngOnInit();
     }, 1000);
   }

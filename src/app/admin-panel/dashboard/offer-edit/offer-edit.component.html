@@ -73,6 +73,7 @@
         color="accent"
         mat-raised-button
         type="button"
+        style="width: 300px"
         (click)="pickFile.click()"
       >
         Pick image
@@ -92,6 +93,7 @@
         mat-raised-button
         color="accent"
         type="reset"
+        style="width: 300px"
         [disabled]="!form.valid"
         (click)="onSubmit()"
       >
@@ -107,14 +109,18 @@
     <i class="bi bi-cone-striped"></i><i class="bi bi-cone-striped"></i
     ><i class="bi bi-cone-striped"></i>
   </div>
-  <button
-    mat-raised-button
-    color="warn"
-    type="button"
-    style="margin: 1rem"
-    (click)="onDelete()"
+  <div
     *ngIf="mode === 'edit'"
+    style="display: flex; align-items: center; justify-content: center"
   >
-    USUŃ PRZEDMIOT Z OFERTY
-  </button>
+    <button
+      mat-raised-button
+      color="warn"
+      type="button"
+      style="margin: 1rem; width: 300px"
+      (click)="onDelete()"
+    >
+      USUŃ PRZEDMIOT Z OFERTY
+    </button>
+  </div>
 </mat-card>

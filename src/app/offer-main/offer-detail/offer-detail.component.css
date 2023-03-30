@@ -37,3 +37,29 @@
   width: 40%;
   border-radius: 5px;
 }
+
+.week,
+.occupied {
+  margin: 2rem;
+  font-size: 2rem;
+}
+
+.week {
+  color: #ffe082;
+}
+
+.occupied {
+  color: red;
+  opacity: 0.6;
+}
+
+.div-legend {
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+
+.div-legend span {
+  font-size: 1.2rem;
+  color: #37474f;
+}
