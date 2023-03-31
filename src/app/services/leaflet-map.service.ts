@@ -1,4 +1,7 @@
 import * as L from 'leaflet';
+import { OpenStreetMapProvider } from 'leaflet-geosearch';
+
+const provider = new OpenStreetMapProvider();
 
 const iconUrl = [
   'assets/spectools/logo-small-c.png',
@@ -47,6 +50,30 @@ export class LeafletMapService {
   public marker5: any;
   public marker10: any;
   public marker15: any;
+
+  async geoSearch(address: string) {
+    const results = await provider.search({ query: address });
+    const foundLat = results[0].y;
+    const foundLng = results[0].x;
+
+    const placeFrom = new L.LatLng(this.lat, this.lng);
+    const placeTo = new L.LatLng(foundLat, foundLng);
+
+    const distance = placeFrom.distanceTo(placeTo) / 1000;
+
+    const price5: string | boolean = distance <= 5 ? 'GRATIS' : false;
+    const price10: string | boolean =
+      distance > 5 && distance <= 10 ? '30zł' : false;
+    const price15: string | boolean =
+      distance > 10 && distance <= 15 ? '50zł' : false;
+    const priceGreater15: string | boolean =
+      distance > 15 ? 'Koszt ustalimy indywidualnie' : false;
+
+    if (price5) return price5;
+    if (price10) return price10;
+    if (price15) return price15;
+    if (priceGreater15) return priceGreater15;
+  }
 
   initMap(map: string) {
     this.map = L.map(map).setView([this.lat, this.lng], 10);

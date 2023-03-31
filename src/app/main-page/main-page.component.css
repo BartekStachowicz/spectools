@@ -147,6 +147,21 @@
   background-color: whitesmoke;
 }
 
+.calc-area form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.calc-text {
+  height: 40px;
+  min-width: 250px;
+  padding: 0.2rem;
+  margin: 0.5rem;
+  border-bottom: solid 1px #78909c;
+}
+
 @media only screen and (min-width: 1400px) {
   #map {
     margin-top: 2rem;

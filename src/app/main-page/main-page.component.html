@@ -207,6 +207,45 @@
       </div>
     </div>
   </div>
+  <div class="calc-area">
+    <form [formGroup]="form">
+      <mat-form-field
+        appearance="fill"
+        color="accent"
+        class="contact-form-field"
+        style="margin: 0.5rem"
+      >
+        <mat-label>Adres</mat-label>
+        <input matInput placeholder="Podaj adres" formControlName="address" />
+        <mat-hint>miejscowosć,nr.domu,kod pocztowy</mat-hint>
+        <mat-error
+          *ngIf="form.controls.address.invalid && form.controls.address.touched"
+          >Wprowadź adres</mat-error
+        >
+      </mat-form-field>
+      <button
+        mat-flat-button
+        color="accent"
+        type="reset"
+        style="margin: 0.5rem"
+        (click)="onCheckDistance()"
+      >
+        Sprawdź koszt dostawy
+      </button>
+      <span class="text-style calc-text">{{
+        price ? price : "Koszt dostawy"
+      }}</span>
+      <button
+        mat-flat-button
+        color="accent"
+        routerLink="/kontakt"
+        *ngIf="price === 'Koszt ustalimy indywidualnie'"
+      >
+        Formularz kontaktowy
+      </button>
+    </form>
+    <div></div>
+  </div>
 </div>
 
 <div class="partners-container">

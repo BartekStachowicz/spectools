@@ -131,6 +131,7 @@ export class OfferEditComponent implements OnInit, OnDestroy {
       this.form.controls[key].setErrors(null);
     });
     this.timer = setTimeout(() => {
+      this.imgPreview = '';
       this.ngOnInit();
     }, 1000);
   }

@@ -41,3 +41,10 @@ testem.log
 .DS_Store
 Thumbs.db
 src/environments
+src/assets/icons
+src/assets/logo
+src/assets/main-page
+src/assets/offer
+src/assets/spectools
+src/assets/offer-items.json
+src/assets/promo.json

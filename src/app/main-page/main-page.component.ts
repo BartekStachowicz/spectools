@@ -7,6 +7,7 @@ import { LeafletMapService } from '../services/leaflet-map.service';
 import * as PageMainActions from './store/page-main.actions';
 import * as fromApp from '../store/app.reducer';
 import { PromoItem } from './promo.model';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-main-page',
@@ -24,6 +25,8 @@ export class MainPageComponent implements OnInit, OnDestroy {
 
   promoSub: Subscription;
   promo: PromoItem;
+  form: FormGroup;
+  price: string | boolean;
   constructor(
     private breakpointObserver: BreakpointObserver,
     private leafletMapService: LeafletMapService,
@@ -40,6 +43,19 @@ export class MainPageComponent implements OnInit, OnDestroy {
       .subscribe((item: PromoItem) => {
         this.promo = item;
       });
+    this.initForm();
+  }
+
+  async onCheckDistance() {
+    this.price = await this.leafletMapService.geoSearch(
+      this.form.value.address
+    );
+  }
+
+  private initForm() {
+    this.form = new FormGroup({
+      address: new FormControl('', [Validators.required]),
+    });
   }
 
   ngOnDestroy(): void {
