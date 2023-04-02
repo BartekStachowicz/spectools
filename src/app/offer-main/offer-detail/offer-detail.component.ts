@@ -70,6 +70,7 @@ export class OfferDetailComponent implements OnInit, OnDestroy {
         .getChangedEvents()
         .subscribe((events: CalendarModel[]) => {
           this.calendar = events;
+
           this.calendarEvent = this.dashboardService.getSingleCalendarEvents(
             this.calendar,
             this.offerItem.id

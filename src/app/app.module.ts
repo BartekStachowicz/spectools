@@ -25,6 +25,8 @@ import { MaterialModule } from './material.module';
 import { PageMainEffects } from './main-page/store/page-main.effects';
 import * as fromApp from './store/app.reducer';
 import { AuthInterceptor } from './admin-panel/auth/auth-interceptor';
+import { ErrorInterceptor } from './services/error-interceptor';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { AuthInterceptor } from './admin-panel/auth/auth-interceptor';
     HeaderComponent,
     MainPageComponent,
     SliderMainComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +59,7 @@ import { AuthInterceptor } from './admin-panel/auth/auth-interceptor';
       multi: true,
     },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

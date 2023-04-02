@@ -128,7 +128,7 @@
 
 .delivery-container {
   width: 100%;
-  min-height: 700px;
+  min-height: 750px;
   padding: 2rem;
 }
 
@@ -152,6 +152,9 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+}
+.calc-area {
+  margin: 1rem 0;
 }
 
 .calc-text {

@@ -207,6 +207,7 @@
       </div>
     </div>
   </div>
+  <p class="subtitle-text">Sprawdź koszt dostawy</p>
   <div class="calc-area">
     <form [formGroup]="form">
       <mat-form-field
@@ -217,18 +218,41 @@
       >
         <mat-label>Adres</mat-label>
         <input matInput placeholder="Podaj adres" formControlName="address" />
-        <mat-hint>miejscowosć,nr.domu,kod pocztowy</mat-hint>
+        <mat-hint>miejscowosć nr.domu</mat-hint>
         <mat-error
           *ngIf="form.controls.address.invalid && form.controls.address.touched"
           >Wprowadź adres</mat-error
         >
       </mat-form-field>
+
+      <mat-form-field
+        appearance="fill"
+        color="accent"
+        class="contact-form-field"
+        style="margin: 0.5rem"
+      >
+        <mat-label>Kod pocztowy</mat-label>
+        <input
+          matInput
+          placeholder="Podaj kod pocztowy"
+          formControlName="postalCode"
+        />
+        <mat-hint>kod pocztowy (99-999)</mat-hint>
+        <mat-error
+          *ngIf="
+            form.controls.postalCode.invalid && form.controls.postalCode.touched
+          "
+          >Wprowadź poprawny kod pocztowy</mat-error
+        >
+      </mat-form-field>
+
       <button
         mat-flat-button
         color="accent"
         type="reset"
         style="margin: 0.5rem"
-        (click)="onCheckDistance()"
+        [disabled]="!form.valid"
+        (click)="onCheck()"
       >
         Sprawdź koszt dostawy
       </button>

@@ -17,6 +17,7 @@ export class AuthService {
   private token: string;
   private authStatusListener = new Subject<boolean>();
   private tokenTimer: NodeJS.Timer;
+  loginError: string;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -63,6 +64,7 @@ export class AuthService {
         },
         (error) => {
           this.authStatusListener.next(false);
+          this.loginError = error.error.message;
         }
       );
   }

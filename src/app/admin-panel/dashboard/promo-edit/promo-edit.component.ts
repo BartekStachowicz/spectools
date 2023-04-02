@@ -53,8 +53,6 @@ export class PromoEditComponent implements OnInit, OnDestroy {
         data.append('images[]', this.selectedFiles[1]);
         data.append('images[]', this.selectedFiles[0]);
       }
-
-      console.log(data.get('images[]'));
     } else {
       data = this.form.value;
     }

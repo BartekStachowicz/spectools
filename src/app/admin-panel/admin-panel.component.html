@@ -61,6 +61,61 @@
     [fxFlex.lt-md]="isAuth ? '80%' : '100%'"
     class="right"
   >
+    <div *ngIf="!isAuth">
+      <mat-card class="login-card">
+        <mat-card-content>
+          <div class="header-container">
+            <span class="header-text">SPECTOOLS</span>
+            <img
+              class="image-login"
+              src="assets/spectools/logo-small-c.png"
+              alt="Loading..."
+            />
+          </div>
+
+          <form class="login-form" [formGroup]="loginForm" *ngIf="!isAuth">
+            <span class="login-form-field-label">Użytkownik</span>
+            <mat-form-field
+              appearance="fill"
+              color="accent"
+              class="login-form-field"
+            >
+              <mat-label>użytkownik</mat-label>
+              <input
+                matInput
+                placeholder="podaj nazwę użytkownia"
+                formControlName="username"
+              />
+            </mat-form-field>
+            <span class="login-form-field-label">Hasło</span>
+            <mat-form-field
+              appearance="fill"
+              color="accent"
+              class="login-form-field"
+            >
+              <mat-label>hasło</mat-label>
+              <input
+                matInput
+                placeholder="podaj hasło"
+                formControlName="password"
+              />
+            </mat-form-field>
+
+            <mat-error></mat-error>
+
+            <button
+              mat-raised-button
+              color="accent"
+              type="reset"
+              (click)="onSubmit()"
+              class="login-form-button"
+            >
+              Zaloguj
+            </button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
     <router-outlet></router-outlet>
   </div>
 </div>

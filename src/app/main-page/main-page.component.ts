@@ -46,15 +46,22 @@ export class MainPageComponent implements OnInit, OnDestroy {
     this.initForm();
   }
 
-  async onCheckDistance() {
-    this.price = await this.leafletMapService.geoSearch(
-      this.form.value.address
-    );
+  onCheck() {
+    const address = this.form.value.address + ' ' + this.form.value.postalCode;
+    this.onCheckDistance(address);
+  }
+
+  private async onCheckDistance(address: string) {
+    this.price = await this.leafletMapService.geoSearch(address);
   }
 
   private initForm() {
     this.form = new FormGroup({
       address: new FormControl('', [Validators.required]),
+      postalCode: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[0-9]{2}(?:-[0-9]{3})?$'),
+      ]),
     });
   }
 

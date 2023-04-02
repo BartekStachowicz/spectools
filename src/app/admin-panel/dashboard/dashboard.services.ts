@@ -33,9 +33,12 @@ export class DashboardService {
   }
 
   getSingleCalendarEvents(calendar: CalendarModel[], id: string) {
-    return calendar
-      .find((el) => el.idItem === id)
-      .events.map((el) => {
+    const singleCalendar: CalendarModel = calendar.find(
+      (el) => el.idItem === id
+    );
+
+    if (singleCalendar) {
+      return singleCalendar.events.map((el) => {
         return {
           color: el.color,
           draggable: el.draggable,
@@ -45,18 +48,22 @@ export class DashboardService {
           end: new Date(el.end),
         };
       });
+    }
   }
 
   generateDisableDatesArray(events: any[]) {
     let dates: any[] = [];
-    for (let i = 0; i < events.length; i++) {
-      let startDate = events[i].start;
-      let stopDate = events[i].end;
-      while (startDate <= stopDate) {
-        dates.push(startDate);
-        startDate = new Date(startDate.getTime() + 60 * 60 * 24 * 1000);
+    if (events) {
+      for (let i = 0; i < events.length; i++) {
+        let startDate = events[i].start;
+        let stopDate = events[i].end;
+        while (startDate <= stopDate) {
+          dates.push(startDate);
+          startDate = new Date(startDate.getTime() + 60 * 60 * 24 * 1000);
+        }
       }
     }
+
     return dates;
   }
 }

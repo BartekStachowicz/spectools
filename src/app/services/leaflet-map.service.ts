@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import * as L from 'leaflet';
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
 

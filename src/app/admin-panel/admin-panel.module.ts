@@ -8,7 +8,6 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { LoginComponent } from './login/login.component';
 import { MainPanelComponent } from './dashboard/main-panel.component';
 import { AdminPanelComponent } from './admin-panel.component';
 import { AdminPanelRoutingModule } from './admin-panel-routing.module';
@@ -19,7 +18,6 @@ import { CalendarComponent } from './dashboard/calendar/calendar.component';
 
 @NgModule({
   declarations: [
-    LoginComponent,
     MainPanelComponent,
     AdminPanelComponent,
     OfferEditComponent,
