@@ -6,7 +6,7 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { catchError, pipe, throwError } from 'rxjs';
+import { catchError, throwError } from 'rxjs';
 import { ErrorComponent } from '../error/error.component';
 
 @Injectable()

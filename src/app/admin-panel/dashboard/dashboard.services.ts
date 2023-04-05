@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 
-import { environment } from 'src/environments/environment';
+import { environment } from '../../../environments/environment';
 import { CalendarModel } from './calendar/calendar.model';
 
 const API_CALENDAR_URL = environment.apiURL + environment.apiCalendarKey;

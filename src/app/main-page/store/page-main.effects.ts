@@ -8,7 +8,7 @@ import { OfferItem } from '../../offer-main/offer-page/offer-item.model';
 import * as PageMainActions from './page-main.actions';
 import { PromoItem } from '../promo.model';
 import * as fromApp from '../../store/app.reducer';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../../environments/environment';
 
 const API_URL_OFFER = environment.apiURL + environment.apiOfferKey;
 const API_URL_PROMO = environment.apiURL + environment.apiPromoKey;
