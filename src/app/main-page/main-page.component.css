@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 150px;
+  height: 140px;
 }
 
 @media only screen and (min-width: 960px) {
@@ -20,9 +20,9 @@
   }
 }
 
-.main-background-handset {
+/* .main-background-handset {
   height: 250px !important;
-}
+} */
 
 .logo-spectools {
   width: 500px;

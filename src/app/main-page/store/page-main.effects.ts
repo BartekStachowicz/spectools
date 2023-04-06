@@ -13,6 +13,9 @@ import { environment } from '../../../environments/environment';
 const API_URL_OFFER = environment.apiURL + environment.apiOfferKey;
 const API_URL_PROMO = environment.apiURL + environment.apiPromoKey;
 
+const TEMP_URL_OFFER = 'assets/offer-items.json';
+const TEMP_URL_PROMO = 'assets/promo.json';
+
 @Injectable()
 export class PageMainEffects {
   // OFFER
