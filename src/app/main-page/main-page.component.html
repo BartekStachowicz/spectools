@@ -203,7 +203,7 @@
       >
         <mat-label>Adres</mat-label>
         <input matInput placeholder="Podaj adres" formControlName="address" />
-        <mat-hint>miejscowosć nr.domu</mat-hint>
+        <mat-hint>format: Ulica 8A Mielec lub 999 Borowa</mat-hint>
         <mat-error
           *ngIf="form.controls.address.invalid && form.controls.address.touched"
           >Wprowadź adres</mat-error
@@ -222,7 +222,7 @@
           placeholder="Podaj kod pocztowy"
           formControlName="postalCode"
         />
-        <mat-hint>kod pocztowy (99-999)</mat-hint>
+        <mat-hint>format: 99-999</mat-hint>
         <mat-error
           *ngIf="
             form.controls.postalCode.invalid && form.controls.postalCode.touched

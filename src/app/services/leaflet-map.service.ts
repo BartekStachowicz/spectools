@@ -53,27 +53,32 @@ export class LeafletMapService {
   public marker15: any;
 
   async geoSearch(address: string) {
-    const results = await provider.search({ query: address });
-    const foundLat = results[0].y;
-    const foundLng = results[0].x;
+    try {
+      const results = await provider.search({ query: address });
 
-    const placeFrom = new L.LatLng(this.lat, this.lng);
-    const placeTo = new L.LatLng(foundLat, foundLng);
+      const foundLat = results[0].y;
+      const foundLng = results[0].x;
 
-    const distance = placeFrom.distanceTo(placeTo) / 1000;
+      const placeFrom = new L.LatLng(this.lat, this.lng);
+      const placeTo = new L.LatLng(foundLat, foundLng);
 
-    const price5: string | boolean = distance <= 5 ? 'GRATIS' : false;
-    const price10: string | boolean =
-      distance > 5 && distance <= 10 ? '30zł' : false;
-    const price15: string | boolean =
-      distance > 10 && distance <= 15 ? '50zł' : false;
-    const priceGreater15: string | boolean =
-      distance > 15 ? 'Koszt ustalimy indywidualnie' : false;
+      const distance = placeFrom.distanceTo(placeTo) / 1000;
 
-    if (price5) return price5;
-    if (price10) return price10;
-    if (price15) return price15;
-    if (priceGreater15) return priceGreater15;
+      const price5: string | boolean = distance <= 5 ? 'GRATIS' : false;
+      const price10: string | boolean =
+        distance > 5 && distance <= 10 ? '30zł' : false;
+      const price15: string | boolean =
+        distance > 10 && distance <= 15 ? '50zł' : false;
+      const priceGreater15: string | boolean =
+        distance > 15 ? 'Koszt ustalimy indywidualnie' : false;
+
+      if (price5) return price5;
+      if (price10) return price10;
+      if (price15) return price15;
+      if (priceGreater15) return priceGreater15;
+    } catch {
+      return 'Coś poszło nie tak! Sprawdź poprawność adresu.';
+    }
   }
 
   initMap(map: string) {
@@ -85,13 +90,13 @@ export class LeafletMapService {
 
     this.map.scrollWheelZoom.disable();
 
-    this.marker5 = L.marker([this.lat, 21.4075], { icon: area5 }).addTo(
+    this.marker5 = L.marker([this.lat, 21.393], { icon: area5 }).addTo(
       this.map
     );
-    this.marker10 = L.marker([this.lat, 21.478], { icon: area10 }).addTo(
+    this.marker10 = L.marker([this.lat, 21.464], { icon: area10 }).addTo(
       this.map
     );
-    this.marker15 = L.marker([this.lat, 21.5485], { icon: area15 }).addTo(
+    this.marker15 = L.marker([this.lat, 21.555], { icon: area15 }).addTo(
       this.map
     );
 
@@ -103,7 +108,7 @@ export class LeafletMapService {
       color: '#263238',
       fillColor: '#607d8b',
       fillOpacity: 0.2,
-      radius: 15000,
+      radius: 16500,
     }).addTo(this.map);
 
     this.circle10 = L.circle([this.lat, this.lng], {
