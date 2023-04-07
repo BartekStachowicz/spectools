@@ -15,6 +15,7 @@ import { MaterialModule } from '../material.module';
 import { OfferEditComponent } from './dashboard/offer-edit/offer-edit.component';
 import { PromoEditComponent } from './dashboard/promo-edit/promo-edit.component';
 import { CalendarComponent } from './dashboard/calendar/calendar.component';
+import { ManualsComponent } from './dashboard/manuals/manuals.components';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CalendarComponent } from './dashboard/calendar/calendar.component';
     OfferEditComponent,
     PromoEditComponent,
     CalendarComponent,
+    ManualsComponent,
   ],
   imports: [
     MaterialModule,

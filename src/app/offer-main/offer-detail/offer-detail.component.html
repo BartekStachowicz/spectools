@@ -4,13 +4,13 @@
 >
   <mat-grid-list
     [cols]="(isHandset$ | async)! ? '1' : '2'"
-    rowHeight="370px"
+    rowHeight="240px"
     gutterSize="1rem"
   >
-    <mat-grid-tile>
+    <mat-grid-tile rowspan="2">
       <mat-card class="example-card">
         <mat-card-header>
-          <mat-card-title style="margin-bottom: 1rem"
+          <mat-card-title class="header-text" style="margin-bottom: 1rem"
             >Koszt wynajmu:</mat-card-title
           >
         </mat-card-header>
@@ -35,20 +35,78 @@
           </p>
 
           <mat-card-footer>
-            <a [href]="offerItem.rentOnlineURL" style="text-decoration: none">
+            <div style="display: flex; flex-direction: column">
+              <a [href]="offerItem.rentOnlineURL" style="text-decoration: none">
+                <button
+                  mat-flat-button
+                  color="accent"
+                  style="margin-right: 5px; margin-bottom: 5px; width: 250px"
+                >
+                  Wypożycz online!
+                </button></a
+              >
+              <a routerLink="/kontakt" style="text-decoration: none">
+                <button
+                  mat-flat-button
+                  color="accent"
+                  style="margin-bottom: 5px; margin-right: 5px; width: 250px"
+                >
+                  Skontaktuj się z nami!
+                </button>
+              </a>
+              <a
+                [href]="manualPath || notFoundManual"
+                style="text-decoration: none"
+              >
+                <button
+                  mat-flat-button
+                  color="accent"
+                  style="margin-bottom: 5px; width: 250px"
+                >
+                  Zobacz instrukcję
+                </button>
+              </a>
               <button
                 mat-flat-button
                 color="accent"
-                style="margin-right: 5px; margin-bottom: 5px"
+                style="width: 250px; height: 40px"
+                (click)="calendarToggle = !calendarToggle"
               >
-                Wypożycz online!
-              </button></a
-            >
-            <a routerLink="/kontakt" style="text-decoration: none">
-              <button mat-flat-button color="accent" style="margin-bottom: 5px">
-                Skontaktuj się z nami!
+                Zobacz dostępność urządzenia
               </button>
-            </a>
+              <p-dialog
+                [(visible)]="calendarToggle"
+                [modal]="true"
+                [style]="{ 'min-width': '280px' }"
+              >
+                <ng-template pTemplate="content">
+                  <div class="flex">
+                    <p-calendar
+                      class="m-w-width"
+                      #calendar
+                      [inline]="true"
+                      [focusTrap]="false"
+                      [readonlyInput]="true"
+                      [selectOtherMonths]="true"
+                      [disabledDates]="disableDates"
+                      [showWeek]="false"
+                    ></p-calendar>
+                    <div class="div-legend">
+                      <i class="bi bi-9-circle-fill occupied"></i
+                      ><span>Termin niedostępny</span>
+                    </div>
+                    <button
+                      mat-flat-button
+                      color="accent"
+                      (click)="calendarToggle = !calendarToggle"
+                      style="margin-top: 10px"
+                    >
+                      Zamknij
+                    </button>
+                  </div>
+                </ng-template>
+              </p-dialog>
+            </div>
           </mat-card-footer>
         </mat-card-content>
       </mat-card>
@@ -56,7 +114,9 @@
     <mat-grid-tile rowspan="2">
       <mat-card class="example-card">
         <mat-card-header>
-          <mat-card-title>{{ offerItem.name }}</mat-card-title>
+          <mat-card-title class="header-text">{{
+            offerItem.name
+          }}</mat-card-title>
         </mat-card-header>
         <div class="card-image-container">
           <img
@@ -65,48 +125,25 @@
             alt="Loading..."
           />
         </div>
-        <div style="margin-top: 3rem">
-          <mat-card-content>
-            <mat-card-title>Opis</mat-card-title>
-            <p [innerHTML]="offerItem.description"></p>
-          </mat-card-content>
-        </div>
       </mat-card>
     </mat-grid-tile>
-    <mat-grid-tile rowspan="2" *ngIf="offerItem.calendarFlag">
+    <mat-grid-tile [rowspan]="(isHandset$ | async) ? '2' : '1'">
       <mat-card class="example-card">
         <mat-card-header>
-          <mat-card-title style="margin-bottom: 3rem"
-            >Dostępność urządzenia:</mat-card-title
-          >
+          <mat-card-title class="header-text">Opis</mat-card-title>
         </mat-card-header>
-        <mat-card-content
-          style="display: flex; align-items: center; justify-content: center"
-        >
-          <p-calendar
-            [inline]="true"
-            selectOtherMonths="true"
-            [disabledDates]="disableDates"
-            [showWeek]="!(isHandset$ | async)"
-          ></p-calendar
-        ></mat-card-content>
-        <mat-card-actions style="display: flex; flex-wrap: wrap">
-          <div class="div-legend">
-            <i class="bi bi-9-circle-fill week"></i><span> Numery tygodni</span>
-          </div>
-
-          <div class="div-legend">
-            <i class="bi bi-9-circle-fill occupied"></i
-            ><span> Termin niedostępny</span>
-          </div>
-        </mat-card-actions>
+        <br />
+        <mat-card-content>
+          <p class="content-text" [innerHTML]="offerItem.description"></p>
+        </mat-card-content>
       </mat-card>
     </mat-grid-tile>
-    <mat-grid-tile id="map3"><div></div> </mat-grid-tile>
-    <mat-grid-tile>
+
+    <mat-grid-tile rowspan="2" id="map3"><div></div> </mat-grid-tile>
+    <mat-grid-tile [rowspan]="(isHandset$ | async)! ? '2' : '1'">
       <mat-card class="example-card">
         <mat-card-actions
-          ><mat-card-content
+          ><mat-card-content class="content-text"
             >Oferta ważna od 01.03.2022r. do odwołania. <br />*Kaucja zwrotna,
             zwracana w momencie zwrotu nie uszkodzonych urządzeń. Kwota kaucji
             stała za urządzenie bez względu na długość wynajmu. <br />Kwoty

@@ -6,6 +6,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { RegulaminPageComponent } from './regulamin-page/regulamin-page.component';
 import { OfferResolverService } from './services/offer-resolver.service';
 import { PromoResolverService } from './services/promo-resolver.service';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const appRoutes: Routes = [
   {
@@ -28,6 +29,7 @@ const appRoutes: Routes = [
         (x) => x.AdminPanelModule
       ),
   },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({

@@ -70,8 +70,8 @@ export class HeaderComponent implements OnInit, OnDestroy, AfterViewInit {
         );
 
         this.timerScroll = setTimeout(() => {
-          this.matSidenavScroll.nativeElement.scrollTop = 0;
-          // document.querySelector('mat-sidenav-content').scrollTop = 0;
+          // this.matSidenavScroll.nativeElement.scrollTop = 0;
+          document.querySelector('mat-sidenav-content').scrollTop = 0;
         }, 0);
       });
   }

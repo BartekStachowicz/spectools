@@ -9,6 +9,7 @@ import { CalendarComponent } from './dashboard/calendar/calendar.component';
 import { MainPanelComponent } from './dashboard/main-panel.component';
 import { OfferEditComponent } from './dashboard/offer-edit/offer-edit.component';
 import { PromoEditComponent } from './dashboard/promo-edit/promo-edit.component';
+import { ManualsComponent } from './dashboard/manuals/manuals.components';
 
 const routes: Routes = [
   {
@@ -36,6 +37,12 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         path: 'dashboard/calendar',
         component: CalendarComponent,
+        resolve: [OfferResolverService],
+      },
+      {
+        canActivate: [AuthGuard],
+        path: 'dashboard/manuals',
+        component: ManualsComponent,
         resolve: [OfferResolverService],
       },
     ],

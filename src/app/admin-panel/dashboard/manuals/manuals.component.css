@@ -1,0 +1,72 @@
+.example-viewport {
+  height: 400px;
+  width: 800px;
+}
+
+.example-item {
+  height: 100px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input[type="file"] {
+  visibility: hidden;
+}
+
+.header {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #455a64;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.subText {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #455a64;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+@media only screen and (max-width: 500px) {
+  mat-nav-list {
+    width: 300px;
+  }
+
+  .example-viewport {
+    height: 400px;
+    width: 300px;
+  }
+
+  .header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #455a64;
+    text-align: center;
+    margin: 1rem 0;
+  }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 1000px) {
+  mat-nav-list {
+    width: 500px;
+  }
+
+  .example-viewport {
+    height: 400px;
+    width: 500px;
+  }
+
+  .header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #455a64;
+    text-align: center;
+    margin: 1rem 0;
+  }
+}

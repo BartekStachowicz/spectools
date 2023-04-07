@@ -27,6 +27,7 @@ import * as fromApp from './store/app.reducer';
 import { AuthInterceptor } from './admin-panel/auth/auth-interceptor';
 import { ErrorInterceptor } from './services/error-interceptor';
 import { ErrorComponent } from './error/error.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ErrorComponent } from './error/error.component';
     MainPageComponent,
     SliderMainComponent,
     ErrorComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

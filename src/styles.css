@@ -36,24 +36,30 @@ body {
 }
 
 @media only screen and (min-width: 600px) {
-  #map2,
-  #map3 {
+  #map2 {
     height: 350px;
+    min-width: 49%;
+  }
+  #map3 {
+    height: 480px;
     min-width: 49%;
   }
 }
 
 @media only screen and (max-width: 600px) {
-  #map2,
-  #map3 {
+  #map2 {
     height: 350px;
+    width: 400px;
+  }
+  #map3 {
+    height: 480px;
     width: 400px;
   }
 }
 
 .margin-custom {
-  margin-top: 6rem;
-  margin-bottom: 6rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 }
 
 p-calendar span.p-disabled {

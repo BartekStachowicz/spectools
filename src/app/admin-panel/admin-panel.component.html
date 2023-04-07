@@ -45,6 +45,16 @@
 
       <a
         mat-list-item
+        routerLink="dashboard/manuals"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{
+          exact: true
+        }"
+        ><span>Dodawanie instrukcji</span></a
+      >
+
+      <a
+        mat-list-item
         routerLink="dashboard/promo-edit"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{

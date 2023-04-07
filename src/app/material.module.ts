@@ -22,6 +22,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { CalendarModule } from 'primeng/calendar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { AutoFocusModule } from 'primeng/autofocus';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
   declarations: [],
@@ -51,6 +53,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatNativeDateModule,
     CalendarModule,
     MatDialogModule,
+    AutoFocusModule,
+    DialogModule,
   ],
 })
 export class MaterialModule {}

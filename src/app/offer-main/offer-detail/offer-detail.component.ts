@@ -27,6 +27,11 @@ export class OfferDetailComponent implements OnInit, OnDestroy {
   calendar: CalendarModel[];
   calendarEvent: CalendarEvent[];
   disableDates = [];
+  manualPath: string = null;
+  manualSub: Subscription;
+  notFoundManual: string =
+    'https://specapi.spectools-rent.pl/manuals/404-not-found.pdf';
+  calendarToggle: boolean = false;
 
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
@@ -80,6 +85,14 @@ export class OfferDetailComponent implements OnInit, OnDestroy {
           );
         });
     }
+
+    this.manualSub = this.dashboardService
+      .getChangedManual()
+      .subscribe((manuals) => {
+        this.manualPath = manuals.find(
+          (el) => el.itemId === this.offerItem.id
+        ).manualPath;
+      });
   }
 
   ngOnDestroy(): void {
@@ -88,6 +101,9 @@ export class OfferDetailComponent implements OnInit, OnDestroy {
     }
     if (this.calendarSub) {
       this.calendarSub.unsubscribe();
+    }
+    if (this.manualSub) {
+      this.manualSub.unsubscribe();
     }
   }
 }

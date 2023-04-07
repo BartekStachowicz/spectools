@@ -1,0 +1,44 @@
+<div>
+  <div class="header">DODAWANIE INSTRUKCJI</div>
+  <mat-expansion-panel [(expanded)]="panelOpenState">
+    <mat-expansion-panel-header>
+      <mat-panel-title> Oferta </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+      <mat-nav-list *ngFor="let item of offerItems; let index = index">
+        <a mat-list-item (click)="onItemPicked(item.id)"
+          ><span>{{ item.name }}</span></a
+        >
+      </mat-nav-list>
+    </cdk-virtual-scroll-viewport>
+  </mat-expansion-panel>
+  <br />
+  <div class="subText" *ngIf="itemDisplay">
+    Wybrane urządzenie: {{ offerItem.name }}
+  </div>
+  <br />
+  <form [formGroup]="form">
+    <button
+      color="accent"
+      mat-raised-button
+      type="button"
+      style="width: 300px"
+      (click)="pickFile.click()"
+    >
+      Wybierz plik pdf
+    </button>
+    <input type="file" #pickFile (change)="onFilePicked($event)" />
+    <span class="subText">Nazwa pliku: {{ filePreview }}</span>
+    <button
+      color="accent"
+      mat-raised-button
+      type="reset"
+      style="width: 300px"
+      [disabled]="!filePreview || !itemDisplay"
+      (click)="onSave()"
+    >
+      Zapisz
+    </button>
+  </form>
+</div>
