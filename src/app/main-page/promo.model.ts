@@ -6,6 +6,7 @@ export class PromoItem {
   public imagePath2: string;
   public link1: string;
   public link2: string;
+  public headerText: string;
 
   constructor() {}
 }

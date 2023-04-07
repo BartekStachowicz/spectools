@@ -7,6 +7,10 @@
   <mat-card-content>
     <form class="edit-form" [formGroup]="form">
       <mat-form-field appearance="fill" color="accent">
+        <mat-label>Wprowadź tytuł dla sekcji Promocja</mat-label>
+        <textarea matInput formControlName="headerText" rows="2"></textarea>
+      </mat-form-field>
+      <mat-form-field appearance="fill" color="accent">
         <mat-label>TEXT 1</mat-label>
         <textarea matInput formControlName="text1" rows="2"></textarea>
       </mat-form-field>
@@ -14,7 +18,7 @@
         <mat-label>TEXT 2</mat-label>
         <textarea matInput formControlName="text2" rows="2"></textarea>
       </mat-form-field>
-      <mat-form-field appearance="fill" color="accent">
+      <!-- <mat-form-field appearance="fill" color="accent">
         <mat-label
           >Ścieżka do zdjęcia 1 (opcjonalnie zamiast zdjęcia z dysku można
           skopiować adres zdjęcia i wkleić)</mat-label
@@ -27,7 +31,7 @@
           skopiować adres zdjęcia i wkleić)</mat-label
         >
         <textarea matInput formControlName="imagePath2" rows="2"></textarea>
-      </mat-form-field>
+      </mat-form-field> -->
       <mat-form-field appearance="fill" color="accent">
         <mat-label
           >ścieżka do oferty 1, format: oferta/cedrus-gl03 (skopiować z linku z
@@ -42,6 +46,7 @@
         >
         <textarea matInput formControlName="link2" rows="2"></textarea>
       </mat-form-field>
+
       <button
         color="accent"
         mat-raised-button

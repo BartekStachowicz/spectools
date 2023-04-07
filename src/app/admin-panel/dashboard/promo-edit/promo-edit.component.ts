@@ -48,6 +48,7 @@ export class PromoEditComponent implements OnInit, OnDestroy {
       data.append('text2', this.form.value.text2);
       data.append('link1', this.form.value.link1);
       data.append('link2', this.form.value.link2);
+      data.append('headerText', this.form.value.firstrow);
       if (!this.reverseFileList) {
         data.append('images[]', this.selectedFiles[0]);
         data.append('images[]', this.selectedFiles[1]);
@@ -117,6 +118,7 @@ export class PromoEditComponent implements OnInit, OnDestroy {
       }),
       link1: new FormControl(null),
       link2: new FormControl(null),
+      headerText: new FormControl(null),
     });
   }
 }

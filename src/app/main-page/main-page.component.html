@@ -37,7 +37,7 @@
     class="header-text"
     [ngClass]="{ 'add-margin-bottom': !(isHandset$ | async) }"
   >
-    PROMOCJA
+    {{ promo.headerText }}
   </h2>
   <div class="desktop-container">
     <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5rem grid">
