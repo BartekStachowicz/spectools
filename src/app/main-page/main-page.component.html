@@ -48,12 +48,24 @@
       </div>
       <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="100%">
         <div class="promo-item bluegray-background">
-          <img class="image-promo" [src]="promo.imagePath1" alt="Loading..." />
+          <a [routerLink]="'/' + promo.link1">
+            <img
+              class="image-promo"
+              [src]="promo.imagePath1"
+              alt="Loading..."
+            />
+          </a>
         </div>
       </div>
       <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="100%">
         <div class="promo-item amber-background">
-          <img class="image-promo" [src]="promo.imagePath2" alt="Loading..." />
+          <a [routerLink]="'/' + promo.link2">
+            <img
+              class="image-promo"
+              [src]="promo.imagePath2"
+              alt="Loading..."
+            />
+          </a>
         </div>
       </div>
       <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="100%">
