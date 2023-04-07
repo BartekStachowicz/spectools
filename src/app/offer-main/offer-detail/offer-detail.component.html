@@ -55,6 +55,7 @@
                 </button>
               </a>
               <a
+                download
                 [href]="manualPath || notFoundManual"
                 style="text-decoration: none"
               >
@@ -80,6 +81,10 @@
                 [style]="{ 'min-width': '280px' }"
               >
                 <ng-template pTemplate="content">
+                  <div class="div-legend">
+                    <i class="bi bi-9-circle-fill occupied"></i
+                    ><span>Termin niedostępny</span>
+                  </div>
                   <div class="flex">
                     <p-calendar
                       class="m-w-width"
@@ -91,10 +96,7 @@
                       [disabledDates]="disableDates"
                       [showWeek]="false"
                     ></p-calendar>
-                    <div class="div-legend">
-                      <i class="bi bi-9-circle-fill occupied"></i
-                      ><span>Termin niedostępny</span>
-                    </div>
+
                     <button
                       mat-flat-button
                       color="accent"

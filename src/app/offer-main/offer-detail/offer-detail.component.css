@@ -75,6 +75,8 @@
 .div-legend {
   display: flex;
   align-items: center;
+  justify-content: baseline;
+
   height: 50px;
 }
 
