@@ -1,6 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import * as L from 'leaflet';
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
+import { RawResult } from 'leaflet-geosearch/dist/providers/bingProvider';
+import { SearchResult } from 'leaflet-geosearch/dist/providers/provider';
 
 const provider = new OpenStreetMapProvider();
 
@@ -56,27 +58,28 @@ export class LeafletMapService {
     try {
       const results = await provider.search({ query: address });
 
-      const foundLat = results[0].y;
-      const foundLng = results[0].x;
-
-      const placeFrom = new L.LatLng(this.lat, this.lng);
-      const placeTo = new L.LatLng(foundLat, foundLng);
-
-      const distance = placeFrom.distanceTo(placeTo) / 1000;
-
-      const price5: string | boolean = distance <= 5 ? 'GRATIS' : false;
-      const price10: string | boolean =
-        distance > 5 && distance <= 10 ? '30zł' : false;
-      const price15: string | boolean =
-        distance > 10 && distance <= 15 ? '50zł' : false;
-      const priceGreater15: string | boolean =
-        distance > 15 ? 'Koszt ustalimy indywidualnie' : false;
-
-      if (price5) return price5;
-      if (price10) return price10;
-      if (price15) return price15;
-      if (priceGreater15) return priceGreater15;
+      return this.calcDistance(results[0]);
     } catch {
+      return 'Coś poszło nie tak! Sprawdź poprawność adresu.';
+    }
+  }
+
+  calcDistance(result: any) {
+    const foundLat = result.y;
+    const foundLng = result.x;
+    const placeFrom = new L.LatLng(this.lat, this.lng);
+    const placeTo = new L.LatLng(foundLat, foundLng);
+    const distance = placeFrom.distanceTo(placeTo) / 1000;
+
+    if (distance <= 5) {
+      return 'GRATIS';
+    } else if (distance > 5 && distance <= 10) {
+      return '30zł';
+    } else if (distance > 10 && distance <= 15) {
+      return '50zł';
+    } else if (distance > 15) {
+      return 'Koszt ustalimy indywidualnie';
+    } else {
       return 'Coś poszło nie tak! Sprawdź poprawność adresu.';
     }
   }
