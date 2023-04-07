@@ -60,7 +60,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
       address: new FormControl('', [Validators.required]),
       postalCode: new FormControl('', [
         Validators.required,
-        Validators.pattern('^[0-9]{2}(?:-[0-9]{3})?$'),
+        Validators.pattern('^[0-9]{2}-[0-9]{3}$'),
       ]),
     });
   }
