@@ -21,10 +21,9 @@ Strona dla wypożyczalni sprzętu ogrodniczego i budowlanego.
 ![SPECTOOLS_PREVIEW][preview-app]
 <br/>
 
-<p>
-Panel do zarządzania stroną.
-</p>
-![SPECTOOLS_PREVIEW][preview-dashboard]
+<p>Panel do zarządznia stroną</p>
+
+![DASHBOARD_PREVIEW][preview-dashboard]
 
 <hr>
 
@@ -45,7 +44,7 @@ Panel do zarządzania stroną.
 
 <!-- URL's -->
 
-[nestjs]: https://img.shields.io/badge/nodeJS-3f3e42?style=for-the-badge&logo=nestjs&logoColor=FF0000
+[nestjs]: https://img.shields.io/badge/NESTJS-3f3e42?style=for-the-badge&logo=nestjs&logoColor=FF0000
 [nestjs-url]: https://nestjs.com/
 [express]: https://img.shields.io/badge/express-D3D3D3?style=for-the-badge&logo=Express&logoColor=000000
 [express-url]: https://expressjs.com/
