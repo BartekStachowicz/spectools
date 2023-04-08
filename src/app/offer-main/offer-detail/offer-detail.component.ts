@@ -30,7 +30,7 @@ export class OfferDetailComponent implements OnInit, OnDestroy {
   manualPath: string = null;
   manualSub: Subscription;
   notFoundManual: string =
-    'https://specapi.spectools-rent.pl/manuals/404-not-found.pdf';
+    'https://specapi.spectools-rent.pl/devicemanuals/404-not-found.pdf';
   calendarToggle: boolean = false;
 
   isHandset$: Observable<boolean> = this.breakpointObserver
