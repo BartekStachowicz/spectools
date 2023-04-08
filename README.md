@@ -21,16 +21,21 @@ Strona dla wypożyczalni sprzętu ogrodniczego i budowlanego.
 ![SPECTOOLS_PREVIEW][preview-app]
 <br/>
 
+<p>
+Panel do zarządzania stroną.
+</p>
+![SPECTOOLS_PREVIEW][preview-dashboard]
+
 <hr>
 
 ### Built With
 
-[![Angular][angular]][angular-url]<br/>
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
+[![Angular][angular]][angular-url] & [![NestJS][nestjs]][nestjs-url] & [![MongoDB][mongo]][mongo-url]
+<br/>
 
 ### Hosted on
 
-[![AWS][aws]][aws-url]
+[![SEOHOST][seohost]][seohost-url]
 
 ## Contact
 
@@ -40,17 +45,18 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 <!-- URL's -->
 
-[node]: https://img.shields.io/badge/nodeJS-3f3e42?style=for-the-badge&logo=nodedotjs&logoColor=4db33d
-[node-url]: https://nodejs.org/en/
+[nestjs]: https://img.shields.io/badge/nodeJS-3f3e42?style=for-the-badge&logo=nestjs&logoColor=FF0000
+[nestjs-url]: https://nestjs.com/
 [express]: https://img.shields.io/badge/express-D3D3D3?style=for-the-badge&logo=Express&logoColor=000000
 [express-url]: https://expressjs.com/
 [mongo]: https://img.shields.io/badge/MongoDB-3f3e42?style=for-the-badge&logo=MongoDB&logoColor=4db33d
 [mongo-url]: https://www.mongodb.com
-[aws]: https://img.shields.io/badge/AWS-2C384A?style=for-the-badge&logo=Amazon&logoColor=FFCB2B
-[aws-url]: https://aws.amazon.com/
+[seohost]: https://img.shields.io/badge/SEOHOST-2C384A?style=for-the-badge&logo=seohost&logoColor=00ff00
+[seohost-url]: https://seohost.pl/
 [angular-url]: https://angular.io/
 [angular]: https://img.shields.io/badge/Angular-FF0000?style=for-the-badge&logo=Angular
 [preview-app]: src/assets/spectools-preview.png
+[preview-dashboard]: src/assets/spectools-dashboard.png
 [github-issue]: https://img.shields.io/github/issues/BartekStachowicz/my-recipe-book?color=%235FBFF9&style=flat-square
 [linkedin]: https://img.shields.io/badge/Linkedin-0072b1?style=for-the-badge&logo=LinkedIn
 [linkedin-url]: https://linkedin.com/in/bstachowicz
