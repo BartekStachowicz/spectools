@@ -49,6 +49,7 @@ export class OfferDetailComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.dashboardService.getManuals();
     this.dashboardService.getCalendarEvents();
     this.leafletMapService.initMap('map3');
     this.offerSubscription = this.route.params
@@ -85,13 +86,14 @@ export class OfferDetailComponent implements OnInit, OnDestroy {
           );
         });
     }
-
+    console.log('init');
     this.manualSub = this.dashboardService
       .getChangedManual()
       .subscribe((manuals) => {
         this.manualPath = manuals.find(
           (el) => el.itemId === this.offerItem.id
         ).manualPath;
+        console.log(manuals);
       });
   }
 

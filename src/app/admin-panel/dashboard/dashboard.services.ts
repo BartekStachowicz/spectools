@@ -22,7 +22,7 @@ export class DashboardService {
   constructor(private http: HttpClient, private router: Router) {}
 
   getManuals() {
-    this.http.get<ManualModel[]>(API_CALENDAR_URL).subscribe((events) => {
+    this.http.get<ManualModel[]>(API_MANUALS_URL).subscribe((events) => {
       this.manuals = events;
       this.manualChanged$.next(this.manuals);
     });
