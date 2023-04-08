@@ -6,7 +6,7 @@
 
   <p align="center">
     <br />
-    <a href="https://www.spectools-rent.pl/">View page</a>
+    <a href="https://www.spectools-rent.pl/">VISIT PAGE</a>
   </p>
 </div>
 
@@ -15,13 +15,13 @@
 ## About The Project
 
 <p>
-Strona dla wypożyczalni sprzętu ogrodniczego i budowlanego.
+Website for rental of gardening and construction equipment.
 </p>
 
 ![SPECTOOLS_PREVIEW][preview-app]
 <br/>
 
-<p>Panel do zarządznia stroną</p>
+<p>Admin panel to manage the website,</p>
 
 ![DASHBOARD_PREVIEW][preview-dashboard]
 
@@ -29,6 +29,8 @@ Strona dla wypożyczalni sprzętu ogrodniczego i budowlanego.
 
 ### Built With
 
+<p>Frontend part was built in Angular and uses Angular Material and PrimeNg components.
+Backend part was built in NestJS and uses multer, passport, jwt and MongoDB.</p>
 [![Angular][angular]][angular-url] & [![NestJS][nestjs]][nestjs-url] & [![MongoDB][mongo]][mongo-url]
 <br/>
 
