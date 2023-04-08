@@ -21,7 +21,7 @@ Website for rental of gardening and construction equipment.
 ![SPECTOOLS_PREVIEW][preview-app]
 <br/>
 
-<p>Admin panel to manage the website,</p>
+<p>Admin panel to manage the website.</p>
 
 ![DASHBOARD_PREVIEW][preview-dashboard]
 
@@ -31,6 +31,7 @@ Website for rental of gardening and construction equipment.
 
 <p>Frontend part was built in Angular and uses Angular Material and PrimeNg components.
 Backend part was built in NestJS and uses multer, passport, jwt and MongoDB.</p>
+
 [![Angular][angular]][angular-url] & [![NestJS][nestjs]][nestjs-url] & [![MongoDB][mongo]][mongo-url]
 <br/>
 
