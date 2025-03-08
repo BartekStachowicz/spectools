@@ -6,6 +6,7 @@ export interface State {
   items: OfferItem[];
   newItem: FormData;
   updatedItem: OfferItem | FormData;
+  updatedItems: OfferItem[];
   deletedItemId: string;
   editedId: string;
   promo: PromoItem;
@@ -16,6 +17,7 @@ const initState: State = {
   items: [],
   newItem: null,
   updatedItem: null,
+  updatedItems: [],
   deletedItemId: null,
   editedId: null,
   promo: null,
@@ -44,6 +46,12 @@ export function pageMainReducer(
         ...state,
         updatedItem: action.payload.item,
         editedId: action.payload.id,
+      };
+
+    case PageMainActions.UPDATE_ALL_ITEMS:
+      return {
+        ...state,
+        updatedItems: action.payload,
       };
 
     case PageMainActions.DELETE_ITEM:

@@ -10,6 +10,7 @@ import { MainPanelComponent } from './dashboard/main-panel.component';
 import { OfferEditComponent } from './dashboard/offer-edit/offer-edit.component';
 import { PromoEditComponent } from './dashboard/promo-edit/promo-edit.component';
 import { ManualsComponent } from './dashboard/manuals/manuals.components';
+import { OfferPositionComponent } from './dashboard/offer-position/offer-position.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,12 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         path: 'dashboard/manuals',
         component: ManualsComponent,
+        resolve: [OfferResolverService],
+      },
+      {
+        canActivate: [AuthGuard],
+        path: 'dashboard/position',
+        component: OfferPositionComponent,
         resolve: [OfferResolverService],
       },
     ],

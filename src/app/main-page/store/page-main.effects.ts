@@ -64,6 +64,20 @@ export class PageMainEffects {
     { dispatch: false }
   );
 
+  //patch updated offer items
+  updateAllItems = createEffect(
+    (): Observable<any> => {
+      return this.actions$.pipe(
+        ofType(PageMainActions.SAVE_ALL_UPDATED_ITEMS),
+        withLatestFrom(this.store.select('offer')),
+        switchMap(([action, state]) => {
+          return this.http.patch(API_URL_OFFER + '/all', state.updatedItems);
+        })
+      );
+    },
+    { dispatch: false }
+  );
+
   //delete offer item
   deleteItem = createEffect(
     (): Observable<any> => {
@@ -71,7 +85,7 @@ export class PageMainEffects {
         ofType(PageMainActions.SAVE_DELETED_ITEM),
         withLatestFrom(this.store.select('offer')),
         switchMap(([action, state]) => {
-          return this.http.delete(API_URL_OFFER + '/' + state.deletedItemId);
+          return this.http.delete(API_URL_OFFER);
         })
       );
     },

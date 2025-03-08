@@ -43,8 +43,8 @@ const area15 = L.icon({
 // L.Marker.prototype.options.icon = spectools;
 
 export class LeafletMapService {
-  private lat = 50.376045250000004;
-  private lng = 21.32276775;
+  private lat = 50.38571739079916;
+  private lng = 21.351666879797744;
   public map: any;
   public circle15: any;
   public circle10: any;
@@ -93,7 +93,7 @@ export class LeafletMapService {
 
     this.map.scrollWheelZoom.disable();
 
-    this.marker5 = L.marker([this.lat, 21.393], { icon: area5 }).addTo(
+    /*this.marker5 = L.marker([this.lat, 21.393], { icon: area5 }).addTo(
       this.map
     );
     this.marker10 = L.marker([this.lat, 21.464], { icon: area10 }).addTo(
@@ -101,13 +101,13 @@ export class LeafletMapService {
     );
     this.marker15 = L.marker([this.lat, 21.555], { icon: area15 }).addTo(
       this.map
-    );
+    );*/
 
     this.marker = L.marker([this.lat, this.lng], { icon: spectools }).addTo(
       this.map
     );
 
-    this.circle15 = L.circle([this.lat, this.lng], {
+    /*this.circle15 = L.circle([this.lat, this.lng], {
       color: '#263238',
       fillColor: '#607d8b',
       fillOpacity: 0.2,
@@ -126,6 +126,6 @@ export class LeafletMapService {
       fillColor: '#607d8b',
       fillOpacity: 0.2,
       radius: 5000,
-    }).addTo(this.map);
+    }).addTo(this.map); */
   }
 }

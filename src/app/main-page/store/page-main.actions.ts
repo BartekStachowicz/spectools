@@ -5,9 +5,11 @@ import { PromoItem } from '../promo.model';
 export const FETCH_ITEMS = '[OFFER] FETCH_ITEMS';
 export const SAVE_NEW_ITEM = '[OFFER] SAVE_NEW_ITEM';
 export const SAVE_UPDATED_ITEM = '[OFFER] SAVE_UPDATED_ITEM';
+export const SAVE_ALL_UPDATED_ITEMS = '[OFFER] SAVE_ALL_UPDATED_ITEMS';
 export const SET_ITEMS = '[OFFER] SET_ITEMS';
 export const ADD_ITEM = '[OFFER] ADD_ITEM';
 export const UPDATE_ITEM = '[OFFER] UPDATE_ITEM';
+export const UPDATE_ALL_ITEMS = '[OFFER] UPDATE_ALL_ITEMS';
 export const DELETE_ITEM = '[OFFER] DELETE_ITEM';
 export const SAVE_DELETED_ITEM = '[OFFER] SAVE_DELETED_ITEM';
 
@@ -25,6 +27,9 @@ export class SaveNewItem implements Action {
 }
 export class SaveUpdatedItem implements Action {
   readonly type = SAVE_UPDATED_ITEM;
+}
+export class SaveAllUpdatedItems implements Action {
+  readonly type = SAVE_ALL_UPDATED_ITEMS;
 }
 
 export class SaveDeletedItem implements Action {
@@ -44,6 +49,10 @@ export class AddItem implements Action {
 export class UpdateItem implements Action {
   readonly type = UPDATE_ITEM;
   constructor(public payload: { item: OfferItem | FormData; id: string }) {}
+}
+export class UpdateAllItems implements Action {
+  readonly type = UPDATE_ALL_ITEMS;
+  constructor(public payload: OfferItem[]) {}
 }
 
 export class DeleteItem implements Action {
@@ -73,9 +82,11 @@ export type PageMainActions =
   | FetchItems
   | SaveNewItem
   | SaveUpdatedItem
+  | SaveAllUpdatedItems
   | SetItems
   | AddItem
   | UpdateItem
+  | UpdateAllItems
   | DeleteItem
   | UpdatePromo
   | FetchPromo
